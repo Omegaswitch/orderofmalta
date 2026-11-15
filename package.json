@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "description": "Serverless functions in api/ (the site itself is built by build.py)",
+  "scripts": {
+    "auth:migrate": "npx @better-auth/cli migrate --config api/_auth.mjs",
+    "auth:user": "node scripts/add-user.mjs"
+  },
+  "dependencies": {
+    "better-auth": "^1.7.22",
+    "pg": "^8.23.1"
+  }
+}
