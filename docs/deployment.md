@@ -36,7 +36,7 @@ Set these in the Vercel project, then redeploy. The full list and what each one 
 
 - `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`: staff sign-in.
 - `GITHUB_TOKEN`: the editor's commits.
-- `DEPLOY_HOOK_URL`, `CRON_SECRET`: the daily rebuild.
+- `DEPLOY_HOOK_URL`, `CRON_SECRET`: the daily rebuild. `CRON_SECRET` is mandatory: `/api/rebuild` answers 503 without it.
 - `RESEND_API_KEY`, `MAIL_FROM`, `GDPR_TO`: the data-protection request form. `GDPR_TO` and `MAIL_FROM` have no default. Without them the form answers with a configuration error.
 - `NEWS_NOTIFY`: optional notice e-mail.
 

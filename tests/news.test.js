@@ -270,7 +270,10 @@ const post = (extra) => ({ action: "publish", title: "Title", date: "2026-11-02T
   // linking an existing post (edit) to a group
   const de = await call("POST", post({ lang: "de", title: "Der Großmeister in Rom" }), E);
   assert.deepStrictEqual(meta(fileOf(lastCommit(), de.body.path)).translations, { de: "/de/nachrichten/der-grossmeister-in-rom/" });
-  const link = await call("POST", { ...post({ title: "Der Großmeister in Rom", translationOf: enPath }), path: de.body.path }, E);
+  // an editor cannot rewrite group members written by someone else (the French post is the admin's)
+  const denied = await call("POST", { ...post({ title: "Der Großmeister in Rom", translationOf: enPath }), path: de.body.path }, E);
+  assert.strictEqual(denied.status, 403, JSON.stringify(denied.body));
+  const link = await call("POST", { ...post({ title: "Der Großmeister in Rom", translationOf: enPath }), path: de.body.path }, A);
   assert.strictEqual(link.status, 200, JSON.stringify(link.body));
   tree = lastCommit();
   for (const p of [enPath, it.body.path, fr.body.path, de.body.path]) assert.strictEqual(Object.keys(meta(fileOf(tree, p)).translations).length, 4, p);

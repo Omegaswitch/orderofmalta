@@ -11,11 +11,13 @@ Download it outside the repository, e.g.
   curl -L https://registry.npmjs.org/world-atlas/-/world-atlas-2.0.2.tgz | tar xz -C /some/empty/dir   (file: package/countries-50m.json)
 Presence: parsed from the imported Contacts pages in content/pages/<lang>/<contacts>/index.html. Nothing is written that is not on those pages.
 """
+import difflib
 import html
 import json
 import math
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -249,45 +251,69 @@ def build_geometry(topo, present):
 
 # ---------------------------------------------------------------- contacts
 
-DIPLO = ("diplomatic", "embassy", "delegation", "representation", "mission diplomatique", "missione diplomatica", "diplomatische mission",
-         "misión diplomática", "mision diplomatica", "ambassade", "ambasciata", "botschaft", "embajada", "délégation", "delegazione", "delegación",
-         "delegacion", "représentation", "rappresentanza", "vertretung", "representación", "representacion", "diplomatica", "diplomatique", "diplomatische")
-ORDER = ("grand priory", "priory", "subpriory", "national association", "association", "order of malta in ", "gran priorato", "priorato", "prieuré",
-         "großpriorat", "grosspriorat", "subpriorat", "associazione", "assoziation", "asociación", "asociacion", "ordine di malta in", "ordre de malte en",
-         "ordre de malte au", "malteserorden in", "orden de malta en", "sovereign order of malta government", "governo", "gouvernement", "regierung", "gobierno")
+# Classification keywords, matched against the accent-folded lower-case name (see fold_text). Default kind: "works".
+DIPLO = re.compile(r"mission|mision|bevollm|delegac|delegaz|delegat|embass|ambassad|ambasciat|botschaft|embajad|represent|rappresent|vertretung|diplomat")
+WORKS = re.compile(r"\b(corps|corpo|cuerpo|korps|ambulan\w*|relief|volunteer\w*|voluntar\w*|freiwillig\w*|benevole\w*|aid|soccors\w*|secours|hilf\w*|"
+                   r"foundation|fondation|fondazione|fundacion|fundacao|stiftung|service|servizio|servicio|dienst\w*|hospital\w*|hospitalier\w*)\b")
+ORDER = re.compile(r"priory|prieure|priorat\w*|priorato|association|associazione|assoziation|asociacion|companions|compagnons|compagni|gefahrten|"
+                   r"companeros|order of malta in |ordine di malta in |ordre de malte (?:en|au|a) |malteserorden in |orden de malta en |"
+                   r"government|gouvernement|governo|regierung|gobierno")
 SMALL_WORDS = {"of", "the", "to", "in", "and", "de", "del", "della", "dello", "dei", "delle", "di", "da", "du", "des", "la", "le", "les", "el", "los", "las",
-               "et", "e", "y", "en", "au", "aux", "für", "und", "von", "zu", "zum", "zur", "der", "die", "das", "des", "dem", "den", "al", "a", "da"}
-KEEP_UPPER = {"CIOMAL", "FHOME", "USA", "UK", "II", "III", "EU", "UN", "OF", "SMART"}
+               "et", "e", "y", "en", "au", "aux", "für", "und", "von", "zu", "zum", "zur", "der", "die", "das", "dem", "den", "al", "a", "pour", "par", "sur", "il", "lo", "gli", "ante", "presso", "a", "ai", "alla", "nella", "nel", "con", "per", "fur", "bei"}
+ACRONYMS = {"CIOMAL", "CISOM", "ACISMOM", "FHOME", "IPU", "UIP", "USA", "UK", "EU", "UN", "FAO", "WFP", "IFAD", "PAM", "ONU", "UNESCO", "UNIDO",
+            "ESCAP", "CESAP", "ONUDI", "OMV", "MHD", "MHDA"}
+ELISION = {"l", "d", "dell", "all", "nell", "sull", "un", "c", "qu", "s", "n", "j", "m", "t"}
+
+
+def fold_text(s):
+    return unicodedata.normalize("NFD", s.lower()).encode("ascii", "ignore").decode()
 
 
 def title_case(s):
+    """Names that the page sets in capitals are shown in title case; mixed-case names are left as written. Acronyms in brackets or standing
+    alone after a dash (… – CISOM) keep their capitals."""
     letters = [c for c in s if c.isalpha()]
     if not letters or sum(c.isupper() for c in letters) / len(letters) < 0.8:
         return s
+    keep = set(re.findall(r"\(([^()]+)\)", s)) | ACRONYMS
     out = []
-    for i, w in enumerate(re.split(r"(\s+)", s)):
-        if not w.strip():
-            out.append(w)
+    pos = 0
+    for part in re.split(r"(\([^()]+\))", s):
+        if part.startswith("(") and part.endswith(")") and part[1:-1] in keep:
+            out.append(part)
+            pos += 1
             continue
-        m = re.match(r"^(\W*)(.*?)(\W*)$", w, re.S)
-        pre, core, post = m.groups()
-        low = core.lower()
-        if core in KEEP_UPPER and core != "OF" or len(core) == 1 and core.isupper() and i and not core.isalpha():
-            new = core
-        elif low in SMALL_WORDS and i:
-            new = low
-        else:
-            new = "-".join(p[:1].upper() + p[1:] for p in low.split("-"))
-            new = re.sub(r"(['’])(\w)", lambda mm: mm.group(1) + mm.group(2).lower(), new)
-        out.append(pre + new + post)
+        for w in re.split(r"(\s+)", part):
+            if not w.strip():
+                out.append(w)
+                continue
+            m = re.match(r"^(\W*)(.*?)(\W*)$", w, re.S)
+            pre, core, post = m.groups()
+            if core in keep:
+                out.append(w)
+            else:
+                out.append(pre + case_word(core, pos) + post)
+            pos += 1
     return "".join(out)
 
 
+def case_word(core, pos):
+    low = core.lower()
+    m = re.match(r"^(\w+)([’'])(\w.*)$", low)
+    if m and m.group(1) in ELISION:
+        return m.group(1) + m.group(2) + case_word(m.group(3), 1)
+    if low in SMALL_WORDS and pos:
+        return low
+    return "-".join(p[:1].upper() + p[1:] for p in low.split("-"))
+
+
 def classify(name):
-    n = name.lower()
-    if any(k in n for k in DIPLO):
+    n = fold_text(name)
+    if DIPLO.search(n):
         return "diplomatic"
-    if any(k in n for k in ORDER):
+    if WORKS.search(n):
+        return "works"
+    if ORDER.search(n):
         return "order"
     return "works"
 
@@ -335,18 +361,72 @@ def finish_entity(e):
     return out
 
 
+def signature(ents):
+    sig = set()
+    for e in ents:
+        for href in re.findall(r'href="\s*([^"]*?)\s*"', e["html"]):
+            h = html.unescape(href).lower()
+            if h.startswith("mailto:"):
+                sig.add(h[7:].strip())
+            elif re.match(r"https?://", h):
+                sig.add(re.sub(r"^https?://(www\.)?", "", h).split("/")[0])
+    return sig
+
+
+def fold(s):
+    return re.sub(r"[^a-z]", "", unicodedata.normalize("NFD", s.lower()).encode("ascii", "ignore").decode())
+
+
+def match_countries(cs, en_countries):
+    """Country headings are sorted alphabetically in each language, so the order of appearance differs from EN. Match every country of a
+    language to the EN country of the same continent with the most e-mail addresses and web hosts in common (the addresses are the same in
+    all languages); the heading's spelling only breaks ties and decides what is left over. Returns (list of EN indexes, log lines)."""
+    regs = {}
+    for _, rid, _ in en_countries:
+        regs.setdefault(rid, len(regs))
+    lregs = {}
+    for _, rid, _ in cs:
+        lregs.setdefault(rid, len(lregs))
+    en_sig = [signature(c[2]) for c in en_countries]
+    cand = []
+    for i, (h, rid, ents) in enumerate(cs):
+        if i == 0:
+            continue
+        sg = signature(ents)
+        for j, (eh, erid, _) in enumerate(en_countries):
+            if j == 0 or regs[erid] != lregs[rid]:
+                continue
+            ratio = difflib.SequenceMatcher(None, fold(h), fold(eh)).ratio()
+            cand.append((len(sg & en_sig[j]) + ratio / 2, len(sg & en_sig[j]), ratio, i, j))
+    cand.sort(reverse=True)
+    res, used, log = {0: 0}, {0}, []
+    for score, n, ratio, i, j in cand:
+        if i in res or j in used:
+            continue
+        res[i] = j
+        used.add(j)
+        if n == 0:
+            log.append(f"matched by name only: {cs[i][0]} = {en_countries[j][0]} ({ratio:.2f})")
+    if len(res) != len(cs):
+        raise SystemExit("could not match all countries")
+    return [res[i] for i in range(len(cs))], log
+
+
 def build_presence(lang, en_countries):
     cs = parse_contacts(lang)
     log = []
-    en_iso = []
-    for head, rid, ents in en_countries:
-        en_iso.append(None if not en_iso else HEAD.get(head.upper()))
-        if en_iso[-1] is None and en_iso != [None]:
-            raise SystemExit(f"unmapped EN heading: {head}")
-    use = cs
-    if len(cs) != len(en_countries):
+    en_iso = [None if i == 0 else HEAD.get(h.upper()) for i, (h, _, _) in enumerate(en_countries)]
+    if None in en_iso[1:]:
+        raise SystemExit("unmapped EN heading: " + str([h for (h, _, _), v in zip(en_countries[1:], en_iso[1:]) if v is None]))
+    if lang == "en":
+        use, idx = en_countries, list(range(len(en_countries)))
+    elif len(cs) != len(en_countries):
         log.append(f"count differs ({len(cs)} vs EN {len(en_countries)}): using EN entries")
-        use = en_countries
+        use, idx = en_countries, list(range(len(en_countries)))
+    else:
+        use = cs
+        idx, mlog = match_countries(cs, en_countries)
+        log += mlog
     pres = {}
     for i, (head, rid, ents) in enumerate(use):
         if i == 0:   # international seats
@@ -354,23 +434,18 @@ def build_presence(lang, en_countries):
             if len(ents) != len(SEATS):
                 log.append(f"seats block has {len(ents)} entries, expected {len(SEATS)}")
         else:
-            pairs = [(en_iso[i], e) for e in ents]
+            pairs = [(en_iso[idx[i]], e) for e in ents]
         for iso, e in pairs:
-            d = pres.setdefault(iso, {"entities": [], "anchor": rid})
-            d["entities"].append(finish_entity(e))
-    # a country's anchor is the region of its own heading, not of the seats block
-    for i, (head, rid, ents) in enumerate(use):
-        if i and en_iso[i] in pres:
-            pres[en_iso[i]]["anchor"] = rid
-    # EN comparison: same number of entities per country?
-    if lang != "en" and use is cs:
+            pres.setdefault(iso, {"entities": [], "anchor": rid})["entities"].append(finish_entity(e))
+    for i, (head, rid, ents) in enumerate(use):   # a country's anchor is the region of its own heading, not of the seats block
+        if i and en_iso[idx[i]] in pres:
+            pres[en_iso[idx[i]]]["anchor"] = rid
+    if use is cs:
         for i, (h, r, ents) in enumerate(cs):
-            if len(ents) != len(en_countries[i][2]):
-                log.append(f"entities differ for {h} / {en_countries[i][0]}: {len(ents)} vs {len(en_countries[i][2])}")
-    for iso in list(pres):
-        if not pres[iso]["entities"]:
-            del pres[iso]
-    return pres, log
+            if i and len(ents) != len(en_countries[idx[i]][2]):
+                log.append(f"entity count differs for {h} = {en_countries[idx[i]][0]}: {len(ents)} vs {len(en_countries[idx[i]][2])}")
+        log.append("pairs: " + "; ".join(f"{cs[i][0]}={en_countries[idx[i]][0]}" for i in range(1, len(cs))))
+    return {k: v for k, v in pres.items() if v["entities"]}, log
 
 
 def main():

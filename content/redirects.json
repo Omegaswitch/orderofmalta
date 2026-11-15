@@ -12,6 +12,10 @@
   "to": "/de/nachrichten/"
  },
  {
+  "from": "/de/nachrichten-kategorien/diplomatischen-aktivitaeten/",
+  "to": "/de/nachrichten/"
+ },
+ {
   "from": "/de/nachrichten-kategorien/diplomatischen-aktivitaten/",
   "to": "/de/nachrichten-kategorien/nachrichten/diplomatischen-aktivitaten/"
  },
@@ -24,16 +28,36 @@
   "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/freiwilligenkorps/"
  },
  {
+  "from": "/de/nachrichten-kategorien/globale-fonds-zur-vergessenen-menschen-2/",
+  "to": "/de/nachrichten/"
+ },
+ {
   "from": "/de/nachrichten-kategorien/grosmeister-news/",
   "to": "/de/nachrichten-kategorien/nachrichten/grosmeister-news/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/hilfe-fuer-fluechtlinge/",
+  "to": "/de/nachrichten/"
  },
  {
   "from": "/de/nachrichten-kategorien/hilfe-fur-fluchtlinge/",
   "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/hilfe-fur-fluchtlinge/"
  },
  {
+  "from": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/globale-fonds-zur-vergessenen-menschen/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/institutionelle-termin/",
+  "to": "/de/nachrichten/"
+ },
+ {
   "from": "/de/nachrichten-kategorien/katastrophenhilfe-und-pravention/",
   "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/katastrophenhilfe-und-pravention/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/krankheiten-und-epidemien-2/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/krankheiten-und-epidemien/"
  },
  {
   "from": "/de/nachrichten-kategorien/krankheiten-und-epidemien/",
@@ -46,6 +70,10 @@
  {
   "from": "/de/nachrichten-kategorien/medizinische-einrichtung/",
   "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/medizinische-einrichtung/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/nachrichten/statthalter-des-grossmeisters-news/",
+  "to": "/de/nachrichten-kategorien/nachrichten/"
  },
  {
   "from": "/de/nachrichten-kategorien/soziale-interventionen/",
@@ -80,6 +108,10 @@
   "to": "/contacts/"
  },
  {
+  "from": "/es/categorias-de-noticias/actividades-diplomaticas-2/",
+  "to": "/es/categorias-de-noticias/noticias/actividades-diplomaticas/"
+ },
+ {
   "from": "/es/categorias-de-noticias/actividades-diplomaticas/",
   "to": "/es/categorias-de-noticias/noticias/actividades-diplomaticas/"
  },
@@ -88,12 +120,24 @@
   "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/alivio-de-desastres-y-prevencion/"
  },
  {
+  "from": "/es/categorias-de-noticias/assistance-sociales-2/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/assistance-sociales/"
+ },
+ {
   "from": "/es/categorias-de-noticias/assistance-sociales/",
   "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/assistance-sociales/"
  },
  {
   "from": "/es/categorias-de-noticias/ayuda-a-los-refugiados/",
   "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/ayuda-a-los-refugiados/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/cita-institucional/",
+  "to": "/es/noticias/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/cuerpo-de-voluntarios-2/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/cuerpo-de-voluntarios/"
  },
  {
   "from": "/es/categorias-de-noticias/cuerpo-de-voluntarios/",
@@ -116,6 +160,14 @@
   "to": "/es/categorias-de-noticias/noticias/noticias-gran-maestro/"
  },
  {
+  "from": "/es/categorias-de-noticias/noticias/noticias-lugarteniente-del-gran-maestre/",
+  "to": "/es/categorias-de-noticias/noticias/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/fondo-global-para-la-gente-olvidada/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/"
+ },
+ {
   "from": "/es/contact/",
   "to": "/es/contactos/"
  },
@@ -128,12 +180,28 @@
   "to": "/es/prensa-y-publicaciones/"
  },
  {
+  "from": "/fr/actualites/rome-accueille-le-14ᵉ-pelerinage-de-ordre-de-malte-allemagne/",
+  "to": "/fr/actualites/rome-accueille-le-14--pelerinage-de-ordre-de-malte-allemagne/"
+ },
+ {
   "from": "/fr/categories-de-actualites/activites-diplomatiques-2/",
   "to": "/fr/categories-de-actualites/actualites/activites-diplomatiques/"
  },
  {
   "from": "/fr/categories-de-actualites/activites-diplomatiques/",
   "to": "/fr/categories-de-actualites/actualites/activites-diplomatiques/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/fonds-mondial-pour-les-peuples-oublies/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/actualites/lieutenant-de-grand-maitre-actualites/",
+  "to": "/fr/categories-de-actualites/actualites/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/aide-aux-refugies-2/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/aide-aux-refugies/"
  },
  {
   "from": "/fr/categories-de-actualites/aide-aux-refugies/",
@@ -144,8 +212,20 @@
   "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/etablissements-medicaux/"
  },
  {
+  "from": "/fr/categories-de-actualites/fonds-mondial-pour-les-peuples-oublies-2/",
+  "to": "/fr/actualites/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/maladies-et-epidemies-2/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/maladies-et-epidemies/"
+ },
+ {
   "from": "/fr/categories-de-actualites/maladies-et-epidemies/",
   "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/maladies-et-epidemies/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/malteser-international-2/",
+  "to": "/fr/actualites/"
  },
  {
   "from": "/fr/categories-de-actualites/malteser-international-fr/",
@@ -160,8 +240,16 @@
   "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/operations-de-secours-et-la-prevention/"
  },
  {
+  "from": "/fr/categories-de-actualites/rendez-vous-institutionnel/",
+  "to": "/fr/actualites/"
+ },
+ {
   "from": "/fr/categories-de-actualites/social-assistance-fr/",
   "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/social-assistance-fr/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/volontaires-corp-2/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/volontaires-corp/"
  },
  {
   "from": "/fr/categories-de-actualites/volontaires-corp/",
@@ -186,6 +274,10 @@
  {
   "from": "/fr/press-et-publications/lettre-d-information/",
   "to": "/fr/press-et-publications/"
+ },
+ {
+  "from": "/it/categorie-notizia/aggiornamenti/",
+  "to": "/it/notizie/"
  },
  {
   "from": "/it/categorie-notizia/aiuti-per-i-rifugiati/",
@@ -216,8 +308,20 @@
   "to": "/it/categorie-notizia/opere-umanitarie-mediche/malteser-internazionale/"
  },
  {
+  "from": "/it/categorie-notizia/nomine-istituzionali/",
+  "to": "/it/notizie/"
+ },
+ {
   "from": "/it/categorie-notizia/notizie-gran-maestro/",
   "to": "/it/categorie-notizia/notizie/notizie-gran-maestro/"
+ },
+ {
+  "from": "/it/categorie-notizia/notizie/notizie-luogotenente-di-gran-maestro/",
+  "to": "/it/categorie-notizia/notizie/"
+ },
+ {
+  "from": "/it/categorie-notizia/opere-umanitarie-mediche/fondo-globale-per-le-persone-dimenticate/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/"
  },
  {
   "from": "/it/categorie-notizia/strutture-mediche/",
@@ -248,6 +352,10 @@
   "to": "/news-categories/humanitarian-medical-works/aid-for-refugees/"
  },
  {
+  "from": "/news-categories/all-news/lieutenant-of-the-grand-master-news/",
+  "to": "/news-categories/all-news/"
+ },
+ {
   "from": "/news-categories/diplomatic-activities/",
   "to": "/news-categories/all-news/diplomatic-activities/"
  },
@@ -262,6 +370,14 @@
  {
   "from": "/news-categories/grand-master-news/",
   "to": "/news-categories/all-news/grand-master-news/"
+ },
+ {
+  "from": "/news-categories/humanitarian-medical-works/global-found-for-forgotten-people/",
+  "to": "/news-categories/humanitarian-medical-works/"
+ },
+ {
+  "from": "/news-categories/institutional-appointment/",
+  "to": "/news/"
  },
  {
   "from": "/news-categories/malteser-international-fr/",

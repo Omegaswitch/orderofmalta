@@ -21,6 +21,8 @@ The checklist must be redone for this site before launch. The template's brand r
 
 ## Open approvals
 
+0. **Spanish lockup.** There is no official Spanish lockup, and none is composed here. `static/img/lockup/es.svg` was removed (an earlier version spliced letters from the French and Italian lockups, which made a new wordmark). The Spanish pages show the official shield with live text. The Grand Magistry must supply or approve a Spanish lockup. The EN, IT, FR and DE files are line 1 of the template's official lockups with the shield unchanged, and still need approval. Their text alternatives (`lockupAlt` in `content/site.json`) match the lettering shown.
+
 1. **Outlined lockups.** Each language needs a lockup made with the licensed Century Gothic Bold font. That font is not in the repository and not on the build machine. The Grand Magistry must approve the lockups. Until then the interim lockup is used.
 2. **Which emblem the banner uses.** The guidelines ask for the armorial bearing on institutional sites. The interim banner uses the shield. The Grand Magistry should decide.
 3. **Colour and display type.** The design system comes from the template (`DESIGN.md`). The template's brand report lists two points that the Grand Magistry has not yet answered: the canonical red value, and whether headings should use a serif font. These apply to this site until answered.

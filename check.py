@@ -90,6 +90,8 @@ class Page(HTMLParser):
                 role = "load"
             else:
                 role = "nav"
+            if role == "nav" and self._chrome:
+                role = "chrome"  # header, navigation and footer links: never excused as archive noise
             self.refs.append((a[attr], role))
         if "srcset" in a:
             for part in a["srcset"].split(","):
@@ -172,7 +174,7 @@ def check_page(rel, name, text, page, sources, fails, warns):
                 warns.append(f"{rel}: legacy upload on the live site {ref} (import with --since 2015-01-01 before launch)")
             elif role == "hreflang":
                 fails.append(f"{rel}: hreflang target {ref} does not resolve")
-            elif unquote(path).startswith(ARCHIVE_BASES):
+            elif role != "chrome" and unquote(path).startswith(ARCHIVE_BASES):
                 warns.append(f"{rel}: broken link {ref} (archive not yet imported)")
             else:
                 fails.append(f"{rel}: broken link {ref}")

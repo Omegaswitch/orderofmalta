@@ -114,7 +114,7 @@
     var inTitle = function (r) { return words.every(function (w) { return r._t.indexOf(w) > -1; }) ? 0 : 1; };
     hits = hits.map(function (r, i) { return { r: r, i: i, g: inTitle(r) }; });
     hits.sort(function (a, b) { return a.g - b.g || (b.r.d || "").localeCompare(a.r.d || "") || a.i - b.i; });
-    return { words: words, rows: hits.slice(0, MAX).map(function (h) { return h.r; }) };
+    return { words: words, total: hits.length, rows: hits.slice(0, MAX).map(function (h) { return h.r; }) };
   }
 
   var run = 0;
@@ -129,7 +129,7 @@
       var res = find(rows, q);
       if (!res.rows.length) { state("empty", T.searchNone); return; }
       res.rows.forEach(function (row) { list.appendChild(item(row, res.words)); });
-      state("ready", fmt(T.searchCount, { n: res.rows.length }));
+      state("ready", res.total > res.rows.length ? fmt(T.searchCountOf || T.searchCount, { n: res.rows.length, total: res.total }) : fmt(T.searchCount, { n: res.rows.length }));
     }, function () {
       if (mine !== run) return;
       loading = null;

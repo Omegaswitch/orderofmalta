@@ -67,7 +67,7 @@ Set these in Vercel (Project, Settings, Environment Variables), then redeploy.
 | `BETTER_AUTH_URL` | Public address of the site, used by Better Auth. |
 | `GITHUB_TOKEN` | Fine-grained token for this repository only, with Contents: read and write. The editor commits posts with it. |
 | `DEPLOY_HOOK_URL` | Deploy hook for the daily rebuild. |
-| `CRON_SECRET` | Secret that Vercel sends with the cron call. When it is set, `/api/rebuild` refuses calls without it. |
+| `CRON_SECRET` | Secret that Vercel sends with the cron call. Required: `/api/rebuild` answers 503 when it is unset and 401 for calls without it. |
 | `NEWS_USERS`, `NEWS_SECRET` | Legacy sign-in, used only when `DATABASE_URL` is not set (tests and local use). |
 | `RESEND_API_KEY` | Sends e-mail through Resend. Used by the GDPR form and by the optional new-post notice. |
 | `NEWS_NOTIFY` | Optional. Addresses that get an e-mail about every change. No mail is sent without `RESEND_API_KEY` and `MAIL_FROM`. |

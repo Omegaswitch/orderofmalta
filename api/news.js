@@ -389,6 +389,15 @@ async function retarget(paths, map, files) {
   }
 }
 
+// linking a translation rewrites the other members of the group: only members the user may change can be touched
+async function mayRetarget(paths, user) {
+  for (const p of Object.values(paths)) {
+    const parsed = split(await readFile(p));
+    if (parsed && !mayChange(user, parsed.meta)) return false;
+  }
+  return true;
+}
+
 async function remove(body, user) {
   const pp = parsePath(body.path);
   if (!pp) return [400, { error: "path" }];
@@ -542,7 +551,10 @@ async function publish(body, user) {
   const doc = `---\n${JSON.stringify(meta, null, 1)}\n---\n${text}${attachments ? "\n" + attachments : ""}\n`;
 
   const out = [{ path, content: doc }, ...added.map((f) => ({ path: f.path, sha: f.sha }))];
-  if (target) await retarget(touched.found, ordered, out);
+  if (target) {
+    if (!(await mayRetarget(touched.found, user))) return [403, { error: "forbidden" }];
+    await retarget(touched.found, ordered, out);
+  }
 
   const label = type === "gallery" ? "gallery" : type === "press" ? "press release" : "news";
   const what = meta.draft ? `Draft ${label}` : date > localNow() ? `Schedule ${label}` : editing ? `Update ${label}` : `Add ${label}`;

@@ -2783,6 +2783,19 @@ class Importer:
             write_text_if_changed(path, json.dumps(data, ensure_ascii=False, indent=1) + "\n")
             REPORT["counts"].setdefault(name, {})[lang] = len(data["items"])
 
+    def add_category_sitemap_redirects(self):
+        """Walk the live news_categories sitemap: every term must be a category page or a redirect."""
+        r = self.http.get(SITE + "/news_categories-sitemap.xml")
+        if r["status"] != 200:
+            note("notes", "news_categories sitemap not readable; category redirects not completed")
+            return
+        paths = [urllib.parse.unquote(urllib.parse.urlsplit(u).path)
+                 for u in re.findall(r"<loc>([^<]+)</loc>", r["body"].decode("utf-8", "replace"))]
+        known = set(self.redirects)
+        known.update(x["from"] for x in (json.loads((CONTENT / "redirects.json").read_text(encoding="utf-8")) if (CONTENT / "redirects.json").exists() else []))
+        news_base = {l: SECTIONS["news"][l] for l in LANGS}
+        self.redirects.update(category_sitemap_redirects(paths, self.categories, known, news_base))
+
     def write_redirects(self):
         path = CONTENT / "redirects.json"
         old = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
@@ -2798,6 +2811,37 @@ class Importer:
         data = [{"from": k, "to": merged[k]} for k in sorted(merged)]
         write_text_if_changed(path, json.dumps(data, ensure_ascii=False, indent=1) + "\n")
         REPORT["counts"]["redirects"] = len(data)
+
+
+
+def category_sitemap_redirects(paths, cats, known, news_base):
+    """Redirects for live news-category URLs that are not a term of categories.json.
+    paths: URL paths of the live news_categories sitemap; cats: categories.json; known: URLs that already
+    resolve or redirect; news_base: {lang: news listing}. Duplicate terms ('-2') go to their twin, others to the
+    same-slug term, the parent term, or the language's news listing."""
+    term_urls, by_slug = set(), {}
+    for c in cats.values():
+        for l, t in c["terms"].items():
+            term_urls.add(t["url"])
+            by_slug.setdefault((l, t["slug"]), t["url"])
+    out = {}
+    for path in paths:
+        path = with_slash(path)
+        if path in term_urls or path in known:
+            continue
+        lang = lang_of_path(path)
+        parts = [x for x in path.strip("/").split("/") if x]
+        leaf = parts[-1] if parts else ""
+        stem = re.sub(r"-\d+$", "", leaf)
+        target = by_slug.get((lang, leaf)) or by_slug.get((lang, stem))
+        if not target:
+            for k in range(len(parts) - 1, 0, -1):
+                up = "/" + "/".join(parts[:k]) + "/"
+                if up in term_urls:
+                    target = up
+                    break
+        out[path] = target or news_base[lang]
+    return out
 
 
 def media_total():
@@ -2879,6 +2923,8 @@ def main(argv=None):
             imp.write_categories()
         if "collections" in types:
             imp.write_collections()
+        if "news" in types or "categories" in types:
+            imp.add_category_sitemap_redirects()
         imp.write_redirects()
     finally:
         imp.media.save()
