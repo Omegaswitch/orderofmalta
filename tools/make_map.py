@@ -479,12 +479,14 @@ def build_presence(lang, en_countries):
         for i, (h, r, ents) in enumerate(cs):
             if i and len(ents) != len(en_countries[idx[i]][2]):
                 log.append(f"entity count differs for {h} = {en_countries[idx[i]][0]}: {len(ents)} vs {len(en_countries[idx[i]][2])}")
-        log.append("pairs: " + "; ".join(f"{cs[i][0]}={en_countries[idx[i]][0]}" for i in range(1, len(cs))))
+        if "-v" in sys.argv:
+            log.append("pairs: " + "; ".join(f"{cs[i][0]}={en_countries[idx[i]][0]}" for i in range(1, len(cs))))
     return {k: v for k, v in pres.items() if v["entities"]}, log
 
 
 def main():
-    topo_path = Path(sys.argv[1]) if len(sys.argv) > 1 else None
+    args = [a for a in sys.argv[1:] if a != "-v"]
+    topo_path = Path(args[0]) if args else None
     if not topo_path or not topo_path.exists():
         raise SystemExit("usage: python3 -I tools/make_map.py path/to/countries-50m.json")
     topo = json.loads(topo_path.read_text(encoding="utf-8"))
