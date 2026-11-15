@@ -29,6 +29,18 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(pin);
   }
 
+  // ---- footer column groups: all open on wide screens, collapsed on phones (they stay open without this script)
+  var fcols = document.querySelectorAll(".f-col");
+  if (fcols.length && window.matchMedia) {
+    var narrow = window.matchMedia("(max-width: 640px)");
+    var syncFooter = function () { fcols.forEach(function (d) { if (d.tagName === "DETAILS") d.open = !narrow.matches; }); };
+    syncFooter();
+    if (narrow.addEventListener) narrow.addEventListener("change", syncFooter);
+    fcols.forEach(function (d) {
+      d.addEventListener("toggle", function () { if (!narrow.matches && !d.open) d.open = true; });
+    });
+  }
+
   // ---- main menu (mobile) and submenus
   var toggle = document.querySelector(".menu-toggle");
   var menu = document.getElementById("menu");

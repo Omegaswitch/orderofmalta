@@ -10,6 +10,7 @@ Python 3.10+, standard library only (Pillow is used by tools/, never by the buil
 Environment: OOM_CONTENT = content root (default content/), OOM_DIST = output folder (default dist/).
 The contract between build, frontend and backend is docs/build-spec.md (sections 2-5).
 """
+import unicodedata
 import html
 import json
 import math
@@ -606,7 +607,8 @@ def _short(nodes, lang):
     for n in nodes or []:
         n = dict(n)
         if n.get("url"):
-            n["title"] = nav_label(lang, n["url"], n["title"])
+            pg = PAGES.get(n["url"])
+            n["title"] = nav_label(lang, n["url"], n["title"] or (pg or {}).get("title", ""))
         if n.get("feature"):
             n["feature"] = dict(n["feature"], title=nav_label(lang, n["feature"].get("url"), n["feature"].get("title")))
         n["children"] = _short(n.get("children"), lang)
@@ -691,9 +693,64 @@ def nav_html(lang, current):
     return f'<ul class="nav-list">{"".join(lis)}</ul>'
 
 
+def _nk(t):
+    return unicodedata.normalize("NFC", t or "").lower()
+
+
+def _footer_clean(nodes, lang):
+    """The live footer repeats some links with an English label next to the translated one (and a few
+    only in English). Per column: one link per URL, labelled as in the main menu when the label is English."""
+    en_titles = set()
+    def collect(ns):
+        for x in ns or []:
+            en_titles.add(x.get("title"))
+            collect(x.get("children"))
+    for k in ("main", "footer"):
+        collect(menu("en", k))
+    main_label = {}
+    def walk(ns):
+        for x in ns or []:
+            if x.get("url"):
+                main_label.setdefault(x["url"], x["title"])
+            walk(x.get("children"))
+    walk(main_menu(lang))
+    by_lower = {_nk(m["title"]): m["title"] for m in main_menu(lang)}
+    out = []
+    for n in nodes:
+        kids = [dict(c) for c in n.get("children") or []]
+        for c in kids:
+            if c.get("children"):
+                c["children"] = _footer_clean([{"title": "", "children": c["children"]}], lang)[0]["children"]
+        seen = {}
+        for i, c in enumerate(kids):
+            u = c.get("url")
+            if not u or c.get("children"):
+                continue
+            if u not in seen:
+                seen[u] = i
+            elif kids[seen[u]]["title"] in en_titles and c["title"] not in en_titles:
+                kids[seen[u]], kids[i] = c, None
+            else:
+                kids[i] = None
+        kids = [c for c in kids if c]
+        ml = main_label.get(n.get("url")) or by_lower.get(_nk(n["title"]))
+        if ml and ml != n["title"] and _nk(ml) == _nk(n["title"]):
+            n = dict(n, title=ml)
+        for c in kids:
+            u = c.get("url")
+            ml = main_label.get(u)
+            if ml and ml != c["title"] and _nk(ml) == _nk(c["title"]):
+                c["title"] = ml
+            elif lang != "en" and u and not c.get("children") and c["title"] in en_titles and main_label.get(u) not in (None, c["title"]) and main_label[u] not in en_titles:
+                c["title"] = main_label[u]
+        out.append(dict(n, children=kids))
+    return out
+
+
 def footer_cols(lang):
     cols = []
     src = menu(lang, "footer") or [{"title": n["title"], "url": n.get("url"), "children": n.get("children")} for n in main_menu(lang)]
+    src = _footer_clean(_short(src, lang), lang)
     for n in src:
         items = []
         for c in n.get("children") or []:
@@ -704,8 +761,38 @@ def footer_cols(lang):
                 items.append(link_li(c, ""))
         u = resolve_link(n.get("url"))
         head = f'<a {href_attr(u)}>{esc(n["title"])}</a>' if u else esc(n["title"])
-        cols.append(f'<div class="f-col"><h2>{head}</h2>{"<ul>" + "".join(items) + "</ul>" if items else ""}</div>')
+        if items:
+            # phones: a collapsed group per column (site.js opens them all on wide screens; without it they stay open)
+            cols.append(f'<details class="f-col" open><summary><h2>{esc(n["title"])}</h2></summary>'
+                        f'{"<p class=" + chr(34) + "f-all" + chr(34) + ">" + head + "</p>" if u else ""}<ul>{"".join(items)}</ul></details>')
+        else:
+            cols.append(f'<div class="f-col"><h2>{head}</h2></div>')
     return "".join(cols)
+
+
+def footer_more(lang):
+    """The two information lines of the live footer: where to find the activities by country, and the library."""
+    t = I18N[lang]
+    out = []
+    pc = next((p for p in ALL_PAGES if p["lang"] == lang and p.get("template") == "contacts"), None)
+    if pc:
+        out.append(f'<p>{esc(t["footContacts"])} <a href="{pc["url"]}">{esc(pc["title"])}</a></p>')
+    en_lib = PAGES.get("/government/magistral-archives-and-library/")
+    lib = PAGES.get(((en_lib or {}).get("translations") or {}).get(lang) or "")
+    mail = (SITE.get("contact") or {}).get("emailBiblio")
+    if lib and mail:
+        out.append(f'<p>{esc(t["footHistory"])} <a href="{lib["url"]}">{esc(lib["title"])}</a> · <a href="mailto:{esc(mail)}">{esc(mail)}</a></p>')
+    return "".join(out)
+
+
+def ticker_html(lang):
+    """A calm version of the live site's scrolling news strip: the latest headlines on one line, no motion."""
+    items = by_lang(NEWS, lang)[:4]
+    if not items:
+        return ""
+    t = I18N[lang]
+    links = "".join(f'<li><a href="{n["url"]}">{esc(n["title"])}</a></li>' for n in items)
+    return f'<aside class="ticker" aria-label="{esc(t["latestNews"])}"><div class="wrap"><b>{esc(t["latestNews"])}</b><ul>{links}</ul></div></aside>\n'
 
 
 def legal_links(lang):
@@ -863,7 +950,7 @@ def layout(*, lang, url, title, body, description="", image=None, status=None, a
   <div id="menu" class="menu">{nav_html(lang, url)}</div>
  </div></nav>
 </header>
-<main id="main" class="{main_class}" tabindex="-1">
+{"" if url == home_url(lang) else ticker_html(lang)}<main id="main" class="{main_class}" tabindex="-1">
 {pinned_html(lang) if pinned else ""}
 {status_bar}
 {body}
@@ -873,6 +960,7 @@ def layout(*, lang, url, title, body, description="", image=None, status=None, a
  <div class="f-id"><div class="wrap">
   <p class="f-name">{esc(f_name)}</p>
   <p>{esc(f_addr)} · <a href="tel:{esc(re.sub(r'[^0-9+]', '', f_phone))}">{esc(f_phone)}</a> · <a href="mailto:{esc(f_mail)}">{esc(f_mail)}</a></p>
+  {footer_more(lang)}
  </div></div>
  <div class="f-red"><div class="wrap">
   <p>{legal_links(lang)}</p>
@@ -1339,6 +1427,10 @@ def hub_html(p):
             continue
         more = f'<p><a class="link-strong" href="{link}">{esc(t["readMore"])}</a></p>' if link else ""
         blocks.append(f'<section class="hub-block"><h2>{esc(title)}</h2>{grid([make(i, lang, 3) for i in items], lang, text=text, rows=None if text else "m")}{more}</section>')
+    cl = PAGES.get(((PAGES.get("/press-publications/clarification-mimic-orders/") or {}).get("translations") or {}).get(lang) or "")
+    if cl:
+        blocks.append(f'<section class="hub-block"><h2>{esc(t["clarifications"])}</h2><ul class="cards"><li><a href="{cl["url"]}"><b>{esc(cl["title"])}</b>'
+                      f'<span>{esc(cl.get("description") or plain(cl["body"], 220))}</span></a></li></ul></section>')
     return "".join(blocks)
 
 
@@ -1378,7 +1470,11 @@ def render_page(p, page_no=1):
         related = f'<aside class="related"><h2>{esc(t["related"])}</h2>{grid([page_card(c, lang, h=3) for c in cards], lang, side=True)}</aside>'
     pt = page_suffix(p["title"], page_no, lang)
     trail = page_trail(p) + [(p["title"], url)]
-    scripts = ["/js/map.js"] if tpl == "contacts" else []
+    scripts = ["/js/map.js"] if tpl == "contacts" or p.get("worldmap") else []
+    if p.get("worldmap") and page_no == 1:
+        extra += worldmap_html(lang)  # the page body already ends with the live heading of this block
+    if p.get("relatedNews") and page_no == 1:
+        related += related_aside(lang, related_news(lang, ""))
     html_body = f"""
 <div class="wrap">{crumbs_html(trail, lang)}</div>
 <article class="wrap page page--{tpl}{' page--with-side' if side else ''}">

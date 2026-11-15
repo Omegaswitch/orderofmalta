@@ -72,6 +72,12 @@ def note(key, value):
 # ---------------------------------------------------------------- HTTP with cache
 
 
+# The live site leaves some contact region tabs in English in the other languages.
+REGION_LABELS = {("fr", "Africa"): "Afrique", ("fr", "The Americas"): "Amériques",
+                 ("de", "Europe"): "Europa", ("de", "Africa"): "Afrika", ("de", "The Americas"): "Amerika",
+                 ("de", "Asia Oceania"): "Asien Ozeanien"}
+
+
 class Http:
     def __init__(self, workers=4, refresh=False):
         self.refresh = refresh
@@ -1316,7 +1322,7 @@ class Body:
         labels = {}
         for btn in n.find_all("button", cls="nav-link"):
             tid = (btn.get("data-bs-target") or "").lstrip("#")
-            labels[tid] = norm_text(btn.text())
+            labels[tid] = REGION_LABELS.get((self.lang, norm_text(btn.text())), norm_text(btn.text()))
         for pane in n.find_all(cls="tab-pane"):
             pid = pane.get("id") or ""
             rid = re.sub(r"^pills-", "", pid)

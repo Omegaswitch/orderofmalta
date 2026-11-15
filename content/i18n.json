@@ -129,7 +129,10 @@
   "mapLoading": "Loading the map…",
   "mapFailed": "The map could not be loaded. The full list of contacts is on the contacts page.",
   "mapKeys": "Keyboard: Tab moves between highlighted countries, Enter opens one, arrow keys move the map, plus and minus zoom.",
-  "searchCountOf": "Showing {n} of {total} results"
+  "searchCountOf": "Showing {n} of {total} results",
+  "footContacts": "For information on the activities of the Order of Malta in individual countries and how to take part:",
+  "footHistory": "For information on history and bibliography:",
+  "clarifications": "Clarifications"
  },
  "it": {
   "langName": "Italiano",
@@ -261,7 +264,10 @@
   "mapLoading": "Caricamento della mappa…",
   "mapFailed": "Non è stato possibile caricare la mappa. L’elenco completo dei contatti è nella pagina dei contatti.",
   "mapKeys": "Tastiera: Tab passa da un paese evidenziato all’altro, Invio ne apre uno, le frecce spostano la mappa, più e meno ingrandiscono.",
-  "searchCountOf": "Primi {n} di {total} risultati"
+  "searchCountOf": "Primi {n} di {total} risultati",
+  "footContacts": "Per informazioni sulle attività dell’Ordine di Malta nei diversi paesi e per le modalità di partecipazione:",
+  "footHistory": "Per informazioni di carattere storico e bibliografico:",
+  "clarifications": "Chiarimenti"
  },
  "fr": {
   "langName": "Français",
@@ -393,7 +399,10 @@
   "mapLoading": "Chargement de la carte…",
   "mapFailed": "La carte n’a pas pu être chargée. La liste complète des contacts se trouve sur la page des contacts.",
   "mapKeys": "Clavier : Tab passe d’un pays en surbrillance à l’autre, Entrée en ouvre un, les flèches déplacent la carte, plus et moins zooment.",
-  "searchCountOf": "{n} premiers résultats sur {total}"
+  "searchCountOf": "{n} premiers résultats sur {total}",
+  "footContacts": "Pour tout renseignement sur les activités de l’Ordre de Malte dans les différents pays et les modalités pour y prendre part :",
+  "footHistory": "Pour tout renseignement de caractère historique et bibliographique :",
+  "clarifications": "Éclaircissements"
  },
  "de": {
   "langName": "Deutsch",
@@ -525,7 +534,10 @@
   "mapLoading": "Karte wird geladen …",
   "mapFailed": "Die Karte konnte nicht geladen werden. Die vollständige Kontaktliste finden Sie auf der Kontaktseite.",
   "mapKeys": "Tastatur: Tab wechselt zwischen hervorgehobenen Ländern, Eingabe öffnet eines, die Pfeiltasten verschieben die Karte, Plus und Minus zoomen.",
-  "searchCountOf": "{n} von {total} Ergebnissen angezeigt"
+  "searchCountOf": "{n} von {total} Ergebnissen angezeigt",
+  "footContacts": "Für Informationen zu den Aktivitäten des Malteserordens in den einzelnen Ländern und Möglichkeiten der Mitarbeit:",
+  "footHistory": "Für historische und bibliographische Informationen:",
+  "clarifications": "Klarstellungen"
  },
  "es": {
   "langName": "Español",
@@ -657,6 +669,9 @@
   "mapLoading": "Cargando el mapa…",
   "mapFailed": "No se pudo cargar el mapa. La lista completa de contactos está en la página de contactos.",
   "mapKeys": "Teclado: Tab pasa de un país resaltado a otro, Intro abre uno, las flechas mueven el mapa, más y menos hacen zoom.",
-  "searchCountOf": "Mostrando {n} de {total} resultados"
+  "searchCountOf": "Mostrando {n} de {total} resultados",
+  "footContacts": "Para más información sobre las actividades de la Orden de Malta en los distintos países y cómo participar:",
+  "footHistory": "Para informaciones de carácter histórico y bibliográfico:",
+  "clarifications": "Puntualizaciones"
  }
 }
