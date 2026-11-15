@@ -1,121 +1,89 @@
 # Content inventory
 
-Generated from `content/` on the redesign branch. Status values drive the preview-only label bar: `existing` = text carried over from the live site, waiting for editorial review; `new` = text written for the redesign, waiting for approval; `approval` = needs sign-off before launch (privacy notice).
+Source: the live site www.orderofmalta.int (WordPress with WPML). Scouted on 15 Nov 2026; the details are in `docs/build-spec.md`, sections 0 to 3. Per-page and per-type counts are filled in after the import. They are not estimated here.
 
-## Pages
+## Content types
 
-| URL | Title | Status | Source |
+| Type | Live source | Stored as | Notes |
 |---|---|---|---|
-| `/ceske-velkoprevorstvi/` | České velkopřevorství | new | new page |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/dalsi-aktivity/` | Další aktivity | existing | imported |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/` | Činnosti Maltézského řádu v České republice | new | imported, hand-edited |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/pomoc-potrebnym/` | Pomoc potřebným | existing | imported |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/pomoc-seniorum/` | Pomoc seniorům | existing | imported |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/pout-do-lurd/` | Pouť do Lurd | existing | imported |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/puda-lesy/` | Péče o půdu a lesy | existing | imported |
-| `/cinnosti-maltezskeho-radu-v-ceske-republice/skolstvi/` | Školství | existing | imported |
-| `/diplomaticke-vztahy/bilateralni-vztahy/` | Bilaterální vztahy | existing | imported |
-| `/diplomaticke-vztahy/` | Diplomatické vztahy | existing | imported, hand-edited |
-| `/diplomaticke-vztahy/multilaterarni-vztahy/` | Multilaterální vztahy | existing | imported |
-| `/diplomaticke-vztahy/velvyslanectvi-radu-v-ceske-republice/` | Velvyslanectví Řádu v České republice | existing | imported |
-| `/koncerty/archiv-koncertu/` | Archiv koncertů | existing | imported, hand-edited |
-| `/koncerty/archiv-koncertu/koncert-21-prosince-2020-z-chramu-panny-marie-pod-retezem/` | Koncert 21. prosince 2020 z chrámu Panny Marie pod řetězem | existing | imported |
-| `/koncerty/archiv-koncertu/koncert-7-prosince-2020-z-chramu-panny-marie-pod-retezem/` | Koncert 7. prosince 2020 z chrámu Panny Marie pod řetězem | existing | imported |
-| `/koncerty/archiv-koncertu/vanocni-zpevy-v-kostele-panny-marie-pod-retezem-29-12-2020/` | Vánoční zpěvy v kostele Panny Marie pod řetězem 29. prosince 2020 | existing | imported |
-| `/koncerty/` | Koncerty | existing | imported, hand-edited |
-| `/kontakt/` | Kontakt | existing | imported, hand-edited |
-| `/ostatni/odkazy/` | Odkazy | existing | imported |
-| `/ostatni/zasady-boje-proti-prani-spinavych-penez/` | Zásady boje proti praní špinavých peněz | existing | imported, hand-edited |
-| `/ostatni/zasady-prijimani-daru/` | Zásady přijímání darů | existing | imported, hand-edited |
-| `/rad-a-jeho-instituce/historie-ceskeho-velkoprevorstvi/` | Historie Českého velkopřevorství | existing | imported |
-| `/rad-a-jeho-instituce/historie-ceskeho-velkoprevorstvi/predstaveni-ceskeho-velkoprevorstvi/` | Představení Českého velkopřevorství | existing | imported |
-| `/rad-a-jeho-instituce/historie-radu-ve-svete/1113-papezske-uznani/` | 1113 papežské uznání | existing | imported |
-| `/rad-a-jeho-instituce/historie-radu-ve-svete/` | Historie Řádu ve světě | existing | imported |
-| `/rad-a-jeho-instituce/historie-radu-ve-svete/pet-radu-sv-jana/` | Pět řádů sv. Jana | existing | imported |
-| `/rad-a-jeho-instituce/` | Řád a jeho instituce | existing | imported, hand-edited |
-| `/rad-a-jeho-instituce/jmena-radu/` | Jména Řádu | existing | imported |
-| `/rad-a-jeho-instituce/o-radu/` | O Řádu | existing | imported |
-| `/rad-a-jeho-instituce/predstavitele-ceskeho-velkoprevorstvi/` | Představitelé Českého velkopřevorství | existing | imported |
-| `/rad-a-jeho-instituce/radova-spiritualita/` | Řádová spiritualita | existing | imported |
-| `/rad-a-jeho-instituce/radova-vlada/` | Řádová vláda | existing | imported |
-| `/rad-a-jeho-instituce/stare-jazyky-radu/` | Staré jazyky Řádu | existing | imported |
-| `/rad-a-jeho-instituce/velmistr/` | Velmistr | existing | imported |
-| `/rad-a-jeho-instituce/velmistri/` | Velmistři Řádu | existing | imported |
-| `/radovy-kostel-panny-marie-pod-retezem/bohosluzby/` | Bohoslužby | existing | imported |
-| `/radovy-kostel-panny-marie-pod-retezem/` | Řádový kostel Panny Marie pod řetězem | existing | imported, hand-edited |
-| `/radovy-kostel-panny-marie-pod-retezem/kulturni-akce/` | Kulturní akce | existing | imported |
-| `/radovy-kostel-panny-marie-pod-retezem/o-kostele/` | O kostele | existing | imported |
-| `/velkoprevorsky-palac/` | Velkopřevorský palác | new | new page |
-| `/zdravotnicke-a-humanitarni-cinnosti-radu-ve-svete/humanitarni-aktivity-radu-pomoc-v-krizich/` | Humanitární aktivity Řádu, pomoc v krizích | existing | imported |
-| `/zdravotnicke-a-humanitarni-cinnosti-radu-ve-svete/` | Zdravotnické a humanitární činnosti Řádu ve světě | existing | imported, hand-edited |
-| `/zdravotnicke-a-humanitarni-cinnosti-radu-ve-svete/zdravotnicke-aktivity-radu/` | Zdravotnické aktivity Řádu | existing | imported |
+| Pages | WordPress pages, in all five languages (REST `pages`, body scraped from the HTML) | `content/pages/<lang>/…/index.html` | Every page keeps its original path. Special templates: contacts, Grand Masters, press hub, publications, in the news, app, FAQ, home. |
+| News | WordPress post type `news` (REST base `notizie`) | `content/news/<lang>/<YYYY>/<file>.html` | Categories as canonical keys. Optional photo gallery and video. |
+| Press releases | Post type `press_releases`, not in the REST API; read from the listing and single pages | `content/press/<lang>/<YYYY>/<file>.html` | Organisation, language and date from the page. |
+| Photo and video galleries | Post type `galleries`, not in the REST API; read from the listing and single pages | `content/galleries/<lang>/<YYYY>/<file>.html` | Kinds: photo, album, video. |
+| Publications | Page template `publications`, cards with PDF files | `content/collections/<lang>/publications.json` | Thirteen listing pages on the live site; two categories. |
+| In the news | Page template `in-the-news`, external press cuttings | `content/collections/<lang>/in-the-news.json` | Items from 1 Jan 2025 are imported. |
+| Menus and footer | Scraped from each language home page | `content/menus.json` | Main mega menu, footer links, social links, legal links. |
+| Media | `/wp-content/uploads/…` | `static/media/<YYYY>/<MM>/` | Images as WebP. Documents unchanged. |
+| Category terms | News categories in each language | `content/translations/categories.json` | Canonical key is the English term slug. |
 
-Generated pages (not in `content/pages`): `/` (homepage), `/kalendar/`, `/aktuality/` with one index per category and per year, `/en/` `/fr/` `/it/` `/de/`, `/ochrana-osobnich-udaju/` (privacy notice, status `approval`), `404.html`, `sitemap.xml`, `feed.xml`, `robots.txt`.
+## URL scheme
 
-## Translations
+Every original path is kept, with a trailing slash. The table is the same as `docs/build-spec.md`, section 2.
 
-Every current page has an EN, FR, IT and DE version in `content/translations/<lang>.json` (34 entries per language):
+| Key | en | it | fr | de | es |
+|---|---|---|---|---|---|
+| Home | `/` | `/it/` | `/fr/` | `/de/` | `/es/` |
+| News | `/news/` | `/it/notizie/` | `/fr/actualites/` | `/de/nachrichten/` | `/es/noticias/` |
+| Press releases (single items) | `/press-releases/` | `/it/comunicati-stampa/` | `/fr/communiques-de-presse/` | `/de/pressemitteilungen/` | `/es/comunicados-de-prensa/` |
+| Press list (a page) | `/press-publications/press-releases/` | `/it/media-e-pubblicazioni/comunicati-stampa/` | `/fr/press-et-publications/communiques-de-presse/` | `/de/presse-und-veroeffentlichungen/pressemitteilungen/` | `/es/prensa-y-publicaciones/comunicados-de-prensa/` |
+| Galleries | `/photo-and-video-galleries/` | `/it/gallerie-foto-e-video/` | `/fr/galeries-photo-et-video/` | `/de/foto-und-videogalerien/` | `/es/galerias-de-fotos-y-videos/` |
+| News categories | `/news-categories/` | `/it/categorie-notizia/` | `/fr/categories-de-actualites/` | `/de/nachrichten-kategorien/` | `/es/categorias-de-noticias/` |
+| Gallery types | `/gallery-type/` | `/it/tipi-di-galleria/` | `/fr/types-de-galeries/` | `/de/galerie-typen/` | `/es/tipos-de-galerias/` |
+| Gallery type slugs (photo, album, video) | `single-picture`, `gallery`, `video` | `singola-foto`, `gallery-it`, `video-it` | `image-unique`, `gallery-fr`, `video-fr` | `einzelnes-bild`, `gallery-de`, `video-de` | `imagen-unica`, `gallery-es`, `video-es` |
+| Search (new) | `/search/` | `/it/search/` | `/fr/search/` | `/de/search/` | `/es/search/` |
+| Data-protection request form (new) | `/gdpr/` | `/it/gdpr/` | `/fr/gdpr/` | `/de/gdpr/` | `/es/gdpr/` |
+| Feed (new) | `/feed.xml` | `/it/feed.xml` | `/fr/feed.xml` | `/de/feed.xml` | `/es/feed.xml` |
 
-- Grand Priory: Grand Priory, history, heads of the Grand Priory, officers, palace, links, gift acceptance policy, anti-money-laundering policy.
-- Activities and their six pages; church, about the church, services, concerts; contact, calendar, privacy.
-- The Order (added 15 Oct 2026): section page (with links to the Grand Magistry's official texts), about the Order, spirituality, history with 1113 papal recognition, the five Orders of St. John, the ancient Tongues and the names of the Order, the Grand Master and the list of Grand Masters, diplomatic relations and the embassy.
+Derived addresses:
 
-Dated figures in the Czech originals (number of centres, associations and registered names; "960 years ago") were left out of the translations rather than carried over. The Grand Master's ten-year term (Constitution of 2022) and his election on 3 May 2023 follow orderofmalta.int; the Czech page was corrected to match.
+- Single items: `<news>/<slug>/`, `<press>/<slug>/`, `<galleries>/<slug>/`.
+- Listings show 12 items per page. Page 1 is at the base, and later pages are at `<base>page/<N>/`. This applies to news, each news category, each news year, the press list, galleries, each gallery type, publications and in the news.
+- News year archive: `<news><YYYY>/`, for example `/news/2026/`. No news slug may be a bare year.
+- The editor is at `/editor/` (English only, not indexed). The search index is at `/search/index.<lang>.json`.
 
-Not translated, because they are out of date: the Government of the Order (pre-2022 Constitution), the page on Fra' Giacomo Dalla Torre, bilateral and multilateral relations, the medical and humanitarian pages (2018 figures), cultural events and the 2020 concert archive. News stays in Czech. The two policies are translated from the Czech version; their PDFs are Czech, and the pages say that the Grand Magistry's text is authoritative.
+## Import scope
 
-Status of every translation: awaiting native-speaker review. The list of Grand Masters is generated from the Czech table, so names and dates match it exactly.
+- **Pages:** all pages in all five languages.
+- **News, press releases, galleries, publications and in the news:** items published on or after 1 Jan 2025 (`--since 2025-01-01`).
+- **Older items:** not imported yet. The full archive is imported with `--since 2015-01-01` before launch, or the old host is kept for the old addresses (the launch gate in `docs/deployment.md`). Until then, an old item's address shows the 404 page. That page says the item belongs to the archive that is still being migrated, and it offers the search and the section listing.
+- **Live size on 15 Nov 2026, for scale only:** about 2,257 English news items in total, 262 of them from 1 Jan 2025. Italian: 259 from 1 Jan 2025.
 
-## News
+Per-type and per-language counts after the import: **filled in after the import**.
 
-193 posts imported from WordPress, all at their original URLs (`/YYYY/MM/DD/slug/`), status `existing`.
+## What is dropped, and why
 
-| Year | Posts |
-|---|---|
-| 2018 | 31 |
-| 2019 | 18 |
-| 2020 | 31 |
-| 2021 | 11 |
-| 2022 | 15 |
-| 2023 | 35 |
-| 2024 | 20 |
-| 2025 | 16 |
-| 2026 | 16 |
+| Live feature | Decision | Reason |
+|---|---|---|
+| News tags (`breaking`, `evidence`) | Dropped. Their addresses redirect to the news listing. | Their archive pages are empty on the live site. |
+| App pop-up | Dropped. | Intrusive. The home page keeps the app box. |
+| Newsletter page | Dropped. It redirects to the press hub. | Already a redirect on the live site. |
+| Google Tag Manager and other analytics | Dropped. | The new site sets no tracking cookies. |
+| Cookie banner | Not built. | No cookies need consent. |
+| Popup Maker, jQuery, Bootstrap, Owl and Fancybox | Dropped. | Replaced by the template's own code. |
+| Cloudflare e-mail script | Dropped. E-mail addresses are written as plain `mailto:` links. | Not needed. |
+| Store badges for the app | Not copied. The app page keeps text links. | Third-party artwork. |
+| The stamps and coins page | Becomes a redirect to `https://postemagistrali.orderofmalta.int/`. | The page is an external site. |
+| Calendar, church services, concerts, feasts and Grand Magistry feed | Not on the site. Removed from the code and `content/`. | Template features that this site does not have. |
+| Search with WordPress (Relevanssi) | Replaced by a client-side search with one index per language. | The static site has no server search. |
+| `/wp-admin/`, `/wp-login.php`, `/wp-json/`, `/xmlrpc.php` | Not redirected. They answer 404. | No WordPress on the new site. |
 
-| Category slug | Posts |
-|---|---|
-| `ceske-velkoprevorstvi` | 144 |
-| `obcasnik` | 83 |
-| `ostatni` | 42 |
-| `kultura` | 41 |
-| `news_malteser_international` | 10 |
-| `nezarazene` | 7 |
-| `galerie` | 4 |
+## Redirects
 
-## URL preservation
+| From | To | Where |
+|---|---|---|
+| `/?s=<q>` and `/<lang>/?s=<q>` | `<search>?q=<q>` | `vercel.json`; `site.js` does the same on other hosts |
+| `/<YYYY>/?post_type=news` and `/<lang>/<YYYY>/?post_type=news`, with `/page/N/` | `<news><YYYY>/` | `vercel.json` |
+| News feed, `/feed/` and `/<lang>/feed/` | The new feed | `vercel.json` |
+| The bare press base | The press list | `vercel.json` |
+| News tags and their sub-paths | The news listing | `vercel.json` |
+| Old aliases found while importing (menu links that redirect, parent-less category addresses, duplicate terms such as `…-2/`, the newsletter page, `/en/contact/`) | Their live target | `content/redirects.json`, written by the importer. The build writes a stub page and `dist/_redirects` for each |
+| Uploaded PDFs and other documents (`/wp-content/uploads/…`) | `/media/…` | `content/redirects.json`, for documents only |
 
-Every page and post keeps its live URL. Media move from `/wp-content/uploads/` to `/media/` with the same sub-path. Retired URLs redirect (301) as follows (`vercel.json` → `dist/_redirects`):
+Uploaded images are not redirected by pattern, because their file names change to `.webp`.
 
-| Old URL | New URL |
-|---|---|
-| `/domu/zpravy-o-cinnosti-radu/` | `/aktuality/` |
-| `/sekce-pro-cleny/` | `/kontakt/` |
-| `/ostatni/` | `/ceske-velkoprevorstvi/` |
-| `/ostatni/ke-stazeni/` | `/kalendar/` |
-| `/rad-a-jeho-instituce/mistodrzici-velmistra/` | `/rad-a-jeho-instituce/velmistr/` |
-| `/velmistr-giacoma-dalla-torre-del-tempio-di-sanguinetto/` | `/rad-a-jeho-instituce/velmistr/` (page about the late Grand Master retired, 18 October 2026) |
-| `/archiv-koncertu/*` | `/koncerty/archiv-koncertu/:splat` |
-| `/vanocni-zpevy-v-kostele-panny-marie-pod-retezem-29-12-2020/` | `/koncerty/archiv-koncertu/vanocni-zpevy-v-kostele-panny-marie-pod-retezem-29-12-2020/` |
-| `/category/*` | `/aktuality/` |
-| `/feed/` | `/feed.xml` |
-| `/feed` | `/feed.xml` |
-| `/wp-content/uploads/*` | `/media/:splat` |
-| `/home/` | `/` |
+Items found in `content/redirects.json` after the import: **filled in after the import**.
 
-## Editorial findings to resolve before launch
+## Open items
 
-- Imported texts give different counts of the Order's diplomatic relations (106, 107 and 110 states on different pages, mostly written in 2018). Replace with the current figure from orderofmalta.int or date the statements.
-- The embassy page lists `srmr@seznam.cz`; the Grand Magistry's directory lists `czechrepublicembassy@orderofmalta.int`. Confirm which is current.
-- The Czech name of the Order appears in four variants across the old site; the confirmed form is recorded in PRODUCT.md. Old posts keep their original wording.
-- Photos: consent and usage rights for portraits and event photos have not been verified; see `docs/asset-manifest.md`.
-- Excerpts for posts that only contain a downloadable PDF are empty by design; titles carry the meaning.
+- Per-type counts, dropped category terms, skipped or oversized files and the total size of `static/media` come from the import report. They are not in this document yet.
+- Whether the old host is kept, and for how long, is open (see `docs/deployment.md`).

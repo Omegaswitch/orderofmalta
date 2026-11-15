@@ -1,40 +1,29 @@
-# Brand compliance report
+# Brand compliance
 
-Checked against:
+**Status: not yet checked against this site.** The rules below come from the project specification (`docs/build-spec.md`, section 4 and the rules in its header) and from the Grand Magistry's own guidance: the *Sovereign Order of Malta Worldwide Communications Policy and Guide* (Rome, February 2025) and the *Guidelines for correct use of the two emblems and of the flags of the Order of Malta* (v3.3, 1 September 2023). The Grand Magistry's graphic theme package also applies.
 
-- **CP**: *Sovereign Order of Malta Worldwide Communications Policy and Guide* (Rome, February 2025);
-- **CoA**: *Guidelines for correct use of the two emblems and of the flags of the Order of Malta* (v3.3, 1 September 2023);
-- **Theme**: the Grand Magistry *Entities Theme* package (March 2025).
+The checklist must be redone for this site before launch. The template's brand report is not valid here.
 
-Status values: ✅ complies · ⚠️ complies with a caveat or needs a decision · ❌ deviation, approved by the client.
+## Rules for this site
 
-## Checklist
+| # | Rule | How the site meets it | Status |
+|---|---|---|---|
+| 1 | The four-letter acronym of the Order's name is never written. | `check.py` fails the build if it appears in any built page. Docs, code comments, interface strings and commit messages must not use it either. | Enforced for pages. Other places rely on review. |
+| 2 | Only official brand files are used. | `check.py` allows only the paths listed in `docs/asset-manifest.md`. | Enforced by `check.py`. |
+| 3 | Emblems are never created, redrawn, recoloured or approximated. | Only the official files are used. The shield is an unchanged copy of the official group. | Complies. |
+| 4 | The full official name is shown at first mention. | The full name for each language is in `content/site.json` and is shown beside the lockup. | Complies, subject to the lockup decision below. |
+| 5 | Short names follow the Order's own usage. | Short names are in `content/site.json` (`orderShort`). They are taken from the live site's header and footer. | Complies. |
+| 6 | Official texts come from the Grand Magistry. | The site contains the texts imported from the live site, not rewritten texts. | Complies. |
+| 7 | The lockup. | The interim lockup is the official shield with live text. The outlined lockups are not produced. | **Open**, see below. |
+| 8 | Social links use text labels only. | No third-party logos. | Complies. |
+| 9 | Store badges are not copied. | The app page uses text links. | Complies. |
+| 10 | Photographs have confirmed rights and consent. | Not confirmed. | **Open**, see `docs/asset-manifest.md`. |
 
-| # | Requirement | Source | Status | How the site meets it |
-|---|---|---|---|---|
-| 1 | Top banner, colours and general layout follow the Grand Magistry website | CP, Theme | ✅ | Red top bar (social links and language switch), official banner photograph with the "ORDER OF MALTA" lockup, full name in white caps, `#454545` menu bar, grey / white / red footer bands. |
-| 2 | Colours `#e31818`, `#f3f3f3`, `#c7c7c7`, `#454545`, `#000` | Theme spec | ⚠️ | All are used. The theme's own CSS uses `#e31a18` rather than the spec's `#e31818`; the site follows the CSS. Small red text uses the darker `#c80e00` to reach 4.5:1 contrast. Ask the Grand Magistry which red value is canonical. |
-| 3 | Font Asap | Theme spec | ✅ | Asap is self-hosted (OFL) and used for all interface text and body text. |
-| 4 | Display serif | — | ⚠️ | Headings use EB Garamond (OFL). The theme does not specify a serif. Confirm with the Grand Magistry, or switch headings to Asap: one token (`--display`) in `site.css`. |
-| 5 | Full official name at first mention and in the banner | CP | ✅ | The banner and footer use "Suverénní vojenský špitální řád svatého Jana Jeruzalémského, z Rhodu a z Malty". Shorter forms are used afterwards. |
-| 6 | No acronyms (SMOM etc.) and never "Malta" alone | CP | ✅ | Enforced by `check.py` on every built page. |
-| 7 | Footer links to www.orderofmalta.int | CP | ✅ | Red footer band on every page. Each language page also links to the Grand Magistry's own pages in that language. |
-| 8 | Official texts (mission, spirituality, government, history, Grand Master, FAQ) come from the Grand Magistry | CP | ✅ | The site links to orderofmalta.int pages rather than rewriting them. Legacy local pages on these topics are kept, marked "existing", for editorial review. |
-| 9 | Only the two official emblems; none created or redrawn | CoA | ✅ | Only the official armorial bearing (on the Grand Priory page) and the official red shield (the banner lockup and the official favicon set) appear. `check.py` fails the build if any other file under `/img/` is referenced. The old site's "znak" images were dropped during import. |
-| 10 | Institutional use takes the armorial bearing; activities take the shield | CoA | ⚠️ | The Grand Priory page shows the armorial bearing. The banner uses the shield lockup because the Grand Magistry theme does; the CoA guideline for institutional internet use points the other way. Ask the Grand Magistry. |
-| 11 | Personalised lockup ("ORDER OF MALTA" + entity name) | CoA, Theme | ⚠️ | The generic "ORDER OF MALTA" banner is used, with the Czech name set as live text beside it. The personalised Czech lockup must be requested from the Grand Magistry (asset `BAN-01`). |
-| 12 | Emblem files are originals, not approximations | CoA | ⚠️ | The armorial bearing was extracted from the CoA PDF (p. 21, CMYK → sRGB, resized only). Replace it with the RGB master when it is supplied (asset `EMB-01`). |
-| 13 | No animation or alteration of the emblems | CoA | ✅ | An opening outline trace of the armorial bearing was tried and removed at the client's request (14 Oct 2026). The emblems appear only as official static files. |
-| 14 | Apolitical, neutral, no invented facts | CP | ✅ | New texts state only facts found in the existing site, the Grand Magistry site or the 2027 calendar. New texts are labelled "new" until approved. |
-| 15 | Images | Theme (basic image 800×470) | ⚠️ | Only real photographs from the existing site are used. Usage rights and consent for identifiable people still need confirming (`docs/asset-manifest.md`). |
-| 16 | Social links | CP | ⚠️ | The site links to Facebook (the Grand Priory) and to the Grand Magistry's YouTube and LinkedIn. CP p. 74 swaps the X handles of two entities, so X is omitted until that is resolved. |
-| 17 | Terminology from the Honours booklet | Client | ✅ | The booklet is used only to check the forms of words. No names, lists or details from it appear anywhere in the repository's site content. |
+## Open approvals
 
-## Open approvals (for the Grand Magistry or the Grand Priory)
-
-1. The canonical red value (`#e31818` or `#e31a18`).
-2. EB Garamond for headings, or Asap only.
-3. Shield lockup or armorial bearing in the banner of an institutional site.
-4. The personalised Czech banner lockup (`BAN-01`) and the RGB master of the armorial bearing (`EMB-01`).
-5. Native-speaker review of the EN, FR, IT and DE translations: interface strings (`content/i18n.json`), the 21 translated pages per language (`content/translations/`) and the Italian titles in `content/calendar.json`. Order terms used (Prince Grand Prior, Pro-Receiver, Pro-Hospitaller, Knight of Magistral Grace and their FR/IT/DE equivalents) should be checked against the Grand Magistry's usage.
-6. Approval of every page marked "new", and the privacy notice (marked "approval").
+1. **Outlined lockups.** Each language needs a lockup made with the licensed Century Gothic Bold font. That font is not in the repository and not on the build machine. The Grand Magistry must approve the lockups. Until then the interim lockup is used.
+2. **Which emblem the banner uses.** The guidelines ask for the armorial bearing on institutional sites. The interim banner uses the shield. The Grand Magistry should decide.
+3. **Colour and display type.** The design system comes from the template (`DESIGN.md`). The template's brand report lists two points that the Grand Magistry has not yet answered: the canonical red value, and whether headings should use a serif font. These apply to this site until answered.
+4. **Link-preview cards.** `tools/make_og.py` must run to produce `og-<lang>.jpg` in all five languages.
+5. **Translations.** The interface strings in `content/i18n.json` and the translated text should be reviewed by a native speaker. Order terms should be checked against the Grand Magistry's usage.
+6. **Approval of this rebuild.** The launch needs the Grand Magistry's approval. See `docs/deployment.md`.

@@ -18,7 +18,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' https://cdn.addcal.co 'wasm-unsafe-eval'; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.addcal.co https://addcal.co; font-src 'self' https://cdn.addcal.co; connect-src 'self' https://addcal.co https://cdn.addcal.co; frame-src https://addcal.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
         },
         {
           "key": "Strict-Transport-Security",
@@ -118,7 +118,16 @@
       ]
     },
     {
-      "source": "/pridat-aktualitu/(.*)",
+      "source": "/search/index.(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/editor/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -133,49 +142,184 @@
   ],
   "redirects": [
     {
-      "source": "/domu/zpravy-o-cinnosti-radu/",
-      "destination": "/aktuality/",
-      "permanent": true
+      "source": "/",
+      "destination": "/search/?q=:q",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<q>.+)"
+        }
+      ]
     },
     {
-      "source": "/sekce-pro-cleny/",
-      "destination": "/kontakt/",
-      "permanent": true
+      "source": "/it/",
+      "destination": "/it/search/?q=:q",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<q>.+)"
+        }
+      ]
     },
     {
-      "source": "/ostatni/",
-      "destination": "/ceske-velkoprevorstvi/",
-      "permanent": true
+      "source": "/fr/",
+      "destination": "/fr/search/?q=:q",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<q>.+)"
+        }
+      ]
     },
     {
-      "source": "/ostatni/ke-stazeni/",
-      "destination": "/kalendar/",
-      "permanent": true
+      "source": "/de/",
+      "destination": "/de/search/?q=:q",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<q>.+)"
+        }
+      ]
     },
     {
-      "source": "/rad-a-jeho-instituce/mistodrzici-velmistra/",
-      "destination": "/rad-a-jeho-instituce/velmistr/",
-      "permanent": true
+      "source": "/es/",
+      "destination": "/es/search/?q=:q",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<q>.+)"
+        }
+      ]
     },
     {
-      "source": "/velmistr-giacoma-dalla-torre-del-tempio-di-sanguinetto/",
-      "destination": "/rad-a-jeho-instituce/velmistr/",
-      "permanent": true
+      "source": "/:year(\\d{4})/",
+      "destination": "/news/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
     },
     {
-      "source": "/archiv-koncertu/(.*)",
-      "destination": "/koncerty/archiv-koncertu/$1",
-      "permanent": true
+      "source": "/:year(\\d{4})/page/:n(\\d+)/",
+      "destination": "/news/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
     },
     {
-      "source": "/vanocni-zpevy-v-kostele-panny-marie-pod-retezem-29-12-2020/",
-      "destination": "/koncerty/archiv-koncertu/vanocni-zpevy-v-kostele-panny-marie-pod-retezem-29-12-2020/",
-      "permanent": true
+      "source": "/it/:year(\\d{4})/",
+      "destination": "/it/notizie/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
     },
     {
-      "source": "/category/(.*)",
-      "destination": "/aktuality/",
-      "permanent": true
+      "source": "/it/:year(\\d{4})/page/:n(\\d+)/",
+      "destination": "/it/notizie/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
+    },
+    {
+      "source": "/fr/:year(\\d{4})/",
+      "destination": "/fr/actualites/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
+    },
+    {
+      "source": "/fr/:year(\\d{4})/page/:n(\\d+)/",
+      "destination": "/fr/actualites/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
+    },
+    {
+      "source": "/de/:year(\\d{4})/",
+      "destination": "/de/nachrichten/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
+    },
+    {
+      "source": "/de/:year(\\d{4})/page/:n(\\d+)/",
+      "destination": "/de/nachrichten/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
+    },
+    {
+      "source": "/es/:year(\\d{4})/",
+      "destination": "/es/noticias/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
+    },
+    {
+      "source": "/es/:year(\\d{4})/page/:n(\\d+)/",
+      "destination": "/es/noticias/:year/",
+      "permanent": true,
+      "has": [
+        {
+          "type": "query",
+          "key": "post_type",
+          "value": "news"
+        }
+      ]
     },
     {
       "source": "/feed/",
@@ -183,18 +327,98 @@
       "permanent": true
     },
     {
-      "source": "/feed",
+      "source": "/it/feed/",
+      "destination": "/it/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/fr/feed/",
+      "destination": "/fr/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/de/feed/",
+      "destination": "/de/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/es/feed/",
+      "destination": "/es/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/news/feed/",
       "destination": "/feed.xml",
       "permanent": true
     },
     {
-      "source": "/wp-content/uploads/:path*",
-      "destination": "/media/:path*",
+      "source": "/it/notizie/feed/",
+      "destination": "/it/feed.xml",
       "permanent": true
     },
     {
-      "source": "/home/",
-      "destination": "/",
+      "source": "/fr/actualites/feed/",
+      "destination": "/fr/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/de/nachrichten/feed/",
+      "destination": "/de/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/es/noticias/feed/",
+      "destination": "/es/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/press-releases/",
+      "destination": "/press-publications/press-releases/",
+      "permanent": true
+    },
+    {
+      "source": "/it/comunicati-stampa/",
+      "destination": "/it/media-e-pubblicazioni/comunicati-stampa/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/communiques-de-presse/",
+      "destination": "/fr/press-et-publications/communiques-de-presse/",
+      "permanent": true
+    },
+    {
+      "source": "/de/pressemitteilungen/",
+      "destination": "/de/presse-und-veroeffentlichungen/pressemitteilungen/",
+      "permanent": true
+    },
+    {
+      "source": "/es/comunicados-de-prensa/",
+      "destination": "/es/prensa-y-publicaciones/comunicados-de-prensa/",
+      "permanent": true
+    },
+    {
+      "source": "/news-tags/:path*",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/it/tag-notizia/:path*",
+      "destination": "/it/notizie/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/etiquettes-de-actualite/:path*",
+      "destination": "/fr/actualites/",
+      "permanent": true
+    },
+    {
+      "source": "/de/nachrichten-tag/:path*",
+      "destination": "/de/nachrichten/",
+      "permanent": true
+    },
+    {
+      "source": "/es/etiquetas-de-las-noticias/:path*",
+      "destination": "/es/noticias/",
       "permanent": true
     }
   ],

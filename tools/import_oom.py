@@ -369,8 +369,18 @@ def date_iso(dt):
 
 
 def dmy_to_iso(s):
-    m = re.search(r"(\d{1,2})/(\d{1,2})/(\d{4})", s or "")
-    return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}" if m else None
+    """'02/11/2026' or '7 Novembre 2026' / '7. November 2026' / '7 de noviembre de 2026' -> '2026-11-07'."""
+    s = s or ""
+    m = re.search(r"(\d{1,2})/(\d{1,2})/(\d{4})", s)
+    if m:
+        return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}"
+    m = re.search(r"(\d{1,2})\.?\s*(?:de\s+|d')?([^\W\d_]+)\.?,?\s*(?:de\s+)?(\d{4})", s)
+    if m:
+        name = strip_accents(m.group(2).lower())
+        for lg in MONTHS:
+            if name in MONTHS[lg]:
+                return f"{m.group(3)}-{MONTHS[lg].index(name) + 1:02d}-{int(m.group(1)):02d}"
+    return None
 
 
 def utc_to_local(iso):
@@ -773,10 +783,18 @@ class Body:
     # ---- links
     def link(self, href):
         href = (href or "").strip()
+        if href.startswith("(") and href.endswith(")"):
+            href = href[1:-1].strip()
         if not href or href == "#" or href.lower().startswith(("javascript:", "data:", "vbscript:")):
             return None
         if href.startswith("mailto:") or href.startswith("tel:"):
             return href.replace(" ", "")
+        if re.fullmatch(r"[\w.+-]+@[\w-]+(\.[\w-]+)+", href):
+            return "mailto:" + href
+        ya = re.match(r"^(?:https?://(?:www\.)?orderofmalta\.int)?(/(?:it|fr|de|es)/|/)(\d{4})/(?:page/\d+/)?\?(?:[^#]*&)?post_type=news", href)
+        if ya:
+            lg = {"/it/": "it", "/fr/": "fr", "/de/": "de", "/es/": "es"}.get(ya.group(1), "en")
+            return SECTIONS["news"][lg] + ya.group(2) + "/"
         m = re.search(r"/cdn-cgi/l/email-protection#([0-9a-fA-F]+)", href)
         if m:
             try:
@@ -1023,6 +1041,18 @@ class Body:
             return self.text_container(c or n, out)
         if n.has("box-content-text-only-two-cols"):
             return self.text_two_cols(n, out)
+        if n.has("box-content-text-only-one-col-split-cols"):
+            row = n.find(cls="row") or n
+            cols = [c for c in row.elements() if c.has_prefix("col-")]
+            parts = []
+            for c in cols:
+                inner = []
+                self.text_container(c, inner)
+                if inner:
+                    parts.append("<div>" + "".join(inner) + "</div>")
+            if parts:
+                out.append('<div class="cols">' + "".join(parts) + "</div>")
+            return
         if n.has("box-content-linked-page-one-col") or n.has("box-content-linked-page-two-cols"):
             return self.linked_card(n, out)
         if n.has("box-content-data-map"):
@@ -1108,7 +1138,7 @@ class Body:
     def note_unknown(self, n):
         for c in n.classes:
             if (c.startswith(("box-content", "sidebar", "card-", "page-content", "timeline", "single-")) and not KNOWN_LAYOUT.match(c)
-                    and c not in ("box-content-container", "box-content-container-text", "box-content-image", "box-content-container-link")):
+                    and c not in ("box-content-container", "box-content-container-text", "box-content-image", "box-content-container-link", "box-content-oembed")):
                 note("unmapped", f"{self.where}: class {c}")
 
     def li_content(self, li):
@@ -1761,7 +1791,7 @@ def convert_app(doc, body):
     for a in root.find_all("a"):
         href = a.get("href") or ""
         if re.search(r"apps\.apple\.com|play\.google\.com", href) and a.text():
-            stores.append(f'<a class="btn" href="{esc_attr(href)}">{esc(smart_case(a.text()))}</a>')
+            stores.append(f'<a class="btn" href="{esc_attr(href)}">{esc(norm_text(a.text()))}</a>')
     if stores:
         out.append("<p>" + " ".join(stores) + "</p>")
     feats = root.find(cls="features_slider")
@@ -1789,7 +1819,7 @@ def convert_app(doc, body):
         for a in bottom.find_all("a"):
             href = body.link(a.get("href"))
             if href:
-                links.append(f'<a class="btn" href="{esc_attr(href)}">{esc(smart_case(a.text()))}</a>')
+                links.append(f'<a class="btn" href="{esc_attr(href)}">{esc(norm_text(a.text()))}</a>')
         if links:
             out.append("<p>" + " ".join(links) + "</p>")
     note("notes", "app page: store badges, phone mock-ups and screenshots were not copied (third-party/app artwork)")
@@ -1887,6 +1917,10 @@ class Importer:
                 self.redirects[base] = target
         self.resolved[base] = target
         return target + (("#" + frag) if frag and target.startswith("/") else "")
+
+    def posters(self, b):
+        for v in dict.fromkeys(b.videos):
+            self.media.poster(v)
 
     def cap(self, seq):
         return list(seq)[: self.limit] if self.limit else list(seq)
@@ -2022,6 +2056,7 @@ class Importer:
                 return None
             body = b.convert(doc.main, url)
             body = drop_title_heading(body, meta["title"])
+            self.posters(b)
         # lead image
         image = alt = None
         m = re.match(r'\s*<figure class="media"><img src="([^"]+)" alt="([^"]*)"[^>]*></figure>\s*', body)
@@ -2065,6 +2100,19 @@ class Importer:
             self.rest_news[lang] = self.cap(lst)
         REPORT["counts"]["news_rest_total"] = {l: len(v) for l, v in self.rest_news.items()}
 
+    def known_cat_keys(self):
+        """Keys worth carrying over: only terms whose own English URL lives under the English categories base."""
+        keys = set()
+        try:
+            data = json.loads((CONTENT / "translations" / "categories.json").read_text(encoding="utf-8"))
+        except Exception:
+            return keys
+        for k, c in data.items():
+            u = c["terms"].get("en", {}).get("url", "")
+            if u.startswith(SECTIONS["newsCategories"]["en"]):
+                keys.add(k)
+        return keys
+
     def term_info(self, path, lang):
         """name + slug of a category archive page (cached fetch)."""
         doc = Doc(self.http.get(SITE + path))
@@ -2076,12 +2124,12 @@ class Importer:
 
     def phase_categories(self):
         # terms seen on items, per language
-        seen = {l: {} for l in self.langs}
+        seen = {l: {} for l in LANGS}
         for lang, items in self.rest_news.items():
             for it in items:
                 for t in it.get("news_categories") or []:
                     lp = with_slash(local_path(t["link"]) or "")
-                    seen[lang][lp] = {"name": html.unescape(t["name"]), "slug": t["slug"]}
+                    seen[lang_of_path(lp)][lp] = {"name": html.unescape(t["name"]), "slug": t["slug"]}
         en_paths = set(seen.get("en", {}))
         # parents of English terms
         for p in list(en_paths):
@@ -2091,14 +2139,20 @@ class Importer:
         # English terms of other languages are found through the English archive switcher
         cats = {}
         loc_url_to_key = {}
+        prev = CONTENT / "translations" / "categories.json"
+        if prev.exists():  # terms of earlier runs (e.g. when English is not in --langs)
+            for k, c in json.loads(prev.read_text(encoding="utf-8")).items():
+                if k not in self.known_cat_keys():
+                    continue
+                cats[k] = c
+                for l, t in c["terms"].items():
+                    loc_url_to_key[t["url"]] = k
         for p in sorted(en_paths):
             name, slug, doc = self.term_info(p, "en")
             if doc.status != 200:
                 continue
             parts = p.strip("/").split("/")
-            parent_key = parts[-2] if len(parts) > 3 else None
-            if parent_key == "news-categories" or parent_key == parts[0]:
-                parent_key = None
+            parent_key = parts[-2] if len(parts) >= 3 else None
             en_name = seen["en"].get(p, {}).get("name") or name
             terms = {"en": {"name": en_name, "slug": slug, "url": p}}
             sw = doc.switcher()
@@ -2152,6 +2206,7 @@ class Importer:
             return None
         sw = doc.switcher()
         body, b = convert_fragment(acf.get("news_content") or "", self.media, lang, where, 1600, self.teaser_img)
+        self.posters(b)
         cover = (acf.get("news_cover") or {}).get("url") if isinstance(acf.get("news_cover"), dict) else None
         meta = {"type": "news", "lang": lang, "url": url, "title": title}
         desc = doc.description()
@@ -2252,7 +2307,7 @@ class Importer:
             dates = [c["date"] for c in cards if c.get("date")]
             if cut and dates and max(dates) < cut:
                 break
-            if self.limit and len([c for c in out if c.get("date", "9") >= (cut or "")]) >= self.limit:
+            if self.limit and len([c for c in out if (c.get("date") or "9") >= (cut or "")]) >= self.limit:
                 break
             pg = doc.main.find(cls="pages")
             total = 1
@@ -2263,7 +2318,7 @@ class Importer:
             if n >= total:
                 break
             n += 1
-        return [c for c in out if c.get("date", "9") >= (cut or "")][: self.limit or None]
+        return [c for c in out if (c.get("date") or "9") >= (cut or "")][: self.limit or None]
 
     @staticmethod
     def press_cards(doc):
@@ -2340,6 +2395,7 @@ class Importer:
         b.self_url = url
         body = b.convert(container, url)
         body = drop_title_heading(body, title)
+        self.posters(b)
         dt = doc.jsonld_date()
         date = utc_to_local(dt) or (card["date"] + "T00:00" if card.get("date") else None)
         if date and card.get("date") and date[:10] != card["date"]:
@@ -2490,12 +2546,21 @@ class Importer:
         items = []
         for card in self.walk_listing(lang, base, self.pub_cards, cut=None):
             r = self.media.image(card["img"], 1600) if card["img"] else None
+            date = month_label_to_iso(card["label"], lang)
+            archive = bool(date and date < self.since[:7])
             files = []
             for label, href in card["files"]:
-                loc = b.link(href)
+                if archive:
+                    # documents older than --since are not copied (size); the live file stays linked until the archive import
+                    lp = local_path(href)
+                    loc = (SITE + lp) if lp else href
+                    with _report_lock:
+                        REPORT["counts"]["publication_files_left_live"] = REPORT["counts"].get("publication_files_left_live", 0) + 1
+                else:
+                    loc = b.link(href)
                 if loc:
                     files.append({"label": label, "url": loc})
-            it = {"title": card["title"], "date": month_label_to_iso(card["label"], lang), "dateLabel": card["label"], "image": r["path"] if r else None,
+            it = {"title": card["title"], "date": date, "dateLabel": card["label"], "image": r["path"] if r else None,
                   "category": cat_of.get((card["title"], card["label"])), "files": files}
             if not it["date"]:
                 del it["date"]
@@ -2545,9 +2610,12 @@ class Importer:
                 parent[rb] = ra
         dropped = 0
         for (typ, url), it in index.items():
+            homes = {"/"} | {PREFIX[x] + "/" for x in LANGS if PREFIX[x]}
             for l, p in it.get("sw", {}).items():
                 if l == it["lang"]:
                     continue
+                if p in homes and not it.get("is_home"):
+                    continue  # a language switcher entry that only points at that language's home: no translation
                 if (typ, p) in index:
                     union((typ, url), (typ, p))
                 else:
@@ -2600,7 +2668,29 @@ class Importer:
                 out[k] = v
         return out
 
+    def register_teasers(self):
+        for lang, m in self.menus.items():
+            for n in m["main"]:
+                f = n.get("feature")
+                if f and f.get("url") and f.get("image") and f["url"].startswith("/"):
+                    self.teaser_img.setdefault(f["url"].split("#")[0], (f["image"], ""))
+        for it in self.items["page"]:
+            home = it["meta"].get("home")
+            if not home:
+                continue
+            for grp in ("works", "organisations"):
+                for x in (home.get(grp) or {}).get("items", []):
+                    if x.get("url", "").startswith("/") and x.get("image"):
+                        self.teaser_img.setdefault(x["url"].split("#")[0], (x["image"], ""))
+            for x in home.get("features", []):
+                if x.get("url", "").startswith("/") and x.get("image"):
+                    self.teaser_img.setdefault(x["url"].split("#")[0], (x["image"], ""))
+            ph = (home.get("boxes") or {}).get("philately")
+            if ph and ph.get("url", "").startswith("/") and ph.get("image"):
+                self.teaser_img.setdefault(ph["url"].split("#")[0], (ph["image"], ""))
+
     def finalize(self):
+        self.register_teasers()
         index = self.build_groups()
         # group-wide settings for pages
         pages = self.items["page"]
@@ -2652,6 +2742,7 @@ class Importer:
         for typ, items in self.items.items():
             st = self.stats.setdefault(typ, {})
             for it in items:
+                it["meta"]["imported"] = True
                 meta = self.ordered(it["meta"])
                 path = self.page_file(it) if typ == "page" else self.dated_file(typ, it)
                 write_content(path, meta, it["body"], st)
@@ -2747,6 +2838,8 @@ def main(argv=None):
     ap.add_argument("--self-test", action="store_true")
     args = ap.parse_args(argv)
     _self_test()
+    for k in REPORT:
+        REPORT[k].clear() if isinstance(REPORT[k], list) else REPORT[k].clear()
     if args.self_test:
         print("self-test ok")
         return 0
@@ -2755,7 +2848,7 @@ def main(argv=None):
     types = imp.types
     try:
         imp.phase_pages_list()
-        imp.resolve("/en/contact/")
+        imp.redirects["/en/contact/"] = "/contacts/"
         if "menus" in types:
             imp.phase_menus()
             imp.fix_menu_urls()

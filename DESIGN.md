@@ -1,6 +1,6 @@
 ---
-name: maltezskyrad.cz
-description: Official site of the Czech Grand Priory of the Sovereign Order of Malta, inside the Grand Magistry frame
+name: orderofmalta.int
+description: Official site of the Sovereign Order of Malta, Grand Magistry, in five languages (en, it, fr, de, es)
 colors:
   magistry-red: "#e31a18"
   magistry-red-pressed: "#c41513"
@@ -131,13 +131,13 @@ components:
     padding: "0 4px"
 ---
 
-# Design System: maltezskyrad.cz
+# Design System: orderofmalta.int
 
 ## Overview
 
-**Creative North Star: "The Priory Register"**
+**Creative North Star: "The Magistry Register"**
 
-The site is a quiet institutional register set inside a mandatory frame. The frame (red top bar, the official flag banner photograph with the full Czech name in white capitals, the graphite menu bar, and the grey / white / red footer) is the Grand Magistry "Entities Theme": it is brand, not a design choice, and it is reproduced, never reinterpreted. Inside the frame the Grand Priory speaks plainly: white and pale-grey bands, hairline-ruled definition lists, EB Garamond headings and Asap text, real photographs at the Order's 800×470 basic image ratio.
+The site is a quiet institutional register set inside a mandatory frame. The frame (red top bar, the official flag banner photograph with the full name in white capitals, in the page language, the graphite menu bar, and the grey / white / red footer) is the Grand Magistry "Entities Theme": it is brand, not a design choice, and it is reproduced, never reinterpreted. Inside the frame the Grand Magistry speaks plainly: white and pale-grey bands, hairline-ruled definition lists, EB Garamond headings and Asap text, real photographs at the Order's 800×470 basic image ratio.
 
 Information is set as records rather than cards: facts, service times, works, news and downloads are all rows between 1px hairlines, with a label column and a value column. Density is moderate and generous to older readers (17px body, 1.65 leading, 44px targets). Red is the Order's colour and is kept scarce inside the frame: links, the single filled button, the active-state underline and focus rings.
 
@@ -167,7 +167,7 @@ A white-and-grey institutional palette framed by the Order's red and a graphite 
 - **Ink Lead** (`ink-lead`): lead paragraphs and pull quotes.
 - **Muted** (`muted`): captions, dates, row labels, breadcrumbs, side-nav labels.
 - **Paper** (`paper`) and **Ground Grey** (`ground-grey`): the two band grounds, alternating down the page.
-- **Hairline** (`hairline`): every rule, row divider, table border and the outline of tabs, file badges and the calendar frame.
+- **Hairline** (`hairline`): every rule, row divider, table border and the outline of tabs, file badges.
 - **Banner Sky** (`banner-sky`, `banner-sky-left`): sampled from the edges of the official banner photograph; used only to extend that photograph to full width. Not a palette colour for content.
 
 ### Content-status (preview only)
@@ -183,7 +183,7 @@ A white-and-grey institutional palette framed by the Order's red and a graphite 
 **Display Font:** EB Garamond (with Garamond, Times New Roman, serif), pending Grand Magistry confirmation; swapping `--display` to the UI stack removes it in one place.
 **Body Font:** Asap (with Segoe UI, Arial, sans-serif), the Grand Magistry font.
 
-**Character:** A bookish Garalde for the Priory's own voice, set against the Order's plain humanist sans for everything that is navigation, data or instruction. Both are self-hosted (OFL), latin and latin-ext subsets for Czech diacritics.
+**Character:** A bookish Garalde for the Order's own voice, set against the Order's plain humanist sans for everything that is navigation, data or instruction. Both are self-hosted (OFL), latin and latin-ext subsets for the diacritics of the five languages.
 
 ### Hierarchy
 - **Display** (EB Garamond 500, clamp 2.05–3.1rem, 1.06, -0.01em): the single page H1.
@@ -196,7 +196,7 @@ A white-and-grey institutional palette framed by the Order's red and a graphite 
 - **Nav** (Asap 400, 0.8rem, 0.07em, uppercase, white): main menu items; the footer nav uses Asap 700 0.82rem, 0.05em, uppercase.
 
 ### Named Rules
-**The Two Voices Rule.** Garamond speaks for the Priory (headings, row titles, the calendar years, pull quotes in italic). Asap carries everything a visitor operates or scans: menus, dates, times, labels, buttons, tables. Never set Garamond in uppercase or in UI chrome.
+**The Two Voices Rule.** Garamond speaks for the Order (headings, row titles, pull quotes in italic). Asap carries everything a visitor operates or scans: menus, dates, times, labels, buttons, tables. Never set Garamond in uppercase or in UI chrome.
 
 **The Tabular Times Rule.** Service times, dates and table numbers use tabular figures.
 
@@ -225,7 +225,7 @@ Square. Corners are 0 except a 2px softening on the few bounded controls (button
 ## Components
 
 ### Buttons
-Rare and decisive: one filled action per surface (calendar subscription).
+Rare and decisive: one filled action per surface (the search button, the call-to-action link).
 - **Shape:** near-square (2px), min-height 44px, 0 24px padding, Asap 600.
 - **Primary:** Magistry Red fill, white text.
 - **Hover / Active:** fill deepens to Pressed Red; presses down 1px on active. Focus is the global 2px red outline at 3px offset.
@@ -249,11 +249,33 @@ The system's core pattern for facts, services, contacts, works, news and the Gra
 ### Footer
 Three stacked bands from the Grand Magistry theme: Footer Slate navigation (four columns of white uppercase bold links), a white identity block (full name, address, Text Red links), and a Magistry Red legal band in three columns.
 
-### Calendar block
-A hairline-framed white panel (min 420px; 360px on small screens) hosting the AddCal embed, loaded only near the viewport. While loading it shows skeleton bars and a muted status line; on failure it falls back to plain links. The vendor widget's own internal colours belong to AddCal and are not system colours.
+### International frame
+- **Lockup (interim):** until the licensed lettering is available for outlined lockups (`/img/lockup/<lang>.svg`, picked up automatically), the banner shows the official shield (`lockup--shield`, copied unchanged) with the Order's short name as live Asap 700 capitals beside it (`.lockup-text`); the full name (`.fullname`) stays on the right (left below 960px).
+- **Search:** a field and a white button with a CSS-drawn magnifier in the top bar (`.site-search`); it submits to the search page and works without JavaScript.
+- **Language switch:** five chips (EN IT FR DE ES), the current one reversed; links go to the real translation.
+- **Mega menu (>=961px):** a submenu holding groups (`.sub-group`, `.sub-heading`) and a feature card (`.sub-feature`) spans the menu bar in columns; plain lists stay narrow dropdowns. Open by hover, focus or toggle; Escape closes and returns focus. Below 960px groups fold into the same disclosure list (heading, then links one step in; the feature is its first link). Heading-only top items get `tabindex=0` from JavaScript. Without JavaScript every submenu is open on mobile.
+- **Footer:** the menu as columns (`.f-col`, `.f-heading` for sub-groups), then the identity block and the red legal line.
+
+### Cards (flat, editorial)
+`.card-grid` lists news, galleries, publications, press cuttings and teasers: a photograph at the 800x470 ratio, a muted meta line (date, kind in Text Red), a Garamond title, a three-line excerpt. No boxes, shadows or lifts; a card without a photograph starts with a 3px grey rule. The title link is stretched over the card and carries the focus ring. Variants: `card--news|press|gallery|publication|cutting|page`; `.card-grid--text` is ruled rows (press, cuttings, search results); `--side` is a compact teaser grid. Publications show file links as small outlined chips. The `.pager` has Previous / numbers / Next (current number filled graphite); `.tags`-style category chips use `.tag-list`.
+
+### Article and body vocabulary
+Articles (`.article`) have a section link (`.kicker`), Garamond title, optional italic `.subtitle`, `.article-meta`, cover, body, gallery, category chips, previous/next and related news. Body text styles only the vocabulary of the build spec: `figure.media` (+ left/right float beside text, stacked below 640px), `p.lead`, `p.file`, `details.acc` (hairline accordion, CSS chevron), `section.region`, `ol.timeline` (hairline spine, 3px red mark), `ul.cards`, `.cols`, tables, `a.btn`. Wide blocks use the column; running text keeps 68ch.
+
+### Embeds (click to load)
+`figure.embed` states: `idle` (poster or dark panel, white play disc with a red triangle, title over a dark gradient), `loading` (poster hidden, `.embed-skeleton` breathing), `ready` (iframe fades in). Under it: a muted note naming the provider, an "always load" checkbox (stored in `localStorage["oom-embed-consent"]`, per provider) and a text link to the video. Nothing is requested from the provider before the click or a stored choice; with a stored choice the embed loads near the viewport (without autoplay) and never while a page is pre-rendered. Without JavaScript only the link works.
+
+### Gallery and lightbox
+`ul.gallery` and `.photo-run` are thumbnail grids (3:2 crop, 6px gaps, zoom cursor). A click opens one native `<dialog class="lightbox">`: dark scrim, photograph contained, caption, counter, round close/previous/next buttons (red on hover), skeleton while the large image loads, arrow keys, Escape, swipe, backdrop click, focus back to the thumbnail, page scroll locked. Without JavaScript each thumbnail opens its photograph.
+
+### Search page
+`.search-form` (field + red button), `.search-status` (aria-live), `.search-results[data-state="idle|loading|ready|empty|failed"]` with six breathing skeleton rows while loading, ruled-row results, `mark` (pale yellow) around hits. The script builds results with text nodes only.
+
+### Forms
+The data-protection request form reuses the editor's `.ne` field style; messages come from the page's JSON block, with no address written in the script.
 
 ### Loading
-Images reserve their exact box (width and height) on a 5% black tint. A photograph still downloading when the page opens "develops" from a pale, grey, low-contrast state into full colour over 900ms (`filter` transition, `cubic-bezier(.16,1,.3,1)`); cached or already-painting images appear at once. Calendar skeleton bars breathe slowly (opacity, 2.4s) instead of a sweeping shimmer. Spinners are not used.
+Images reserve their exact box (width and height) on a 5% black tint. A photograph still downloading when the page opens "develops" from a pale, grey, low-contrast state into full colour over 900ms (`filter` transition, `cubic-bezier(.16,1,.3,1)`); cached or already-painting images appear at once. Skeleton bars (search results, embeds, lightbox) breathe slowly (opacity, 2.4s) instead of a sweeping shimmer. Spinners are not used.
 
 ### Content-status bar (preview only)
 A thin full-width tinted bar under the menu stating the page's editorial state in 0.8rem Asap 500. Preview tooling, not a design element.
@@ -264,7 +286,7 @@ Easing `cubic-bezier(.22,.61,.36,1)`; 160ms for state changes, 280ms for disclos
 ## Do's and Don'ts
 
 ### Do:
-- **Do** reproduce the Grand Magistry frame (top bar, official banner photograph with full Czech name, graphite menu, grey / white / red footer) unchanged on every page.
+- **Do** reproduce the Grand Magistry frame (top bar, official banner photograph with the full name, graphite menu, grey / white / red footer) unchanged on every page.
 - **Do** set lists of facts, times, works and news as hairline-ruled rows with a muted label column.
 - **Do** switch red link text to Text Red on #f3f3f3 bands.
 - **Do** use EB Garamond 500 for headings and row titles and Asap for all UI, data and body text.
@@ -273,10 +295,13 @@ Easing `cubic-bezier(.22,.61,.36,1)`; 160ms for state changes, 280ms for disclos
 - **Do** reserve image boxes, let photographs develop calmly, and respect reduced motion everywhere.
 
 ### Don't:
-- **Don't** create, redraw, approximate or restyle any emblem. Only the two official emblems (armorial bearing, red shield for activities) may appear, from approved originals; until supplied, use labelled placeholders. check.py fails the build for any file under /img/ outside the approved brand set (armorial-bearing 420/840, the official banner, favicons).
-- **Don't** build the charity-landing pattern: hero slogan over a photo, donate button, card grids.
+- **Don't** create, redraw, approximate or restyle any emblem. Only the two official emblems (armorial bearing, red shield) may appear, from approved originals; until supplied, use labelled placeholders. check.py fails the build for any file under /img/ outside the approved brand set (armorial-bearing 420/840, the official banner, favicons).
+- **Don't** build the charity-landing pattern: hero slogan over a photo, donate button. Card grids exist only as flat editorial listings (see Cards).
 - **Don't** use red as a band, card fill or heading colour inside the frame.
-- **Don't** add cards, raised panels, hover lifts or shadows beyond the desktop dropdown.
-- **Don't** put kicker or eyebrow labels above headings; uppercase labels are for navigation only.
-- **Don't** treat the content-status tints or the AddCal widget colours as palette colours.
-- **Don't** use the acronym SMOM or "Malta" alone in text; check.py flags the acronym.
+- **Don't** add raised panels, hover lifts or shadows beyond the desktop dropdown and the lightbox controls.
+- **Don't** put eyebrow labels above headings; uppercase labels are for navigation, the article's section link (`.kicker`) and group headings in menus.
+- **Don't** treat the content-status tints as palette colours.
+- **Don't** write the four-letter acronym of the Order's name, or "Malta" alone, in text; check.py flags the acronym.
+
+## What was removed from the template
+the calendar block, church services, concerts, downloads grid, the "coming up" tab of the home carousel, the home opening with facts and motto, the Grand Magistry feed, event lists, and the Czech editor labels. Their CSS and scripts are gone.

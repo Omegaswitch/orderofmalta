@@ -1,72 +1,78 @@
-# Security and privacy audit
+# Security and privacy
 
-Date: 14 October 2026. Scope: the live site (read-only observation; nothing was changed) and the new static implementation on this branch.
+**Status: the audit of this site has not been run yet. It must be re-run for this site before launch.** The findings of the template's audit (of the template site) are not valid for this site and have been removed. The live site at www.orderofmalta.int is WordPress, and the notes below record only what was observed while scouting it.
 
-## Live site (maltezskyrad.cz, WordPress): findings
+## Design of the new site
 
-| # | Severity | Finding | Evidence | Recommendation |
-|---|---|---|---|---|
-| L1 | **High** (availability and trust) | `https://maltezskyrad.cz/` and `https://www.maltezskyrad.cz/` answer `301 → https://cvp.maltezskyrad.cz/`, and that host's TLS certificate does not cover the name `cvp.maltezskyrad.cz`. Browsers show a certificate error after the redirect. | `curl` reports "no alternative certificate subject name matches target host name 'cvp.maltezskyrad.cz'" (re-checked 15 Oct 2026: unchanged). | Fix it now, independent of the redesign: either remove the redirect to `cvp.` or issue a certificate that includes it. The new site's canonical host is `https://www.maltezskyrad.cz` (`baseUrl` in `content/site.json`). |
-| L2 | Medium | The WordPress REST user list (`/wp-json/wp/v2/users`) is public and exposes the administrator's login slug. | HTTP 200 with one entry. | Block the endpoint, or remove the site at launch. Use a strong password and 2FA for the account until then. |
-| L3 | Medium | The theme loads jQuery 1.10.2 (2013; known XSS issues, CVE-2015-9251 and CVE-2019-11358 family) next to WordPress's jQuery 3.7.1. | `jquery-1.10.2.min.js` is in the page source. | Becomes moot at launch. Until then, remove the theme's bundled copy. |
-| L4 | Low | No `Content-Security-Policy` or `Strict-Transport-Security` headers. | Response headers show `server: openresty` and neither header. | The new site ships both (below). |
-| L5 | Low (privacy) | The public AddCal calendar embedded on the new site (`calendarGPB`) contains a private-looking entry on 24 Oct 2026, 10:45 to 13:30 ("Leave for Ceske Budejovice"). Its description is a pasted calendar invitation naming participants. | Visible in the widget and the public calendar feed. | The calendar owner should make the entry private or delete it, then check the calendar for similar entries. Not changed by us; the client decides. |
+- **Static output:** the pages, CSS and JS are built by `build.py` and served as files. Visitors do not run server code.
+- **Serverless functions (`api/`):** the staff editor and its API, the data-protection request form, and the daily rebuild. Node packages: `better-auth` and `pg`.
+- **Staff sign-in:** Better Auth with e-mail and password, users and sessions in Postgres, roles owner, admin and editor, no self sign-up, sessions of 12 hours, rate limiting.
+- **No cookies and no analytics:** the site sets no cookies. Google Tag Manager is dropped. The only browser storage is the video consent key (see below).
+- **Build:** the build never touches the network (`--offline` is accepted and the build runs without it).
 
-## New implementation
+## Content handling
 
-**Architecture**
-- Static HTML, CSS and JS generated at build time.
-- No server-side code, database, admin login, forms or cookies.
-- Nothing on the server is executable, so most WordPress attack classes no longer apply.
+- **Importer:** writes only the body vocabulary in `docs/build-spec.md`, section 3.5. Scripts, event handlers, styles, iframes and unknown markup are not written. The importer lists pages whose body still has unmapped markup in its report.
+- **Editor input:** cleaned on the server by an allowlist. Scripts, styles, event handlers and foreign attributes are removed. The only embeds allowed are YouTube and Vimeo addresses.
+- **`check.py`:** fails the build for any `javascript:` link, any broken internal link, any image under `/img/` that is not an approved brand file, and the forbidden acronym in page text.
+- **Search:** the search page builds result items with `textContent` and `createElement`. It never uses `innerHTML` with index data.
 
-**Content handling**
-- Imported WordPress HTML passes an allowlist sanitiser (`tools/import_wp.py`), which has a self-test that also runs in CI.
-- It keeps only structural tags and the `href`, `src` and `alt` attributes, plus `colspan`/`rowspan` on table cells.
-- It removes scripts, styles, event handlers, iframes (they become plain links), `javascript:` and other unsafe URL schemes.
-- `check.py` fails the build on any `javascript:` link.
+## Headers
 
-**Security headers** (defined in `vercel.json`, also written to `dist/_headers`; applied to every path)
+Defined in `vercel.json` and written to `dist/_headers` by the build. Applied to every path.
 
 | Header | Value |
 |---|---|
-| `Content-Security-Policy` | `default-src 'self'`; scripts only from self and `https://cdn.addcal.co`; `object-src 'none'`; `base-uri 'self'`; `form-action 'self'`; `frame-ancestors 'none'`; `upgrade-insecure-requests` |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests` |
 | `Strict-Transport-Security` | `max-age=31536000; includeSubDomains` |
 | `X-Content-Type-Options` | `nosniff` |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` |
-| `Permissions-Policy` | Denies camera, microphone, geolocation, payment and USB |
+| `Permissions-Policy` | `camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()` |
 | `Cross-Origin-Opener-Policy` | `same-origin` |
 | `X-Frame-Options` | `DENY` |
 
-- `style-src` allows `'unsafe-inline'` because the AddCal web component injects styles. No inline scripts are used; the only `<script>` without `src` is the JSON-LD data block on the home pages (`application/ld+json`, never executed).
-- Preview builds add `X-Robots-Tag: noindex, nofollow` and a `Disallow: /` robots.txt.
+Notes:
 
-**Third parties**
-- The only third party is AddCal (calendar widget). Its script loads only when a calendar scrolls near the viewport, and only on the homepage, `/kalendar/` and the language pages. It contacts `addcal.co` and `cdn.addcal.co`.
-- **Subresource Integrity is not used.** AddCal publishes a moving `v3` URL, so a hash would break on every vendor update. The CSP host allowlist is the control.
-- Fonts are self-hosted; there are no Google Fonts or analytics requests.
-- Speculation rules (`Speculation-Rules` header → `/speculation-rules.json`, same origin only): the other language versions of the current page are prefetched on load, and an internal link is pre-rendered when the visitor hovers or touches it. A pre-rendered page does not contact AddCal until it is actually shown (`document.prerendering` in `site.js`).
-- The Grand Magistry news list is fetched at build time, not in the visitor's browser. Its links are restricted to `https://www.orderofmalta.int/`.
+- Compared with the template, the AddCal hosts are removed from every directive, and `frame-src` allows the YouTube and Vimeo players instead. `img-src`, `font-src` and `connect-src` no longer name any third party.
+- `style-src` allows `'unsafe-inline'`. It is kept from the template and is not yet re-checked for this site.
+- `'wasm-unsafe-eval'` is kept from the template, where the template uses it for PDF compression in its staff page. Whether it is still needed on this site is open.
+- Images are local, so `img-src` needs no third party.
 
-**Privacy**
-- No cookies and no analytics.
-- The privacy notice (`/ochrana-osobnich-udaju/`, all five languages) was rewritten on 15 Oct 2026 against Art. 13 GDPR, using the Grand Magistry's notice as a model. It covers: the controller (full legal name, IČO 00569623, seat), no cookies or tracking, hosting logs at Vercel Inc. (EU–U.S. Data Privacy Framework), the AddCal calendar (AddCal Pty Ltd, Australia; standard contractual clauses), email and telephone, plain links to social networks, data-subject rights and the right to complain to ÚOOÚ. It is marked "approval" and needs sign-off by the Grand Priory.
-- The AddCal widget stores a time-zone list in `localStorage` (no personal data, no cookies; checked in a browser on 15 Oct 2026). The notice says so.
+## Embeds and third parties
 
-**Secrets**
-- The repository and build contain no credentials, keys or tokens.
+- **Before a visitor asks:** no request leaves the site's origin on any page. Embeds show a poster and a button.
+- **After a click:** the video loads from `youtube-nocookie.com` or `player.vimeo.com`. Those services may set their own cookies.
+- **Consent for videos:** "Always load videos" stores the list of providers in `localStorage` under `oom-embed-consent`. This is not a cookie and it is sent nowhere. The visitor can clear it in the browser.
+- **Server-side services:** Better Auth and Postgres (sign-in), GitHub (the editor commits), Resend (e-mail for the data-protection form and the optional new-post notice), Vercel (hosting and the cron job).
 
-**Supply chain**
-- Zero runtime and build dependencies: Python standard library only. CI uses pinned major versions of `actions/checkout` and `actions/setup-python` with `permissions: contents: read`.
+## Secrets
 
-## Re-check, 15 October 2026
+- Credentials and keys are environment variables only (see `docs/publishing.md`).
+- Nothing in the repository or the built pages should contain a token. This has not yet been scanned for this site.
 
-- Secrets: no credentials, keys or tokens in the tree or in git history (pattern scan for private keys, cloud and API tokens).
-- Build output (398 pages): no inline scripts, no event-handler attributes, no `javascript:` URLs, no iframes, forms or embeds. The only scripts are `/js/head.js` and `/js/site.js`; AddCal is loaded by `site.js` from `cdn.addcal.co`.
-- Translation HTML (`content/translations/*.json`, written by hand, not through the importer's sanitiser): scanned for scripts, styles, handlers and unsafe URLs: none.
-- **Fixed:** the Vercel deployment served none of the security headers or redirects, because Vercel ignores `_headers` and `_redirects`. Both now live in `vercel.json`, and the build derives `_headers` and `_redirects` from it, so every host gets the same values (the generated files are byte-identical to the previous ones).
-- Live site: L1 (certificate for `cvp.maltezskyrad.cz`) and L2 (public WordPress user list) are still open.
+## Supply chain
 
-## Residual risks
+- Build: Python 3 standard library and Pillow.
+- Functions: `better-auth` and `pg`, pinned in `package-lock.json`.
+- Developer tools only: Playwright, for `tools/make_og.py`.
+- Still to do: a dependency audit of the Node packages, and a check of the pinned versions.
 
-- AddCal is a third party with script access to pages that embed it. Mitigations: lazy loading on three page types only, a CSP host allowlist, and pages that work without it (the downloads and service times are static).
-- The CSP `'unsafe-inline'` in `style-src` is required by the vendor widget.
+## Observations on the live site (scouting, not an audit)
+
+Scouted on 15 Nov 2026. These are notes, not findings.
+
+- WordPress with the WPML language plugin, a theme, and Popup Maker, Google Tag Manager, Relevanssi search, Yoast and Cloudflare e-mail obfuscation.
+- The REST API answers publicly for pages, media and news. `/wp-json/wp/v2/menus` answers 401.
+- The theme loads jQuery, Bootstrap, Owl and Fancybox.
+- The site sends a Google Tag Manager container and a pop-up for the app.
+
+The new site drops all of these.
+
+## Re-check for this site (to be run)
+
+- Run the audit on the built `dist/` and on the deployed site.
+- Check the headers on the deployed host (`curl -I`).
+- Scan the repository and the build output for secrets.
+- Review the Better Auth configuration, the editor's sanitiser and the rate limits.
+- Review whether `'unsafe-inline'` in `style-src` and `'wasm-unsafe-eval'` are still needed.
+- Run a dependency audit on `package-lock.json`.

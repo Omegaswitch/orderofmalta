@@ -1,0 +1,362 @@
+{
+ "all-news": {
+  "parent": null,
+  "terms": {
+   "en": {
+    "name": "News",
+    "slug": "all-news",
+    "url": "/news-categories/all-news/"
+   },
+   "it": {
+    "name": "Notizie",
+    "slug": "notizie",
+    "url": "/it/categorie-notizia/notizie/"
+   },
+   "fr": {
+    "name": "Actualités",
+    "slug": "actualites",
+    "url": "/fr/categories-de-actualites/actualites/"
+   },
+   "de": {
+    "name": "Nachrichten",
+    "slug": "nachrichten",
+    "url": "/de/nachrichten-kategorien/nachrichten/"
+   },
+   "es": {
+    "name": "Noticias",
+    "slug": "noticias",
+    "url": "/es/categorias-de-noticias/noticias/"
+   }
+  }
+ },
+ "diplomatic-activities": {
+  "parent": "all-news",
+  "terms": {
+   "en": {
+    "name": "Diplomatic Activities",
+    "slug": "diplomatic-activities",
+    "url": "/news-categories/all-news/diplomatic-activities/"
+   },
+   "it": {
+    "name": "Attività Diplomatiche",
+    "slug": "attivita-diplomatiche",
+    "url": "/it/categorie-notizia/notizie/attivita-diplomatiche/"
+   },
+   "fr": {
+    "name": "Activités diplomatiques",
+    "slug": "activites-diplomatiques",
+    "url": "/fr/categories-de-actualites/actualites/activites-diplomatiques/"
+   },
+   "de": {
+    "name": "Diplomatischen aktivitäten",
+    "slug": "diplomatischen-aktivitaten",
+    "url": "/de/nachrichten-kategorien/nachrichten/diplomatischen-aktivitaten/"
+   },
+   "es": {
+    "name": "Actividades diplomáticas",
+    "slug": "actividades-diplomaticas",
+    "url": "/es/categorias-de-noticias/noticias/actividades-diplomaticas/"
+   }
+  }
+ },
+ "grand-master-news": {
+  "parent": "all-news",
+  "terms": {
+   "en": {
+    "name": "Grand Master news",
+    "slug": "grand-master-news",
+    "url": "/news-categories/all-news/grand-master-news/"
+   },
+   "it": {
+    "name": "Notizie Gran Maestro",
+    "slug": "notizie-gran-maestro",
+    "url": "/it/categorie-notizia/notizie/notizie-gran-maestro/"
+   },
+   "fr": {
+    "name": "Nouvelles de Grand-Maître",
+    "slug": "nouvelles-de-grand-maitre",
+    "url": "/fr/categories-de-actualites/actualites/nouvelles-de-grand-maitre/"
+   },
+   "de": {
+    "name": "Großmeister News",
+    "slug": "grosmeister-news",
+    "url": "/de/nachrichten-kategorien/nachrichten/grosmeister-news/"
+   },
+   "es": {
+    "name": "Noticias Gran Maestro",
+    "slug": "noticias-gran-maestro",
+    "url": "/es/categorias-de-noticias/noticias/noticias-gran-maestro/"
+   }
+  }
+ },
+ "humanitarian-medical-works": {
+  "parent": null,
+  "terms": {
+   "en": {
+    "name": "Humanitarian & medical works",
+    "slug": "humanitarian-medical-works",
+    "url": "/news-categories/humanitarian-medical-works/"
+   },
+   "it": {
+    "name": "Opere umanitarie & mediche",
+    "slug": "opere-umanitarie-mediche",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/"
+   },
+   "fr": {
+    "name": "Activités médicales et humanitaires",
+    "slug": "activites-medicales-et-humanitaires",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/"
+   },
+   "de": {
+    "name": "Humanitäre und medizinische Werke",
+    "slug": "humanitare-und-medizinische-werke",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/"
+   },
+   "es": {
+    "name": "Obras humanitarias y médicas",
+    "slug": "obras-humanitarias-y-medicas",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/"
+   }
+  }
+ },
+ "aid-for-refugees": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Aid for refugees",
+    "slug": "aid-for-refugees",
+    "url": "/news-categories/humanitarian-medical-works/aid-for-refugees/"
+   },
+   "it": {
+    "name": "Aiuti per i rifugiati",
+    "slug": "aiuti-per-i-rifugiati",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/aiuti-per-i-rifugiati/"
+   },
+   "fr": {
+    "name": "Aide aux réfugiés",
+    "slug": "aide-aux-refugies",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/aide-aux-refugies/"
+   },
+   "de": {
+    "name": "Hilfe für Flüchtlinge",
+    "slug": "hilfe-fur-fluchtlinge",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/hilfe-fur-fluchtlinge/"
+   },
+   "es": {
+    "name": "Ayuda a los refugiados",
+    "slug": "ayuda-a-los-refugiados",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/ayuda-a-los-refugiados/"
+   }
+  }
+ },
+ "disaster-relief-prevention": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Disaster relief & prevention",
+    "slug": "disaster-relief-prevention",
+    "url": "/news-categories/humanitarian-medical-works/disaster-relief-prevention/"
+   },
+   "it": {
+    "name": "Catastrofi & Prevenzione",
+    "slug": "catastrofi-prevenzione",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/catastrofi-prevenzione/"
+   },
+   "fr": {
+    "name": "Opérations de secours et la prévention",
+    "slug": "operations-de-secours-et-la-prevention",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/operations-de-secours-et-la-prevention/"
+   },
+   "de": {
+    "name": "Katastrophenhilfe und prävention",
+    "slug": "katastrophenhilfe-und-pravention",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/katastrophenhilfe-und-pravention/"
+   },
+   "es": {
+    "name": "Alivio de desastres y prevención",
+    "slug": "alivio-de-desastres-y-prevencion",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/alivio-de-desastres-y-prevencion/"
+   }
+  }
+ },
+ "disease-epidemics": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Disease & epidemics",
+    "slug": "disease-epidemics",
+    "url": "/news-categories/humanitarian-medical-works/disease-epidemics/"
+   },
+   "it": {
+    "name": "Malattie ed epidemie",
+    "slug": "malattie-ed-epidemie",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/malattie-ed-epidemie/"
+   },
+   "fr": {
+    "name": "Maladies et épidémies",
+    "slug": "maladies-et-epidemies",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/maladies-et-epidemies/"
+   },
+   "de": {
+    "name": "Krankheiten und epidemien",
+    "slug": "krankheiten-und-epidemien",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/krankheiten-und-epidemien/"
+   },
+   "es": {
+    "name": "Enfermedades y epidemias",
+    "slug": "enfermedades-y-epidemias",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/enfermedades-y-epidemias/"
+   }
+  }
+ },
+ "malteser-international": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Malteser international",
+    "slug": "malteser-international",
+    "url": "/news-categories/humanitarian-medical-works/malteser-international/"
+   },
+   "it": {
+    "name": "Malteser internazionale",
+    "slug": "malteser-internazionale",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/malteser-internazionale/"
+   },
+   "fr": {
+    "name": "Malteser-International-fr",
+    "slug": "malteser-international-fr",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/malteser-international-fr/"
+   },
+   "de": {
+    "name": "Malteser-international-de",
+    "slug": "malteser-international-de",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/malteser-international-de/"
+   },
+   "es": {
+    "name": "Malteser-International-es",
+    "slug": "malteser-international-es",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/malteser-international-es/"
+   }
+  }
+ },
+ "medical-facilities": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Medical facilities",
+    "slug": "medical-facilities",
+    "url": "/news-categories/humanitarian-medical-works/medical-facilities/"
+   },
+   "it": {
+    "name": "Strutture mediche",
+    "slug": "strutture-mediche",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/strutture-mediche/"
+   },
+   "fr": {
+    "name": "Établissements médicaux",
+    "slug": "etablissements-medicaux",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/etablissements-medicaux/"
+   },
+   "de": {
+    "name": "Medizinische Einrichtung",
+    "slug": "medizinische-einrichtung",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/medizinische-einrichtung/"
+   },
+   "es": {
+    "name": "Facilidades medicas",
+    "slug": "facilidades-medicas",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/facilidades-medicas/"
+   }
+  }
+ },
+ "social-assistance": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Social assistance",
+    "slug": "social-assistance",
+    "url": "/news-categories/humanitarian-medical-works/social-assistance/"
+   },
+   "it": {
+    "name": "Assistenze sociali",
+    "slug": "assistenze-sociali",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/assistenze-sociali/"
+   },
+   "fr": {
+    "name": "Social-assistance-fr",
+    "slug": "social-assistance-fr",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/social-assistance-fr/"
+   },
+   "de": {
+    "name": "Soziale Interventionen",
+    "slug": "soziale-interventionen",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/soziale-interventionen/"
+   },
+   "es": {
+    "name": "Assistance sociales",
+    "slug": "assistance-sociales",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/assistance-sociales/"
+   }
+  }
+ },
+ "volunteer-corps": {
+  "parent": "humanitarian-medical-works",
+  "terms": {
+   "en": {
+    "name": "Volunteer Corps",
+    "slug": "volunteer-corps",
+    "url": "/news-categories/humanitarian-medical-works/volunteer-corps/"
+   },
+   "it": {
+    "name": "Corpo Volontari",
+    "slug": "corpo-volontari",
+    "url": "/it/categorie-notizia/opere-umanitarie-mediche/corpo-volontari/"
+   },
+   "fr": {
+    "name": "Volontaires corp",
+    "slug": "volontaires-corp",
+    "url": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/volontaires-corp/"
+   },
+   "de": {
+    "name": "Freiwilligenkorps",
+    "slug": "freiwilligenkorps",
+    "url": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/freiwilligenkorps/"
+   },
+   "es": {
+    "name": "Cuerpo de Voluntarios",
+    "slug": "cuerpo-de-voluntarios",
+    "url": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/cuerpo-de-voluntarios/"
+   }
+  }
+ },
+ "latest-interventions": {
+  "parent": null,
+  "terms": {
+   "en": {
+    "name": "Latest interventions",
+    "slug": "latest-interventions",
+    "url": "/news-categories/latest-interventions/"
+   },
+   "it": {
+    "name": "Ultimi interventi",
+    "slug": "ultimi-interventi",
+    "url": "/it/categorie-notizia/ultimi-interventi/"
+   },
+   "fr": {
+    "name": "Dernières interventions",
+    "slug": "dernieres-interventions",
+    "url": "/fr/categories-de-actualites/dernieres-interventions/"
+   },
+   "de": {
+    "name": "Aktuelle Einsätze",
+    "slug": "aktuelle-einsatze",
+    "url": "/de/nachrichten-kategorien/aktuelle-einsatze/"
+   },
+   "es": {
+    "name": "Últimas intervenciones",
+    "slug": "ultimas-intervenciones",
+    "url": "/es/categorias-de-noticias/ultimas-intervenciones/"
+   }
+  }
+ }
+}

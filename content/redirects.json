@@ -1,0 +1,398 @@
+[
+ {
+  "from": "/contact/",
+  "to": "/es/contactos/"
+ },
+ {
+  "from": "/de/contact/",
+  "to": "/de/kontakte/"
+ },
+ {
+  "from": "/de/geschichte/im-jahr-1113-papstliche-anerkennung/",
+  "to": "/de/nachrichten/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/diplomatischen-aktivitaten/",
+  "to": "/de/nachrichten-kategorien/nachrichten/diplomatischen-aktivitaten/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/freiwilligenkorps-2/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/freiwilligenkorps/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/freiwilligenkorps/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/freiwilligenkorps/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/grosmeister-news/",
+  "to": "/de/nachrichten-kategorien/nachrichten/grosmeister-news/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/hilfe-fur-fluchtlinge/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/hilfe-fur-fluchtlinge/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/katastrophenhilfe-und-pravention/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/katastrophenhilfe-und-pravention/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/krankheiten-und-epidemien/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/krankheiten-und-epidemien/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/malteser-international-de/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/malteser-international-de/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/medizinische-einrichtung/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/medizinische-einrichtung/"
+ },
+ {
+  "from": "/de/nachrichten-kategorien/soziale-interventionen/",
+  "to": "/de/nachrichten-kategorien/humanitare-und-medizinische-werke/soziale-interventionen/"
+ },
+ {
+  "from": "/de/presse-und-veroeffentlichungen/newsletter/",
+  "to": "/de/presse-und-veroeffentlichungen/"
+ },
+ {
+  "from": "/de/presse-veroeffentlichungen/nachahmerorganisationen/",
+  "to": "/de/presse-und-veroeffentlichungen/nachahmerorganisationen/"
+ },
+ {
+  "from": "/de/presse-veroeffentlichungen/pressemitteilungen/",
+  "to": "/de/presse-und-veroeffentlichungen/pressemitteilungen/"
+ },
+ {
+  "from": "/de/presse-veroeffentlichungen/pressespiegel/",
+  "to": "/de/presse-und-veroeffentlichungen/pressespiegel/"
+ },
+ {
+  "from": "/de/presse-veroeffentlichungen/publikationen/",
+  "to": "/de/presse-und-veroeffentlichungen/publikationen/"
+ },
+ {
+  "from": "/de/regierung/statthalter-des-grossmeisters/",
+  "to": "/de/regierung/grossmeister/"
+ },
+ {
+  "from": "/en/contact/",
+  "to": "/contacts/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/actividades-diplomaticas/",
+  "to": "/es/categorias-de-noticias/noticias/actividades-diplomaticas/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/alivio-de-desastres-y-prevencion/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/alivio-de-desastres-y-prevencion/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/assistance-sociales/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/assistance-sociales/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/ayuda-a-los-refugiados/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/ayuda-a-los-refugiados/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/cuerpo-de-voluntarios/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/cuerpo-de-voluntarios/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/enfermedades-y-epidemias/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/enfermedades-y-epidemias/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/facilidades-medicas/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/facilidades-medicas/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/malteser-international-es/",
+  "to": "/es/categorias-de-noticias/obras-humanitarias-y-medicas/malteser-international-es/"
+ },
+ {
+  "from": "/es/categorias-de-noticias/noticias-gran-maestro/",
+  "to": "/es/categorias-de-noticias/noticias/noticias-gran-maestro/"
+ },
+ {
+  "from": "/es/contact/",
+  "to": "/es/contactos/"
+ },
+ {
+  "from": "/es/gobierno/lugarteniente-del-gran-maestre/",
+  "to": "/es/gobierno/gran-maestre/"
+ },
+ {
+  "from": "/es/prensa-y-publicaciones/boletin-informativo/",
+  "to": "/es/prensa-y-publicaciones/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/activites-diplomatiques-2/",
+  "to": "/fr/categories-de-actualites/actualites/activites-diplomatiques/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/activites-diplomatiques/",
+  "to": "/fr/categories-de-actualites/actualites/activites-diplomatiques/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/aide-aux-refugies/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/aide-aux-refugies/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/etablissements-medicaux/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/etablissements-medicaux/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/maladies-et-epidemies/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/maladies-et-epidemies/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/malteser-international-fr/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/malteser-international-fr/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/nouvelles-de-grand-maitre/",
+  "to": "/fr/categories-de-actualites/actualites/nouvelles-de-grand-maitre/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/operations-de-secours-et-la-prevention/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/operations-de-secours-et-la-prevention/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/social-assistance-fr/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/social-assistance-fr/"
+ },
+ {
+  "from": "/fr/categories-de-actualites/volontaires-corp/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/volontaires-corp/"
+ },
+ {
+  "from": "/fr/category/diplomaticactivities-fr/",
+  "to": "/fr/actualites/"
+ },
+ {
+  "from": "/fr/contact/",
+  "to": "/fr/contacts/"
+ },
+ {
+  "from": "/fr/gouvernement/lieutenant-de-grand-maitre/",
+  "to": "/fr/gouvernement/grand-maitre/"
+ },
+ {
+  "from": "/fr/histoire/the-grand-masters/",
+  "to": "/fr/histoire/les-grands-maitres/"
+ },
+ {
+  "from": "/fr/press-et-publications/lettre-d-information/",
+  "to": "/fr/press-et-publications/"
+ },
+ {
+  "from": "/it/categorie-notizia/aiuti-per-i-rifugiati/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/aiuti-per-i-rifugiati/"
+ },
+ {
+  "from": "/it/categorie-notizia/assistenze-sociali/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/assistenze-sociali/"
+ },
+ {
+  "from": "/it/categorie-notizia/attivita-diplomatiche/",
+  "to": "/it/categorie-notizia/notizie/attivita-diplomatiche/"
+ },
+ {
+  "from": "/it/categorie-notizia/catastrofi-prevenzione/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/catastrofi-prevenzione/"
+ },
+ {
+  "from": "/it/categorie-notizia/corpo-volontari/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/corpo-volontari/"
+ },
+ {
+  "from": "/it/categorie-notizia/malattie-ed-epidemie/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/malattie-ed-epidemie/"
+ },
+ {
+  "from": "/it/categorie-notizia/malteser-internazionale/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/malteser-internazionale/"
+ },
+ {
+  "from": "/it/categorie-notizia/notizie-gran-maestro/",
+  "to": "/it/categorie-notizia/notizie/notizie-gran-maestro/"
+ },
+ {
+  "from": "/it/categorie-notizia/strutture-mediche/",
+  "to": "/it/categorie-notizia/opere-umanitarie-mediche/strutture-mediche/"
+ },
+ {
+  "from": "/it/contact/",
+  "to": "/it/contatti/"
+ },
+ {
+  "from": "/it/governo/luogotenente-di-gran-maestro/",
+  "to": "/it/governo/gran-maestro/"
+ },
+ {
+  "from": "/it/media-e-pubblicazioni/newsletter/",
+  "to": "/it/media-e-pubblicazioni/"
+ },
+ {
+  "from": "/news-categories/activites-medicales-et-humanitaires/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/"
+ },
+ {
+  "from": "/news-categories/actualites/",
+  "to": "/fr/categories-de-actualites/actualites/"
+ },
+ {
+  "from": "/news-categories/aid-for-refugees/",
+  "to": "/news-categories/humanitarian-medical-works/aid-for-refugees/"
+ },
+ {
+  "from": "/news-categories/diplomatic-activities/",
+  "to": "/news-categories/all-news/diplomatic-activities/"
+ },
+ {
+  "from": "/news-categories/disaster-relief-prevention/",
+  "to": "/news-categories/humanitarian-medical-works/disaster-relief-prevention/"
+ },
+ {
+  "from": "/news-categories/disease-epidemics/",
+  "to": "/news-categories/humanitarian-medical-works/disease-epidemics/"
+ },
+ {
+  "from": "/news-categories/grand-master-news/",
+  "to": "/news-categories/all-news/grand-master-news/"
+ },
+ {
+  "from": "/news-categories/malteser-international-fr/",
+  "to": "/fr/categories-de-actualites/activites-medicales-et-humanitaires/malteser-international-fr/"
+ },
+ {
+  "from": "/news-categories/malteser-international/",
+  "to": "/news-categories/humanitarian-medical-works/malteser-international/"
+ },
+ {
+  "from": "/news-categories/medical-facilities/",
+  "to": "/news-categories/humanitarian-medical-works/medical-facilities/"
+ },
+ {
+  "from": "/news-categories/social-assistance/",
+  "to": "/news-categories/humanitarian-medical-works/social-assistance/"
+ },
+ {
+  "from": "/news-categories/volunteer-corps/",
+  "to": "/news-categories/humanitarian-medical-works/volunteer-corps/"
+ },
+ {
+  "from": "/press-publications/newsletter/",
+  "to": "/press-publications/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/mission/",
+  "to": "/about-the-order-of-malta/mission/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/nuns-of-the-order/",
+  "to": "/about-the-order-of-malta/nuns-of-the-order/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/pilgrimages/",
+  "to": "/about-the-order-of-malta/pilgrimages/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/prelate/",
+  "to": "/about-the-order-of-malta/prelate/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/saints-blessed/",
+  "to": "/about-the-order-of-malta/saints-blessed/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/spiritual-commitment/",
+  "to": "/about-the-order-of-malta/spiritual-commitment/"
+ },
+ {
+  "from": "/sovereign-order-of-malta/the-icon-of-our-lady-of-philermos/",
+  "to": "/about-the-order-of-malta/the-icon-of-our-lady-of-philermos/"
+ },
+ {
+  "from": "/wp-content/uploads/2022/09/Sovrano-Ordine-di-Malta-Carta-Costituzionale-e-Codice-2022-2.pdf",
+  "to": "/media/2022/09/sovrano-ordine-di-malta-carta-costituzionale-e-codice-2022-2.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2023/05/cert-7d2.zip",
+  "to": "/media/2023/05/cert-7d2.zip"
+ },
+ {
+  "from": "/wp-content/uploads/2023/05/cert-7d4.zip",
+  "to": "/media/2023/05/cert-7d4.zip"
+ },
+ {
+  "from": "/wp-content/uploads/2023/05/cert-7d5.zip",
+  "to": "/media/2023/05/cert-7d5.zip"
+ },
+ {
+  "from": "/wp-content/uploads/2025/07/Holy-Family-Hospital-Foundation_2025.pdf",
+  "to": "/media/2025/07/holy-family-hospital-foundation_2025.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2025/07/Malteser-International-Annual-Report-2024.pdf",
+  "to": "/media/2025/07/malteser-international-annual-report-2024.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2025/07/Malteser_Jahresbericht-2024.pdf",
+  "to": "/media/2025/07/malteser_jahresbericht-2024.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2025/07/Maltieciai_Metine-ataskaita_2024.pdf",
+  "to": "/media/2025/07/maltieciai_metine-ataskaita_2024.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2025/07/Ordre-de-Malte-France-%E2%80%93-Rapport-dActivite%CC%81-2024.pdf",
+  "to": "/media/2025/07/ordre-de-malte-france-rapport-dactivite-2024.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2025/10/30-years-at-the-United-Nations-1.pdf",
+  "to": "/media/2025/10/30-years-at-the-united-nations-1.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2025/12/Australian-Hospitaller-2024.pdf",
+  "to": "/media/2025/12/australian-hospitaller-2024.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/02/Lorma_marzo_2026_PAG-2-3.pdf",
+  "to": "/media/2026/02/lorma_marzo_2026_pag-2-3.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/06/Carta-Costituzionale-e-Codice-Ordine-di-Malta-2026.pdf",
+  "to": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/06/Rescriptum.pdf",
+  "to": "/media/2026/06/rescriptum.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/07/Malteser-International-Annual-Report-2025_online.pdf",
+  "to": "/media/2026/07/malteser-international-annual-report-2025_online.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/07/Malteser-International-Jahresbericht-2025_online.pdf",
+  "to": "/media/2026/07/malteser-international-jahresbericht-2025_online.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/07/Malteser_Jahresbericht_2025.pdf",
+  "to": "/media/2026/07/malteser_jahresbericht_2025.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/07/malteser-jahresbericht-2026.pdf",
+  "to": "/media/2026/07/malteser-jahresbericht-2026.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/07/ordre-de-malte-ra-2025_web-pages.pdf",
+  "to": "/media/2026/07/ordre-de-malte-ra-2025_web-pages.pdf"
+ },
+ {
+  "from": "/wp-content/uploads/2026/10/Messaggio-Santo-Padre-Leone-XIV-Noviziato-SMOM.pdf",
+  "to": "/media/2026/10/messaggio-santo-padre-leone-xiv-noviziato-smom.pdf"
+ }
+]

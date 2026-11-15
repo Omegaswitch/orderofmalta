@@ -1,0 +1,3229 @@
+{
+ "en": {
+  "main": [
+   {
+    "title": "The Order of Malta",
+    "url": "/about-the-order-of-malta/",
+    "feature": {
+     "title": "Mission",
+     "url": "/about-the-order-of-malta/mission/",
+     "image": "/media/2022/02/sovereign_mission.webp",
+     "text": "The Sovereign Order of Malta is one of the oldest institutions of Western and Christian civilisation."
+    },
+    "children": [
+     {
+      "title": "Members & Structure",
+      "url": null,
+      "children": [
+       {
+        "title": "Knights of Malta",
+        "url": "/about-the-order-of-malta/knights-of-malta/"
+       },
+       {
+        "title": "National Institutions",
+        "url": "/about-the-order-of-malta/national-institutions/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/about-the-order-of-malta/faq/"
+     },
+     {
+      "title": "Sources of law",
+      "url": null,
+      "children": [
+       {
+        "title": "Constitutional Charter and Code in Italian",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spirituality",
+      "url": null,
+      "children": [
+       {
+        "title": "Spiritual commitment",
+        "url": "/about-the-order-of-malta/spiritual-commitment/"
+       },
+       {
+        "title": "Prelate",
+        "url": "/about-the-order-of-malta/prelate/"
+       },
+       {
+        "title": "Pilgrimages",
+        "url": "/about-the-order-of-malta/pilgrimages/"
+       },
+       {
+        "title": "Our Lady of Philermos",
+        "url": "/about-the-order-of-malta/the-icon-of-our-lady-of-philermos/"
+       },
+       {
+        "title": "Nuns of the Order",
+        "url": "/about-the-order-of-malta/nuns-of-the-order/"
+       },
+       {
+        "title": "Saints and Blessed",
+        "url": "/about-the-order-of-malta/saints-blessed/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Government",
+    "url": "/government/",
+    "feature": {
+     "title": "Grand Master",
+     "url": "/government/grand-master/",
+     "image": "/media/2023/05/gran-master-order-of-malta-fra-john-dunlap.webp",
+     "text": "According to the Constitution, as the religious Superior and Sovereign, he must fully dedicate himself to the development of the works of the Order and to set an example of living by Christian principles, to all the members of the Order of Malta.",
+     "subtitle": "Fra’ John T. Dunlap"
+    },
+    "children": [
+     {
+      "title": "Governance",
+      "url": "/government/governance/"
+     },
+     {
+      "title": "Sovereign Council",
+      "url": "/government/sovereign-council/"
+     },
+     {
+      "title": "Government Bodies",
+      "url": "/government/government-bodies/"
+     },
+     {
+      "title": "Flag & Emblems",
+      "url": "/government/flags-emblems/"
+     },
+     {
+      "title": "Anthem",
+      "url": "/government/anthem-of-the-sovereign-order-of-malta-ave-crux-alba/"
+     },
+     {
+      "title": "Order Pro Merito Melitensi",
+      "url": "/government/order-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passports",
+      "url": "/government/passports/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Seats of the Order of Malta",
+      "url": null,
+      "children": [
+       {
+        "title": "Magistral Palace",
+        "url": "/government/magistral-palace/"
+       },
+       {
+        "title": "Magistral Villa",
+        "url": "/government/magistral-villa/"
+       },
+       {
+        "title": "The Keyhole",
+        "url": "/government/st-peter-basilica-through-the-keyhole/"
+       }
+      ]
+     },
+     {
+      "title": "Magistral Archives and Library",
+      "url": "/government/magistral-archives-and-library/"
+     },
+     {
+      "title": "Stamps & Coins",
+      "url": "/government/stamps-coins/"
+     }
+    ]
+   },
+   {
+    "title": "Humanitarian and Medical Works",
+    "url": "/humanitarian-medical-works/",
+    "feature": {
+     "title": "Hospitaller mission",
+     "url": "/humanitarian-medical-works/hospitaller-mission/",
+     "image": "/media/2022/02/humanitarian_humanitarian.webp",
+     "text": "The Order of Malta is permanently present with medical, social and humanitarian projects in most countries in the world."
+    },
+    "children": [
+     {
+      "title": "Aid for refugees",
+      "url": "/humanitarian-medical-works/aid-for-refugees/"
+     },
+     {
+      "title": "Disaster relief & prevention",
+      "url": "/humanitarian-medical-works/disaster-relief-prevention/"
+     },
+     {
+      "title": "Diseases & epidemics",
+      "url": "/humanitarian-medical-works/diseases-epidemics/"
+     },
+     {
+      "title": "Medical facilities",
+      "url": "/humanitarian-medical-works/medical-facilities/"
+     },
+     {
+      "title": "Social assistance",
+      "url": "/humanitarian-medical-works/social-assistance/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/humanitarian-medical-works/malteser-international/"
+     },
+     {
+      "title": "Volunteers",
+      "url": "/humanitarian-medical-works/volunteers/"
+     },
+     {
+      "title": "Bethlehem’s Hospital",
+      "url": "/humanitarian-medical-works/bethlehems-hospital/"
+     },
+     {
+      "title": "Youth for Lebanon",
+      "url": "/humanitarian-medical-works/youth-for-lebanon/"
+     }
+    ]
+   },
+   {
+    "title": "Diplomatic Activities",
+    "url": "/diplomatic-activities/",
+    "feature": {
+     "title": "Humanitarian Diplomacy",
+     "url": "/diplomatic-activities/humanitarian-diplomacy/",
+     "image": "/media/2022/02/diplomatic_humanitarian.webp",
+     "text": "The Sovereign Order of Malta’s diplomatic relations facilitate its medical and humanitarian activities."
+    },
+    "children": [
+     {
+      "title": "Bilateral relations",
+      "url": "/diplomatic-activities/bilateral-relations/"
+     },
+     {
+      "title": "Multilateral relations",
+      "url": "/diplomatic-activities/multilateral-relations/"
+     },
+     {
+      "title": "Ambassadors at large",
+      "url": "/diplomatic-activities/ambassadors-at-large/"
+     }
+    ]
+   },
+   {
+    "title": "News",
+    "url": "/news/",
+    "children": [
+     {
+      "title": "Latest interventions",
+      "url": "/news-categories/latest-interventions/"
+     },
+     {
+      "title": "Diplomatic Activities",
+      "url": "/news-categories/diplomatic-activities/"
+     },
+     {
+      "title": "Grand Master News",
+      "url": "/news-categories/all-news/grand-master-news/"
+     },
+     {
+      "title": "News archive",
+      "url": "/news/2021/"
+     },
+     {
+      "title": "Photo & Video galleries",
+      "url": "/photo-and-video-galleries/"
+     }
+    ]
+   },
+   {
+    "title": "Press & Publications",
+    "url": "/press-publications/",
+    "feature": {
+     "title": "Download the App",
+     "url": "/app/",
+     "image": "/media/2025/10/0_graphics.webp",
+     "text": "",
+     "subtitle": "The Order of Malta's official App"
+    },
+    "children": [
+     {
+      "title": "Order of Malta Publications",
+      "url": "/press-publications/publications/"
+     },
+     {
+      "title": "In the news",
+      "url": "/press-publications/in-the-news/"
+     },
+     {
+      "title": "Press releases",
+      "url": "/press-publications/press-releases/"
+     },
+     {
+      "title": "Mimic Orders",
+      "url": "/press-publications/clarification-mimic-orders/"
+     }
+    ]
+   },
+   {
+    "title": "History",
+    "url": "/history/",
+    "feature": {
+     "title": "From the 11th century to the present day",
+     "url": "/history/11-century-to-the-present-day/",
+     "image": "/media/2022/02/smom-history.webp",
+     "text": "The birth of the Order of St. John dates back to around the second half of the 11th century. It was under the leadership of Blessed Fra’ Gerard, founder and first Master, that the religious community became a lay religious order."
+    },
+    "children": [
+     {
+      "title": "The Grand Masters",
+      "url": "/history/the-grand-masters/"
+     },
+     {
+      "title": "Ancient Langues of the Order",
+      "url": "/history/the-ancient-languages-of-the-order/"
+     },
+     {
+      "title": "Names of the Order",
+      "url": "/history/names-of-the-order/"
+     },
+     {
+      "title": "The eight-pointed cross",
+      "url": "/history/the-eight-pointed-cross/"
+     },
+     {
+      "title": "1113 Papal Recognition",
+      "url": "/history/1113-papal-recognition/"
+     },
+     {
+      "title": "1113 – The Bull ‘Pie Postulatio Voluntatis’",
+      "url": "/history/1113-the-bull-pie-postulatio-voluntatis/"
+     },
+     {
+      "title": "Orders of St John",
+      "url": "/history/orders-of-st-john/"
+     }
+    ]
+   },
+   {
+    "title": "Contacts",
+    "url": "/contacts/"
+   }
+  ],
+  "footer": [
+   {
+    "title": "The Order of Malta",
+    "url": null,
+    "children": [
+     {
+      "title": "Mission",
+      "url": "/about-the-order-of-malta/mission/"
+     },
+     {
+      "title": "Members & Structure",
+      "url": null,
+      "children": [
+       {
+        "title": "Knights of Malta",
+        "url": "/about-the-order-of-malta/knights-of-malta/"
+       },
+       {
+        "title": "National Institutions",
+        "url": "/about-the-order-of-malta/national-institutions/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/about-the-order-of-malta/faq/"
+     },
+     {
+      "title": "Sources of law",
+      "url": null,
+      "children": [
+       {
+        "title": "Constitution and code",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spirituality",
+      "url": null,
+      "children": [
+       {
+        "title": "Spiritual Commitment",
+        "url": "/about-the-order-of-malta/spiritual-commitment/"
+       },
+       {
+        "title": "Prelate",
+        "url": "/about-the-order-of-malta/prelate/"
+       },
+       {
+        "title": "Pilgrimages",
+        "url": "/about-the-order-of-malta/pilgrimages/"
+       },
+       {
+        "title": "Our Lady of Philermos",
+        "url": "/about-the-order-of-malta/the-icon-of-our-lady-of-philermos/"
+       },
+       {
+        "title": "Nuns of the Order",
+        "url": "/about-the-order-of-malta/nuns-of-the-order/"
+       },
+       {
+        "title": "Saints & Blessed",
+        "url": "/about-the-order-of-malta/saints-blessed/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Government",
+    "url": null,
+    "children": [
+     {
+      "title": "Governance",
+      "url": "/government/governance/"
+     },
+     {
+      "title": "Sovereign Council",
+      "url": "/government/sovereign-council/"
+     },
+     {
+      "title": "Grand Master",
+      "url": "/government/grand-master/"
+     },
+     {
+      "title": "Grand Commander",
+      "url": "/government/grand-commander/"
+     },
+     {
+      "title": "Grand Chancellor",
+      "url": "/government/grand-chancellor/"
+     },
+     {
+      "title": "Grand Hospitaller",
+      "url": "/government/grand-hospitaller/"
+     },
+     {
+      "title": "Receiver of the Common Treasure",
+      "url": "/government/receiver-of-the-common-treasure/"
+     },
+     {
+      "title": "Government bodies",
+      "url": "/government/government-bodies/"
+     },
+     {
+      "title": "Flags & Emblems",
+      "url": "/government/flags-emblems/"
+     },
+     {
+      "title": "Anthem",
+      "url": "/government/anthem-of-the-sovereign-order-of-malta-ave-crux-alba/"
+     },
+     {
+      "title": "Order Pro Merito Melitensi",
+      "url": "/government/order-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passports",
+      "url": "/government/passports/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Seats of the Order of Malta",
+      "url": null,
+      "children": [
+       {
+        "title": "Magistral Palace",
+        "url": "/government/magistral-palace/"
+       },
+       {
+        "title": "Magistral Villa",
+        "url": "/government/magistral-villa/"
+       },
+       {
+        "title": "The Keyhole",
+        "url": "/government/st-peter-basilica-through-the-keyhole/"
+       },
+       {
+        "title": "Magistral Archives and Library",
+        "url": "/government/magistral-archives-and-library/"
+       }
+      ]
+     },
+     {
+      "title": "Stamps & Coins",
+      "url": "/government/stamps-coins/"
+     }
+    ]
+   },
+   {
+    "title": "Humanitarian & medical works",
+    "url": null,
+    "children": [
+     {
+      "title": "Hospitaller Mission",
+      "url": "/humanitarian-medical-works/hospitaller-mission/"
+     },
+     {
+      "title": "Aid for Refugees",
+      "url": "/humanitarian-medical-works/aid-for-refugees/"
+     },
+     {
+      "title": "Disaster Relief & Prevention",
+      "url": "/humanitarian-medical-works/disaster-relief-prevention/"
+     },
+     {
+      "title": "Diseases & Epidemics",
+      "url": "/humanitarian-medical-works/diseases-epidemics/"
+     },
+     {
+      "title": "Medical Facilities",
+      "url": "/humanitarian-medical-works/medical-facilities/"
+     },
+     {
+      "title": "Social assistance",
+      "url": "/humanitarian-medical-works/social-assistance/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/humanitarian-medical-works/malteser-international/"
+     },
+     {
+      "title": "Volunteers",
+      "url": "/humanitarian-medical-works/volunteers/"
+     },
+     {
+      "title": "Bethlehem’s Hospital",
+      "url": "/humanitarian-medical-works/bethlehems-hospital/"
+     },
+     {
+      "title": "Youth for Lebanon",
+      "url": "/humanitarian-medical-works/youth-for-lebanon/"
+     }
+    ]
+   },
+   {
+    "title": "Diplomatic Activities",
+    "url": null,
+    "children": [
+     {
+      "title": "Humanitarian diplomacy",
+      "url": "/diplomatic-activities/humanitarian-diplomacy/"
+     },
+     {
+      "title": "Bilateral relations",
+      "url": "/diplomatic-activities/bilateral-relations/"
+     },
+     {
+      "title": "Multilateral relations",
+      "url": "/diplomatic-activities/multilateral-relations/"
+     },
+     {
+      "title": "Ambassadors at large",
+      "url": "/diplomatic-activities/ambassadors-at-large/"
+     }
+    ]
+   },
+   {
+    "title": "News",
+    "url": null,
+    "children": [
+     {
+      "title": "News 2026",
+      "url": "/news/2026/"
+     },
+     {
+      "title": "News Archive",
+      "url": null,
+      "children": [
+       {
+        "title": "Latest interventions",
+        "url": "/news-categories/latest-interventions/"
+       },
+       {
+        "title": "Grand Master News",
+        "url": "/news-categories/all-news/grand-master-news/"
+       },
+       {
+        "title": "Diplomatic Actvities",
+        "url": "/news-categories/all-news/diplomatic-activities/"
+       }
+      ]
+     },
+     {
+      "title": "Photo & video gallery",
+      "url": "/photo-and-video-galleries/"
+     }
+    ]
+   },
+   {
+    "title": "Press & Publications",
+    "url": null,
+    "children": [
+     {
+      "title": "Publications",
+      "url": "/press-publications/publications/"
+     },
+     {
+      "title": "In the news",
+      "url": "/press-publications/in-the-news/"
+     },
+     {
+      "title": "Press Releases",
+      "url": "/press-publications/press-releases/"
+     },
+     {
+      "title": "Mimic Orders",
+      "url": "/press-publications/clarification-mimic-orders/"
+     }
+    ]
+   },
+   {
+    "title": "History",
+    "url": null,
+    "children": [
+     {
+      "title": "From 11th century to present day",
+      "url": "/history/11-century-to-the-present-day/"
+     },
+     {
+      "title": "The Grand Masters",
+      "url": "/history/the-grand-masters/"
+     },
+     {
+      "title": "Ancient Langues of the Order",
+      "url": "/history/the-ancient-languages-of-the-order/"
+     },
+     {
+      "title": "Names of the Order",
+      "url": "/history/names-of-the-order/"
+     },
+     {
+      "title": "The eight-pointed cross",
+      "url": "/history/the-eight-pointed-cross/"
+     },
+     {
+      "title": "1113 Papal Recognition",
+      "url": "/history/1113-papal-recognition/"
+     },
+     {
+      "title": "Orders of St John",
+      "url": "/history/orders-of-st-john/"
+     }
+    ]
+   }
+  ],
+  "social": [
+   {
+    "label": "Facebook",
+    "url": "https://www.facebook.com/OrderOfMalta"
+   },
+   {
+    "label": "X",
+    "url": "https://twitter.com/orderofmalta"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/c/orderofmaltaofficialchannel"
+   },
+   {
+    "label": "Instagram",
+    "url": "https://www.instagram.com/orderofmalta_official/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://it.linkedin.com/company/order-of-malta"
+   }
+  ],
+  "legal": [
+   {
+    "title": "Privacy Policy",
+    "url": "/privacy-policy/"
+   },
+   {
+    "title": "Cookie Policy",
+    "url": "/cookie-policy/"
+   }
+  ],
+  "footerCredits": {
+   "name": "Sovereign Military Hospitaller Order of St John of Jerusalem of Rhodes and of Malta",
+   "address": "Magistral Palace, Via Condotti, 68 Rome - Italy",
+   "phone": "Tel. +39.06.67581.1",
+   "email": "info@orderofmalta.int"
+  }
+ },
+ "it": {
+  "main": [
+   {
+    "title": "L’Ordine di Malta",
+    "url": "/it/l-ordine-di-malta/",
+    "feature": {
+     "title": "Missione",
+     "url": "/it/l-ordine-di-malta/missione/",
+     "image": "/media/2022/02/sovereign_mission.webp",
+     "text": "Il Sovrano Ordine di Malta è una delle istituzioni più antiche della civiltà occidentale e cristiana."
+    },
+    "children": [
+     {
+      "title": "Membri e Struttura",
+      "url": null,
+      "children": [
+       {
+        "title": "Cavalieri di Malta",
+        "url": "/it/l-ordine-di-malta/i-cavalieri-di-malta/"
+       },
+       {
+        "title": "Istituzioni Nazionali",
+        "url": "/it/l-ordine-di-malta/istituzioni-nazionali/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/it/l-ordine-di-malta/faq/"
+     },
+     {
+      "title": "Fonti del diritto",
+      "url": null,
+      "children": [
+       {
+        "title": "Carta Costituzionale e Codice",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spiritualità",
+      "url": null,
+      "children": [
+       {
+        "title": "Impegno spirituale",
+        "url": "/it/l-ordine-di-malta/impegno-spirituale/"
+       },
+       {
+        "title": "Prelato",
+        "url": "/it/l-ordine-di-malta/prelato/"
+       },
+       {
+        "title": "Pellegrinaggi",
+        "url": "/it/l-ordine-di-malta/pellegrinaggi/"
+       },
+       {
+        "title": "L’icona della Madonna del Fileremo",
+        "url": "/it/l-ordine-di-malta/l-icona-della-madonna-del-fileremo/"
+       },
+       {
+        "title": "Le Monache dell’Ordine",
+        "url": "/it/l-ordine-di-malta/le-monache-dell-ordine/"
+       },
+       {
+        "title": "Santi e Beati",
+        "url": "/it/l-ordine-di-malta/santi-e-beati/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Governo",
+    "url": "/it/governo/",
+    "feature": {
+     "title": "Gran Maestro",
+     "url": "/it/governo/gran-maestro/",
+     "image": "/media/2023/05/gran-master-order-of-malta-fra-john-dunlap.webp",
+     "text": "Secondo la Costituzione, quale Sovrano e Superiore religioso, deve dedicarsi pienamente all’incremento delle opere melitensi ed essere d’esempio per tutti i membri dell’Ordine di Malta.",
+     "subtitle": "Fra’ John T. Dunlap"
+    },
+    "children": [
+     {
+      "title": "Governance",
+      "url": "/it/governo/governance/"
+     },
+     {
+      "title": "Sovrano Consiglio",
+      "url": "/it/governo/sovrano-consiglio/"
+     },
+     {
+      "title": "Organi di Governo",
+      "url": "/it/governo/organi-di-governo/"
+     },
+     {
+      "title": "Bandiere e Stemmi",
+      "url": "/it/governo/bandiere-e-stemmi/"
+     },
+     {
+      "title": "Inno",
+      "url": "/it/governo/inno-del-sovrano-ordine-di-malta-ave-crux-alba/"
+     },
+     {
+      "title": "Ordine Pro Merito Melitensi",
+      "url": "/it/governo/ordine-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passaporti",
+      "url": "/it/governo/passaporti/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Sedi dell'Ordine di Malta",
+      "url": null,
+      "children": [
+       {
+        "title": "Palazzo Magistrale",
+        "url": "/it/governo/palazzo-magistrale/"
+       },
+       {
+        "title": "Villa Magistrale",
+        "url": "/it/governo/villa-magistrale/"
+       },
+       {
+        "title": "Buco della Serratura",
+        "url": "/it/governo/basilica-san-pietro-dal-buco-della-serratura/"
+       },
+       {
+        "title": "",
+        "url": "/it/governo/archivi-e-biblioteca-magistrali/"
+       }
+      ]
+     },
+     {
+      "title": "Archivi e biblioteca magistrali",
+      "url": "/it/governo/archivi-e-biblioteca-magistrali/"
+     },
+     {
+      "title": "Filatelia e Numismatica",
+      "url": "/government/stamps-coins/"
+     }
+    ]
+   },
+   {
+    "title": "Opere mediche e umanitarie",
+    "url": "/it/opere-mediche-e-umanitarie/",
+    "feature": {
+     "title": "Missione Ospedaliera",
+     "url": "/it/opere-mediche-e-umanitarie/missione-ospedaliera/",
+     "image": "/media/2022/02/humanitarian_humanitarian.webp",
+     "text": "L’Ordine di Malta è presente in modo permanente con progetti medici, sociali e umanitari nella maggior parte dei Paesi nel mondo."
+    },
+    "children": [
+     {
+      "title": "Aiuti per i Rifugiati",
+      "url": "/it/opere-mediche-e-umanitarie/aiuti-per-i-rifugiati/"
+     },
+     {
+      "title": "Prevenzione ed interventi post catastrofi",
+      "url": "/it/opere-mediche-e-umanitarie/prevenzione-ed-interventi-post-catastrofi/"
+     },
+     {
+      "title": "Malattie ed epidemie",
+      "url": "/it/opere-mediche-e-umanitarie/malattie-ed-epidemie/"
+     },
+     {
+      "title": "Strutture Mediche",
+      "url": "/it/opere-mediche-e-umanitarie/strutture-mediche/"
+     },
+     {
+      "title": "Assistenza Sociale",
+      "url": "/it/opere-mediche-e-umanitarie/assistenza-sociale/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/it/opere-mediche-e-umanitarie/malteser-international/"
+     },
+     {
+      "title": "Volontari",
+      "url": "/it/opere-mediche-e-umanitarie/volontari/"
+     },
+     {
+      "title": "Ospedale di Betlemme",
+      "url": "/it/opere-mediche-e-umanitarie/ospedale-di-betlemme/"
+     },
+     {
+      "title": "Giovani per il Libano",
+      "url": "/it/opere-mediche-e-umanitarie/giovani-per-il-libano/"
+     }
+    ]
+   },
+   {
+    "title": "Attività diplomatiche",
+    "url": "/it/attivita-diplomatiche/",
+    "feature": {
+     "title": "Diplomazia umanitaria",
+     "url": "/it/attivita-diplomatiche/diplomazia-umanitaria/",
+     "image": "/media/2022/02/diplomatic_humanitarian.webp",
+     "text": "Le relazioni diplomatiche del Sovrano Ordine di Malta contribuiscono ad agevolare le sue attività mediche ed umanitarie."
+    },
+    "children": [
+     {
+      "title": "Relazioni Bilaterali",
+      "url": "/it/attivita-diplomatiche/relazioni-bilaterali/"
+     },
+     {
+      "title": "Relazioni Multilaterali",
+      "url": "/it/attivita-diplomatiche/relazioni-multilaterali/"
+     },
+     {
+      "title": "Ambasciatori a carattere speciale",
+      "url": "/it/attivita-diplomatiche/ambasciatori-a-carattere-speciale/"
+     }
+    ]
+   },
+   {
+    "title": "Notizie",
+    "url": "/it/notizie/",
+    "children": [
+     {
+      "title": "Ultimi Interventi",
+      "url": "/it/categorie-notizia/ultimi-interventi/"
+     },
+     {
+      "title": "Attività diplomatiche",
+      "url": "/it/categorie-notizia/attivita-diplomatiche/"
+     },
+     {
+      "title": "Notizie Gran Maestro",
+      "url": "/it/categorie-notizia/notizie/notizie-gran-maestro/"
+     },
+     {
+      "title": "Archivio Notizie",
+      "url": "/it/notizie/2021/"
+     },
+     {
+      "title": "Galleria foto e video",
+      "url": "/it/gallerie-foto-e-video/"
+     }
+    ]
+   },
+   {
+    "title": "Media e pubblicazioni",
+    "url": "/it/media-e-pubblicazioni/",
+    "feature": {
+     "title": "Scarica l'App",
+     "url": "/app/",
+     "image": "/media/2025/10/0_graphics.webp",
+     "text": "",
+     "subtitle": "L'App ufficiale dell'Ordine di Malta"
+    },
+    "children": [
+     {
+      "title": "Ordine di Malta Pubblicazioni",
+      "url": "/it/media-e-pubblicazioni/pubblicazioni/"
+     },
+     {
+      "title": "Sui Giornali",
+      "url": "/it/media-e-pubblicazioni/nei-giornali/"
+     },
+     {
+      "title": "Comunicati Stampa",
+      "url": "/it/media-e-pubblicazioni/comunicati-stampa/"
+     },
+     {
+      "title": "Organizzazioni imitatrici",
+      "url": "/it/media-e-pubblicazioni/organizzazioni-imitatrici/"
+     }
+    ]
+   },
+   {
+    "title": "Storia",
+    "url": "/it/storia/",
+    "feature": {
+     "title": "Dall’XI secolo ai giorni nostri",
+     "url": "/it/storia/da-xi-secolo-ai-giorni-nostri/",
+     "image": "/media/2022/02/smom-history.webp",
+     "text": "La nascita dell’Ordine di San Giovanni risale alla seconda metà dell'XI secolo. È sotto la guida del Beato Fra’ Gerardo, fondatore e primo Maestro, che la comunità religiosa viene trasformata in un ordine religioso laicale."
+    },
+    "children": [
+     {
+      "title": "I Gran Maestri",
+      "url": "/it/storia/i-gran-maestri/"
+     },
+     {
+      "title": "Le antiche lingue dell’Ordine",
+      "url": "/it/storia/le-antiche-lingue-dei-cavalieri/"
+     },
+     {
+      "title": "I nomi dell'Ordine",
+      "url": "/it/storia/i-nomi-dellordine/"
+     },
+     {
+      "title": "La croce a otto punte",
+      "url": "/it/storia/la-croce-a-otto-punte/"
+     },
+     {
+      "title": "1113 Riconoscimento del Papa",
+      "url": "/it/storia/1113-riconoscimento-del-papa/"
+     },
+     {
+      "title": "La Bolla \"Pie Postulatio Voluntatis\"",
+      "url": "/it/storia/1113-la-bolla-pie-postulatio-voluntatis/"
+     },
+     {
+      "title": "Gli Ordini di San Giovanni",
+      "url": "/it/storia/gli-ordini-di-san-giovanni/"
+     }
+    ]
+   },
+   {
+    "title": "Contatti",
+    "url": "/it/contatti/"
+   }
+  ],
+  "footer": [
+   {
+    "title": "L'Ordine di Malta",
+    "url": null,
+    "children": [
+     {
+      "title": "Missione",
+      "url": "/it/l-ordine-di-malta/missione/"
+     },
+     {
+      "title": "Membri e Struttura",
+      "url": null,
+      "children": [
+       {
+        "title": "I Cavalieri di Malta",
+        "url": "/it/l-ordine-di-malta/i-cavalieri-di-malta/"
+       },
+       {
+        "title": "Istituzioni Nazionali",
+        "url": "/it/l-ordine-di-malta/istituzioni-nazionali/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/it/l-ordine-di-malta/faq/"
+     },
+     {
+      "title": "Fonti del diritto",
+      "url": null,
+      "children": [
+       {
+        "title": "Costituzione e Codice",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spiritualità",
+      "url": null,
+      "children": [
+       {
+        "title": "Impegno spirituale",
+        "url": "/it/l-ordine-di-malta/impegno-spirituale/"
+       },
+       {
+        "title": "Prelato",
+        "url": "/it/l-ordine-di-malta/prelato/"
+       },
+       {
+        "title": "Pellegrinaggi",
+        "url": "/it/l-ordine-di-malta/pellegrinaggi/"
+       },
+       {
+        "title": "Madonna del Fileremo",
+        "url": "/it/l-ordine-di-malta/l-icona-della-madonna-del-fileremo/"
+       },
+       {
+        "title": "Le Monache dell’Ordine di Malta",
+        "url": "/it/l-ordine-di-malta/le-monache-dell-ordine/"
+       },
+       {
+        "title": "Santi e Beati",
+        "url": "/it/l-ordine-di-malta/santi-e-beati/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Governo",
+    "url": null,
+    "children": [
+     {
+      "title": "Governance",
+      "url": "/it/governo/governance/"
+     },
+     {
+      "title": "Sovrano Consiglio",
+      "url": "/it/governo/sovrano-consiglio/"
+     },
+     {
+      "title": "Gran Maestro",
+      "url": "/it/governo/gran-maestro/"
+     },
+     {
+      "title": "Gran Commendatore",
+      "url": "/it/governo/gran-commendatore/"
+     },
+     {
+      "title": "Gran Cancelliere",
+      "url": "/it/governo/gran-cancelliere/"
+     },
+     {
+      "title": "Grande Ospedaliere",
+      "url": "/it/governo/grande-ospedaliere/"
+     },
+     {
+      "title": "Ricevitore del Comun Tesoro",
+      "url": "/it/governo/ricevitore-del-comun-tesoro/"
+     },
+     {
+      "title": "Government bodies",
+      "url": "/it/governo/organi-di-governo/"
+     },
+     {
+      "title": "Flags & Emblems",
+      "url": "/it/governo/bandiere-e-stemmi/"
+     },
+     {
+      "title": "Anthem",
+      "url": "/it/governo/inno-del-sovrano-ordine-di-malta-ave-crux-alba/"
+     },
+     {
+      "title": "Order Pro Merito Melitensi",
+      "url": "/it/governo/ordine-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passports",
+      "url": "/it/governo/passaporti/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Organi di governo",
+      "url": "/it/governo/organi-di-governo/"
+     },
+     {
+      "title": "Bandiere e Stemmi",
+      "url": "/it/governo/bandiere-e-stemmi/"
+     }
+    ]
+   },
+   {
+    "title": "Opere mediche e umanitarie",
+    "url": null,
+    "children": [
+     {
+      "title": "Missione ospedaliera",
+      "url": "/it/opere-mediche-e-umanitarie/missione-ospedaliera/"
+     },
+     {
+      "title": "Aiuti per i rifugiati",
+      "url": "/it/opere-mediche-e-umanitarie/aiuti-per-i-rifugiati/"
+     },
+     {
+      "title": "Prevenzione ed interventi post catastrofi",
+      "url": "/it/opere-mediche-e-umanitarie/prevenzione-ed-interventi-post-catastrofi/"
+     },
+     {
+      "title": "Malattie ed epidemie",
+      "url": "/it/opere-mediche-e-umanitarie/malattie-ed-epidemie/"
+     },
+     {
+      "title": "Strutture mediche",
+      "url": "/it/opere-mediche-e-umanitarie/strutture-mediche/"
+     },
+     {
+      "title": "Assistenza sociale",
+      "url": "/it/opere-mediche-e-umanitarie/assistenza-sociale/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/it/opere-mediche-e-umanitarie/malteser-international/"
+     },
+     {
+      "title": "Volontari",
+      "url": "/it/opere-mediche-e-umanitarie/volontari/"
+     },
+     {
+      "title": "Giovani per il Libano",
+      "url": "/it/opere-mediche-e-umanitarie/giovani-per-il-libano/"
+     },
+     {
+      "title": "Youth for Lebanon",
+      "url": "/it/opere-mediche-e-umanitarie/giovani-per-il-libano/"
+     }
+    ]
+   },
+   {
+    "title": "Attività diplomatiche",
+    "url": null,
+    "children": [
+     {
+      "title": "Diplomazia umanitaria",
+      "url": "/it/attivita-diplomatiche/diplomazia-umanitaria/"
+     },
+     {
+      "title": "Relazioni bilaterali",
+      "url": "/it/attivita-diplomatiche/relazioni-bilaterali/"
+     },
+     {
+      "title": "Relazioni multilaterali",
+      "url": "/it/attivita-diplomatiche/relazioni-multilaterali/"
+     },
+     {
+      "title": "Ambasciatori a carattere regionale o speciale",
+      "url": "/it/attivita-diplomatiche/ambasciatori-a-carattere-speciale/"
+     }
+    ]
+   },
+   {
+    "title": "Notizie",
+    "url": null,
+    "children": [
+     {
+      "title": "Notizie 2026",
+      "url": "/news/2026/"
+     },
+     {
+      "title": "Archivio notizie",
+      "url": null,
+      "children": [
+       {
+        "title": "Ultimi Interventi",
+        "url": "/it/categorie-notizia/ultimi-interventi/"
+       },
+       {
+        "title": "Notizie Gran Maestro",
+        "url": "/it/categorie-notizia/notizie/notizie-gran-maestro/"
+       },
+       {
+        "title": "Attività diplomatiche",
+        "url": "/it/categorie-notizia/notizie/attivita-diplomatiche/"
+       }
+      ]
+     },
+     {
+      "title": "Galleria Foto e Video",
+      "url": "/it/gallerie-foto-e-video/"
+     }
+    ]
+   },
+   {
+    "title": "Media e Pubblicazioni",
+    "url": null,
+    "children": [
+     {
+      "title": "Pubblicazioni",
+      "url": "/it/media-e-pubblicazioni/pubblicazioni/"
+     },
+     {
+      "title": "Nei giornali",
+      "url": "/it/media-e-pubblicazioni/nei-giornali/"
+     },
+     {
+      "title": "Comunicati stampa",
+      "url": "/it/media-e-pubblicazioni/comunicati-stampa/"
+     },
+     {
+      "title": "Organizzazioni imitatrici",
+      "url": "/it/media-e-pubblicazioni/organizzazioni-imitatrici/"
+     }
+    ]
+   },
+   {
+    "title": "Storia",
+    "url": null,
+    "children": [
+     {
+      "title": "Dall’XI secolo ai giorni nostri",
+      "url": "/it/storia/da-xi-secolo-ai-giorni-nostri/"
+     },
+     {
+      "title": "I Gran Maestri",
+      "url": "/it/storia/i-gran-maestri/"
+     },
+     {
+      "title": "Le antiche Lingue dei Cavalieri",
+      "url": "/it/storia/le-antiche-lingue-dei-cavalieri/"
+     },
+     {
+      "title": "I nomi dell'Ordine",
+      "url": "/it/storia/i-nomi-dellordine/"
+     },
+     {
+      "title": "La croce a otto punte",
+      "url": "/it/storia/la-croce-a-otto-punte/"
+     },
+     {
+      "title": "1113 Riconoscimento del Papa",
+      "url": "/it/storia/1113-riconoscimento-del-papa/"
+     },
+     {
+      "title": "La Bolla \"Pie Postulatio Voluntatis\"",
+      "url": "/it/storia/1113-la-bolla-pie-postulatio-voluntatis/"
+     }
+    ]
+   }
+  ],
+  "social": [
+   {
+    "label": "Facebook",
+    "url": "https://www.facebook.com/OrdineDiMalta"
+   },
+   {
+    "label": "X",
+    "url": "https://twitter.com/ordinedimalta"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/c/orderofmaltaofficialchannel"
+   },
+   {
+    "label": "Instagram",
+    "url": "https://www.instagram.com/orderofmalta_official/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://it.linkedin.com/company/order-of-malta"
+   }
+  ],
+  "legal": [
+   {
+    "title": "Informazioni sulla privacy",
+    "url": "/it/informazioni-sulla-privacy/"
+   },
+   {
+    "title": "Cookie policy",
+    "url": "/it/cookie-policy/"
+   }
+  ],
+  "footerCredits": {
+   "name": "Sovrano Militare Ordine Ospedaliero di San Giovanni di Gerusalemme di Rodi e di Malta",
+   "address": "Palazzo Magistrale, Via Condotti, 68 – 00187 Roma – Italia",
+   "phone": "Tel. +39.06.67581.1,",
+   "email": "info@orderofmalta.int"
+  }
+ },
+ "fr": {
+  "main": [
+   {
+    "title": "L’Ordre de Malte",
+    "url": "/fr/l-ordre-de-malte/",
+    "feature": {
+     "title": "Mission",
+     "url": "/fr/l-ordre-de-malte/mission/",
+     "image": "/media/2022/02/sovereign_mission.webp",
+     "text": "L’Ordre Souverain de Malte est une des institutions les plus anciennes de la civilisation occidentale et chrétienne."
+    },
+    "children": [
+     {
+      "title": "Membres et structure",
+      "url": null,
+      "children": [
+       {
+        "title": "Les Chevaliers de Malte",
+        "url": "/fr/l-ordre-de-malte/les-chevaliers-de-malte/"
+       },
+       {
+        "title": "Institutions Nationales",
+        "url": "/fr/l-ordre-de-malte/institutions-nationales/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/fr/l-ordre-de-malte/faq/"
+     },
+     {
+      "title": "Sources du droit",
+      "url": null,
+      "children": [
+       {
+        "title": "Charte Constitutionnelle et Code en italien",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spiritualité",
+      "url": null,
+      "children": [
+       {
+        "title": "Engagement spirituel",
+        "url": "/fr/l-ordre-de-malte/engagement-spirituel/"
+       },
+       {
+        "title": "Prélat",
+        "url": "/fr/l-ordre-de-malte/prelat/"
+       },
+       {
+        "title": "Pèlerinages",
+        "url": "/fr/l-ordre-de-malte/pelerinages/"
+       },
+       {
+        "title": "La Vierge de Philerme",
+        "url": "/fr/l-ordre-de-malte/l-icone-de-la-vierge-de-philerme/"
+       },
+       {
+        "title": "Les Moniales de l’Ordre",
+        "url": "/fr/l-ordre-de-malte/les-moniales-de-l-ordre/"
+       },
+       {
+        "title": "Saints et Bienheureux",
+        "url": "/fr/l-ordre-de-malte/saints-et-bienheureux/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Gouvernement",
+    "url": "/fr/gouvernement/",
+    "feature": {
+     "title": "Grand Maître",
+     "url": "/fr/gouvernement/grand-maitre/",
+     "image": "/media/2023/05/gran-master-order-of-malta-fra-john-dunlap.webp",
+     "text": "Conformément à la Constitution, en tant que souverain et Supérieur religieux, il doit se consacrer entièrement au développement des œuvres de l’Ordre et montrer à tous les membres de l’Ordre de Malte l’exemple d’une vie animée par les principes chrétiens.",
+     "subtitle": "Fra’ John T. Dunlap"
+    },
+    "children": [
+     {
+      "title": "Gouvernance",
+      "url": "/fr/gouvernement/gouvernance/"
+     },
+     {
+      "title": "Le Souverain Conseil",
+      "url": "/fr/gouvernement/le-souverain-conseil/"
+     },
+     {
+      "title": "Organes de gouvernement",
+      "url": "/fr/gouvernement/organes-de-gouvernement/"
+     },
+     {
+      "title": "Drapeaux et Emblèmes",
+      "url": "/fr/gouvernement/drapeaux-et-emblemes/"
+     },
+     {
+      "title": "Hymne",
+      "url": "/fr/gouvernement/hymne-de-lordre-souverain-de-malte-lave-crux-alba/"
+     },
+     {
+      "title": "Ordre Pro Merito Melitensi",
+      "url": "/fr/gouvernement/ordre-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passeports",
+      "url": "/fr/gouvernement/passeports/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Sièges de l’Ordre de Malte",
+      "url": null,
+      "children": [
+       {
+        "title": "Palais Magistral",
+        "url": "/fr/gouvernement/palais-magistral/"
+       },
+       {
+        "title": "Villa Magistrale",
+        "url": "/fr/gouvernement/villa-magistrale/"
+       },
+       {
+        "title": "Le trou de la serrure",
+        "url": "/fr/gouvernement/basilique-saint-pierre-trou-de-la-serrure/"
+       }
+      ]
+     },
+     {
+      "title": "Archives et Bibliothèque Magistrales",
+      "url": "/fr/gouvernement/archives-bibliotheque-magistrales/"
+     },
+     {
+      "title": "Timbres et monnaies",
+      "url": "/fr/gouvernement/timbres-et-monnaies/"
+     }
+    ]
+   },
+   {
+    "title": "Œuvres médicales et humanitaires",
+    "url": "/fr/oeuvres-medicales-et-humanitaires/",
+    "feature": {
+     "title": "Mission hospitalière",
+     "url": "/fr/oeuvres-medicales-et-humanitaires/mission-hospitaliere/",
+     "image": "/media/2022/02/humanitarian_humanitarian.webp",
+     "text": "L’Ordre de Malte est présent de façon permanente dans de nombreux pays dans le monde au travers de projets médicaux, sociaux et humanitaires."
+    },
+    "children": [
+     {
+      "title": "Aide aux réfugiés",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/aide-aux-refugies/"
+     },
+     {
+      "title": "Soulager et prévenir les catastrophes",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/soulager-et-prevenir-les-catastrophes/"
+     },
+     {
+      "title": "Maladies et épidémies",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/maladies-et-epidemies/"
+     },
+     {
+      "title": "Structures médicales",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/structures-medicales/"
+     },
+     {
+      "title": "Assistance sociale",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/assistance-sociale/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/malteser-international/"
+     },
+     {
+      "title": "Bénévoles",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/benevoles/"
+     },
+     {
+      "title": "L’Hôpital de Bethléem",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/l-hopital-de-bethleem/"
+     },
+     {
+      "title": "Les jeunes pour le Liban",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/les-jeunes-pour-le-liban/"
+     }
+    ]
+   },
+   {
+    "title": "Activités Diplomatiques",
+    "url": "/fr/activites-diplomatiques/",
+    "feature": {
+     "title": "Diplomatie humanitaire",
+     "url": "/fr/activites-diplomatiques/diplomatie-humanitaire/",
+     "image": "/media/2022/02/diplomatic_humanitarian.webp",
+     "text": "Les relations diplomatiques de l'Ordre Souverain de Malte contribuent à faciliter ses activités médicales et humanitaires."
+    },
+    "children": [
+     {
+      "title": "Relations Bilatérales",
+      "url": "/fr/activites-diplomatiques/relations-bilaterales/"
+     },
+     {
+      "title": "Relations Multilatérales",
+      "url": "/fr/activites-diplomatiques/relations-multilaterales/"
+     },
+     {
+      "title": "Ambassadeurs à caractère spécial",
+      "url": "/fr/activites-diplomatiques/ambassadeurs-a-caractere-special/"
+     }
+    ]
+   },
+   {
+    "title": "Actualités",
+    "url": "/fr/actualites/",
+    "children": [
+     {
+      "title": "Dernières interventions",
+      "url": "/fr/categories-de-actualites/dernieres-interventions/"
+     },
+     {
+      "title": "Activité Diplomatiques",
+      "url": "/fr/categories-de-actualites/activites-diplomatiques/"
+     },
+     {
+      "title": "Nouvelles Grand Maître",
+      "url": "/fr/categories-de-actualites/actualites/nouvelles-de-grand-maitre/"
+     },
+     {
+      "title": "Archives",
+      "url": "/fr/actualites/2021/"
+     },
+     {
+      "title": "Galerie photos et vidéos",
+      "url": "/fr/galeries-photo-et-video/"
+     }
+    ]
+   },
+   {
+    "title": "Presse et publications",
+    "url": "/fr/press-et-publications/",
+    "feature": {
+     "title": "Téléchargez l'application",
+     "url": "/app/",
+     "image": "/media/2025/10/0_graphics.webp",
+     "text": "",
+     "subtitle": "L'application officielle de l'Ordre de Malte"
+    },
+    "children": [
+     {
+      "title": "Publications de l'Ordre de Malte",
+      "url": "/fr/press-et-publications/publications/"
+     },
+     {
+      "title": "Dans les médias",
+      "url": "/fr/press-et-publications/dans-les-medias/"
+     },
+     {
+      "title": "Communiqués de presse",
+      "url": "/fr/press-et-publications/communiques-de-presse/"
+     },
+     {
+      "title": "Ordres autoproclamés",
+      "url": "/fr/press-et-publications/les-ordres-autoproclames/"
+     }
+    ]
+   },
+   {
+    "title": "Histoire",
+    "url": "/fr/histoire/",
+    "feature": {
+     "title": "Du XIᵉ siècle à nos jours",
+     "url": "/fr/histoire/du-xi-siecle-a-nos-jours/",
+     "image": "/media/2022/02/smom-history.webp",
+     "text": "La naissance de l’Ordre de Saint-Jean remonte à la seconde moitié du XIᵉ siècle. C’est sous la conduite du bienheureux Gérard, fondateur et premier Maître, que la communauté religieuse devient un ordre religieux laïc."
+    },
+    "children": [
+     {
+      "title": "Les Grands Maîtres",
+      "url": "/fr/histoire/les-grands-maitres/"
+     },
+     {
+      "title": "Les anciennes langues de l’Ordre",
+      "url": "/fr/histoire/les-anciennes-langues-des-chevaliers/"
+     },
+     {
+      "title": "Les noms de l’Ordre",
+      "url": "/fr/histoire/les-noms-de-lordre/"
+     },
+     {
+      "title": "La croix à huit pointes",
+      "url": "/fr/histoire/la-croix-a-huit-pointes/"
+     },
+     {
+      "title": "1113 Reconnaissance du Pape",
+      "url": "/fr/histoire/1113-reconnaissance-du-pape/"
+     },
+     {
+      "title": "1113 La Bulle \"Pie Postulatio Voluntatis\"",
+      "url": "/fr/histoire/1113-la-bulle-pie-postulatio-voluntatis/"
+     },
+     {
+      "title": "Les Ordres de Saint-Jean",
+      "url": "/fr/histoire/les-ordres-de-saint-jean/"
+     }
+    ]
+   },
+   {
+    "title": "Contacts",
+    "url": "/fr/contacts/"
+   }
+  ],
+  "footer": [
+   {
+    "title": "L’Ordre de Malte",
+    "url": null,
+    "children": [
+     {
+      "title": "Mission",
+      "url": "/fr/l-ordre-de-malte/mission/"
+     },
+     {
+      "title": "Membres et structure",
+      "url": null,
+      "children": [
+       {
+        "title": "Les Chevaliers de Malte",
+        "url": "/fr/l-ordre-de-malte/les-chevaliers-de-malte/"
+       },
+       {
+        "title": "Institutions Nationales",
+        "url": "/fr/l-ordre-de-malte/institutions-nationales/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/fr/l-ordre-de-malte/faq/"
+     },
+     {
+      "title": "Sources du droit",
+      "url": null,
+      "children": [
+       {
+        "title": "Constitution et Code",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spiritualité",
+      "url": null,
+      "children": [
+       {
+        "title": "Engagement spirituel",
+        "url": "/fr/l-ordre-de-malte/engagement-spirituel/"
+       },
+       {
+        "title": "Prélat",
+        "url": "/fr/l-ordre-de-malte/prelat/"
+       },
+       {
+        "title": "Pèlerinages",
+        "url": "/fr/l-ordre-de-malte/pelerinages/"
+       },
+       {
+        "title": "La Vierge de Philerme",
+        "url": "/fr/l-ordre-de-malte/l-icone-de-la-vierge-de-philerme/"
+       },
+       {
+        "title": "Les Moniales de l’Ordre",
+        "url": "/fr/l-ordre-de-malte/les-moniales-de-l-ordre/"
+       },
+       {
+        "title": "Saints et Bienheureux",
+        "url": "/fr/l-ordre-de-malte/saints-et-bienheureux/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Gouvernement",
+    "url": null,
+    "children": [
+     {
+      "title": "Gouvernance",
+      "url": "/fr/gouvernement/gouvernance/"
+     },
+     {
+      "title": "Le Souverain Conseil",
+      "url": "/fr/gouvernement/le-souverain-conseil/"
+     },
+     {
+      "title": "Grand Maître",
+      "url": "/fr/gouvernement/grand-maitre/"
+     },
+     {
+      "title": "Grand Commandeur",
+      "url": "/fr/gouvernement/grand-commandeur/"
+     },
+     {
+      "title": "Grand Chancelier",
+      "url": "/fr/gouvernement/grand-chancelier/"
+     },
+     {
+      "title": "Grand Hospitalier",
+      "url": "/fr/gouvernement/grand-hospitalier/"
+     },
+     {
+      "title": "Receveur du Commun Trésor",
+      "url": "/fr/gouvernement/receveur-du-commun-tresor/"
+     },
+     {
+      "title": "Government bodies",
+      "url": "/fr/gouvernement/organes-de-gouvernement/"
+     },
+     {
+      "title": "Flags & Emblems",
+      "url": "/fr/gouvernement/drapeaux-et-emblemes/"
+     },
+     {
+      "title": "Anthem",
+      "url": "/fr/gouvernement/hymne-de-lordre-souverain-de-malte-lave-crux-alba/"
+     },
+     {
+      "title": "Order Pro Merito Melitensi",
+      "url": "/fr/gouvernement/ordre-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passports",
+      "url": "/fr/gouvernement/passeports/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Organes de gouvernement",
+      "url": "/fr/gouvernement/organes-de-gouvernement/"
+     },
+     {
+      "title": "Drapeaux et Emblèmes",
+      "url": "/fr/gouvernement/drapeaux-et-emblemes/"
+     }
+    ]
+   },
+   {
+    "title": "Œuvres médicales et humanitaires",
+    "url": null,
+    "children": [
+     {
+      "title": "Mission hospitalière",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/mission-hospitaliere/"
+     },
+     {
+      "title": "Aide aux réfugiés",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/aide-aux-refugies/"
+     },
+     {
+      "title": "Soulager et prévenir les catastrophes",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/soulager-et-prevenir-les-catastrophes/"
+     },
+     {
+      "title": "Maladies et épidémies",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/maladies-et-epidemies/"
+     },
+     {
+      "title": "Structures médicales",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/structures-medicales/"
+     },
+     {
+      "title": "Assistance sociale",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/assistance-sociale/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/malteser-international/"
+     },
+     {
+      "title": "Bénévoles",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/benevoles/"
+     },
+     {
+      "title": "L’Hôpital de Bethléem",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/l-hopital-de-bethleem/"
+     },
+     {
+      "title": "Les jeunes pour le Liban",
+      "url": "/fr/oeuvres-medicales-et-humanitaires/les-jeunes-pour-le-liban/"
+     }
+    ]
+   },
+   {
+    "title": "Activités diplomatiques",
+    "url": null,
+    "children": [
+     {
+      "title": "Diplomatie humanitaire",
+      "url": "/fr/activites-diplomatiques/diplomatie-humanitaire/"
+     },
+     {
+      "title": "Relations bilatérales",
+      "url": "/fr/activites-diplomatiques/relations-bilaterales/"
+     },
+     {
+      "title": "Relations multilatérales",
+      "url": "/fr/activites-diplomatiques/relations-multilaterales/"
+     },
+     {
+      "title": "Ambassadeurs à caractère spécial",
+      "url": "/fr/activites-diplomatiques/ambassadeurs-a-caractere-special/"
+     }
+    ]
+   },
+   {
+    "title": "Actualités",
+    "url": null,
+    "children": [
+     {
+      "title": "Archives",
+      "url": null,
+      "children": [
+       {
+        "title": "Dernières interventions",
+        "url": "/fr/categories-de-actualites/dernieres-interventions/"
+       },
+       {
+        "title": "Activités diplomatiques",
+        "url": "/fr/actualites/"
+       },
+       {
+        "title": "Nouvelles Grand Maître",
+        "url": "/fr/categories-de-actualites/actualites/nouvelles-de-grand-maitre/"
+       }
+      ]
+     },
+     {
+      "title": "Galerie photos et vidéos",
+      "url": "/news/2021/"
+     }
+    ]
+   },
+   {
+    "title": "Presse et Publications",
+    "url": null,
+    "children": [
+     {
+      "title": "Publications",
+      "url": "/fr/press-et-publications/publications/"
+     },
+     {
+      "title": "Dans les médias",
+      "url": "/fr/press-et-publications/dans-les-medias/"
+     },
+     {
+      "title": "Communiqués de presse",
+      "url": "/fr/press-et-publications/communiques-de-presse/"
+     },
+     {
+      "title": "Les Ordres Autoproclamés",
+      "url": "/fr/press-et-publications/les-ordres-autoproclames/"
+     }
+    ]
+   },
+   {
+    "title": "Histoire",
+    "url": null,
+    "children": [
+     {
+      "title": "Du XIᵉ siècle à nos jours",
+      "url": "/fr/histoire/du-xi-siecle-a-nos-jours/"
+     },
+     {
+      "title": "Les Grands Maîtres",
+      "url": "/fr/histoire/les-grands-maitres/"
+     },
+     {
+      "title": "Les anciennes Langues des Chevaliers",
+      "url": "/fr/histoire/les-anciennes-langues-des-chevaliers/"
+     },
+     {
+      "title": "Les noms de l’Ordre",
+      "url": "/fr/histoire/les-noms-de-lordre/"
+     },
+     {
+      "title": "La croix à huit pointes",
+      "url": "/fr/histoire/la-croix-a-huit-pointes/"
+     },
+     {
+      "title": "1113 Reconnaissance du Pape",
+      "url": "/fr/histoire/1113-reconnaissance-du-pape/"
+     },
+     {
+      "title": "Les Ordres de Saint-Jean",
+      "url": "/fr/histoire/les-ordres-de-saint-jean/"
+     }
+    ]
+   }
+  ],
+  "social": [
+   {
+    "label": "Facebook",
+    "url": "https://www.facebook.com/OrdreDeMalte"
+   },
+   {
+    "label": "X",
+    "url": "https://twitter.com/ordredemalte"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/c/orderofmaltaofficialchannel"
+   },
+   {
+    "label": "Instagram",
+    "url": "https://www.instagram.com/orderofmalta_official/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://it.linkedin.com/company/order-of-malta"
+   }
+  ],
+  "legal": [
+   {
+    "title": "Politique de protection des donnees personnelles",
+    "url": "/fr/politique-de-protection-des-donnees-personnelles/"
+   },
+   {
+    "title": "Cookie policy",
+    "url": "/fr/cookie-policy/"
+   }
+  ],
+  "footerCredits": {
+   "name": "Ordre Souverain Militaire et Hospitalier de Saint-Jean de Jérusalem de Rhodes et de Malte.",
+   "address": "Palais Magistral, Via Condotti, 68 – Rome – Italie",
+   "phone": "Tél. +39.06.67581.1",
+   "email": "info@orderofmalta.int"
+  }
+ },
+ "de": {
+  "main": [
+   {
+    "title": "Der Malteserorden",
+    "url": "/de/der-malteserorden/",
+    "feature": {
+     "title": "Mission",
+     "url": "/de/der-malteserorden/mission/",
+     "image": "/media/2022/02/sovereign_mission.webp",
+     "text": "Der Souveräne Malteserorden ist eine der ältesten Institutionen der westlichen und christlichen Zivilisation."
+    },
+    "children": [
+     {
+      "title": "Mitglieder & Struktur",
+      "url": null,
+      "children": [
+       {
+        "title": "Ritter Von Malta",
+        "url": "/de/der-malteserorden/malteserritter/"
+       },
+       {
+        "title": "Nationale Istitutionen",
+        "url": "/de/der-malteserorden/nationale-institutionen/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/de/der-malteserorden/faq/"
+     },
+     {
+      "title": "Rechtsquelle",
+      "url": null,
+      "children": [
+       {
+        "title": "Verfassung und Codex auf Italienisch",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spiritualität",
+      "url": null,
+      "children": [
+       {
+        "title": "Spirituelles Engagement",
+        "url": "/de/der-malteserorden/spirituelles-engagement/"
+       },
+       {
+        "title": "Der Prälat",
+        "url": "/de/der-malteserorden/der-praelat/"
+       },
+       {
+        "title": "Wallfahrten",
+        "url": "/de/der-malteserorden/wallfahrten/"
+       },
+       {
+        "title": "Unserer Lieben Frau von Philermos",
+        "url": "/de/der-malteserorden/die-ikone-unserer-lieben-frau-von-philermos/"
+       },
+       {
+        "title": "Die Klosterschwestern",
+        "url": "/de/der-malteserorden/die-klosterschwestern/"
+       },
+       {
+        "title": "Heilige und Selige",
+        "url": "/de/der-malteserorden/heilige-und-selige/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Regierung",
+    "url": "/de/regierung/",
+    "feature": {
+     "title": "Grossmeister",
+     "url": "/de/regierung/grossmeister/",
+     "image": "/media/2023/05/gran-master-order-of-malta-fra-john-dunlap.webp",
+     "text": "Nach der Verfassung hat sich der Großmeister als Ordensoberhaupt und Souverän gänzlich dem Gedeihen der Ordenswerke zu widmen und muss allen Ordensmitgliedern ein Vorbild religiöser Pflichterfüllung sein.",
+     "subtitle": "Fra’ John T. Dunlap"
+    },
+    "children": [
+     {
+      "title": "Regierung",
+      "url": "/de/regierung/steuerung/"
+     },
+     {
+      "title": "Souveräner Rat",
+      "url": "/de/regierung/der-souveraene-rat/"
+     },
+     {
+      "title": "Regierungsorgane",
+      "url": "/de/regierung/regierungsorgane/"
+     },
+     {
+      "title": "Fahnen und Wappen",
+      "url": "/de/regierung/fahnen-und-wappen/"
+     },
+     {
+      "title": "Hymne",
+      "url": "/de/regierung/hymne-des-souveraenen-malteserordens-ave-crux-alba/"
+     },
+     {
+      "title": "Orden Pro Merito Melitensi",
+      "url": "/de/regierung/orden-pro-merito-melitensi/"
+     },
+     {
+      "title": "Pässe",
+      "url": "/de/regierung/passe/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Standorte des Malteserordens",
+      "url": null,
+      "children": [
+       {
+        "title": "Magistralpalast",
+        "url": "/de/regierung/magistralpalast/"
+       },
+       {
+        "title": "Magistralvilla",
+        "url": "/de/regierung/magistralvilla/"
+       },
+       {
+        "title": "Das Schlüsselloch",
+        "url": "/de/regierung/petersdom-durch-das-schluesselloch-gesehen/"
+       }
+      ]
+     },
+     {
+      "title": "Magistralarchiv und -Bibliotheken",
+      "url": "/de/regierung/magistralarchiv-und-bibliotheken/"
+     },
+     {
+      "title": "Briefmarken und Münzen",
+      "url": "/de/regierung/briefmarken-und-muuenzen/"
+     }
+    ]
+   },
+   {
+    "title": "Humanitäre & medizinische Hilfe",
+    "url": "/de/humanitaere-medizinische-hilfe/",
+    "feature": {
+     "title": "Hospitaler-Mission",
+     "url": "/de/humanitaere-medizinische-hilfe/hospitaler-mission/",
+     "image": "/media/2022/02/humanitarian_humanitarian.webp",
+     "text": "Der Malteserorden ist dauerhaft mit medizinischen, sozialen und humanitären Projekten in den meisten Ländern der Erde präsent."
+    },
+    "children": [
+     {
+      "title": "Flüchtlingshilfe",
+      "url": "/de/humanitaere-medizinische-hilfe/fluechtlingshilfe/"
+     },
+     {
+      "title": "Katastrophenhilfe & Prävention",
+      "url": "/de/humanitaere-medizinische-hilfe/katastrophenhilfe-praevention/"
+     },
+     {
+      "title": "Krankheiten & Epidemien",
+      "url": "/de/humanitaere-medizinische-hilfe/krankheiten-epidemien/"
+     },
+     {
+      "title": "Medizinische Einrichtungen",
+      "url": "/de/humanitaere-medizinische-hilfe/medizinische-einrichtungen/"
+     },
+     {
+      "title": "Sozialhilfe",
+      "url": "/de/humanitaere-medizinische-hilfe/soziale-interventionen/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/de/humanitaere-medizinische-hilfe/malteser-international/"
+     },
+     {
+      "title": "Freiwillige",
+      "url": "/de/humanitaere-medizinische-hilfe/freiwillige/"
+     },
+     {
+      "title": "Das Krankenhaus in Bethlehem",
+      "url": "/de/humanitaere-medizinische-hilfe/das-krankenhaus-in-bethlehem/"
+     },
+     {
+      "title": "Jugendliche für Libanon",
+      "url": "/de/humanitaere-medizinische-hilfe/jugendliche-fuer-libanon/"
+     }
+    ]
+   },
+   {
+    "title": "Diplomatische Aktivitäten",
+    "url": "/de/diplomatische-aktivitaeten/",
+    "feature": {
+     "title": "Humanitäre Diplomatie",
+     "url": "/de/diplomatische-aktivitaeten/humanitaere-diplomatie/",
+     "image": "/media/2022/02/diplomatic_humanitarian.webp",
+     "text": "Die diplomatischen Beziehungen des Souveränen Malteserordens tragen dazu bei, seine medizinischen und humanitären Aktivitäten zu erleichtern."
+    },
+    "children": [
+     {
+      "title": "Bilaterale Beziehungen",
+      "url": "/de/diplomatische-aktivitaeten/bilaterale-beziehungen/"
+     },
+     {
+      "title": "Multilaterale Beziehungen",
+      "url": "/de/diplomatische-aktivitaeten/multilaterale-beziehungen/"
+     },
+     {
+      "title": "Besondere Botschafter",
+      "url": "/de/diplomatische-aktivitaeten/besondere-botschafter/"
+     }
+    ]
+   },
+   {
+    "title": "Nachrichten",
+    "url": "/de/nachrichten/",
+    "children": [
+     {
+      "title": "Aktuelle Einsätze",
+      "url": "/de/nachrichten-kategorien/aktuelle-einsatze/"
+     },
+     {
+      "title": "Diplomatische Aktivitäten",
+      "url": "/de/nachrichten-kategorien/diplomatischen-aktivitaten/"
+     },
+     {
+      "title": "Grossmeister Nachrichten",
+      "url": "/de/nachrichten-kategorien/nachrichten/grosmeister-news/"
+     },
+     {
+      "title": "Nachrichtenarchiv",
+      "url": "/de/nachrichten/2021/"
+     },
+     {
+      "title": "Foto & Video Galerie",
+      "url": "/de/foto-und-videogalerien/"
+     }
+    ]
+   },
+   {
+    "title": "Presse & Veröffentlichungen",
+    "url": "/de/presse-und-veroeffentlichungen/",
+    "feature": {
+     "title": "Laden Sie die App herunter",
+     "url": "/app/",
+     "image": "/media/2025/10/0_graphics.webp",
+     "text": "",
+     "subtitle": "Die offizielle App des Malteserordens"
+    },
+    "children": [
+     {
+      "title": "Publikationen des Malteserordens",
+      "url": "/de/presse-und-veroeffentlichungen/publikationen/"
+     },
+     {
+      "title": "Pressspiegel",
+      "url": "/de/presse-und-veroeffentlichungen/pressespiegel/"
+     },
+     {
+      "title": "Pressemitteilungen",
+      "url": "/de/presse-und-veroeffentlichungen/pressemitteilungen/"
+     },
+     {
+      "title": "Nachahmerorganisationen",
+      "url": "/de/presse-und-veroeffentlichungen/nachahmerorganisationen/"
+     }
+    ]
+   },
+   {
+    "title": "Geschichte",
+    "url": "/de/geschichte/",
+    "feature": {
+     "title": "Zweite Hälfte des 11. Jahrhunderts",
+     "url": "/de/geschichte/seit-mitte-des-11-jahrhunderts-bis-heute/",
+     "image": "/media/2022/02/smom-history.webp",
+     "text": "Die Gründung des Ordens geht auf die zweite Hälfte des 11. Jahrhunderts. Unter der Leitung des Seligen Fra’Gerhard, des Gründers und ersten Meisters, wird die Ordensgemeinschaft in einen Laienorden umgewandelt."
+    },
+    "children": [
+     {
+      "title": "Die Großmeister",
+      "url": "/de/geschichte/die-grossmeister/"
+     },
+     {
+      "title": "Die alten Zungen der Ritter",
+      "url": "/de/geschichte/die-alten-zungen-der-ritter/"
+     },
+     {
+      "title": "Die Namen des Ordens",
+      "url": "/de/geschichte/die-namen-des-ordens/"
+     },
+     {
+      "title": "Das achtspitzige Kreuz",
+      "url": "/de/geschichte/das-achtspitzige-kreuz/"
+     },
+     {
+      "title": "Im Jahr 1113 Anerkennung durch Papst",
+      "url": "/de/geschichte/im-jahr-1113-paepstliche-anerkennung/"
+     },
+     {
+      "title": "1113 Die Bulle \"Pie Postulatio Voluntatis\"",
+      "url": "/de/geschichte/die-bulle-pie-postulatio-voluntatis/"
+     },
+     {
+      "title": "Die Orden des Hl. Johannes",
+      "url": "/de/geschichte/die-orden-vom-hl-johannes/"
+     }
+    ]
+   },
+   {
+    "title": "Kontakte",
+    "url": "/de/kontakte/"
+   }
+  ],
+  "footer": [
+   {
+    "title": "Der Malteserorden",
+    "url": null,
+    "children": [
+     {
+      "title": "Mission",
+      "url": "/de/der-malteserorden/mission/"
+     },
+     {
+      "title": "Mitglieder & Struktur",
+      "url": null,
+      "children": [
+       {
+        "title": "Malteserritter",
+        "url": "/de/der-malteserorden/malteserritter/"
+       },
+       {
+        "title": "Nationale Institutionen",
+        "url": "/de/der-malteserorden/nationale-institutionen/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/de/der-malteserorden/faq/"
+     },
+     {
+      "title": "Rechtsquelle",
+      "url": null,
+      "children": [
+       {
+        "title": "Verfassung und Codex",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Spiritualität",
+      "url": null,
+      "children": [
+       {
+        "title": "Spirituelles Engagement",
+        "url": "/de/der-malteserorden/spirituelles-engagement/"
+       },
+       {
+        "title": "Der Prälat",
+        "url": "/de/der-malteserorden/der-praelat/"
+       },
+       {
+        "title": "Wallfahrten",
+        "url": "/de/der-malteserorden/wallfahrten/"
+       },
+       {
+        "title": "Unserer Lieben Frau von Philermos",
+        "url": "/de/der-malteserorden/die-ikone-unserer-lieben-frau-von-philermos/"
+       },
+       {
+        "title": "Die Klosterschwestern",
+        "url": "/de/der-malteserorden/die-klosterschwestern/"
+       },
+       {
+        "title": "Heilige und Selige",
+        "url": "/de/der-malteserorden/heilige-und-selige/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Regierung",
+    "url": null,
+    "children": [
+     {
+      "title": "Der Souveräne Rat",
+      "url": "/de/regierung/der-souveraene-rat/"
+     },
+     {
+      "title": "Großmeister",
+      "url": "/de/regierung/grossmeister/"
+     },
+     {
+      "title": "Großkomtur",
+      "url": "/de/regierung/grosskomtur/"
+     },
+     {
+      "title": "Großkanzler",
+      "url": "/de/regierung/grosskanzler/"
+     },
+     {
+      "title": "Großhospitalier",
+      "url": "/de/regierung/grosshospitalier/"
+     },
+     {
+      "title": "Rezeptor des Gemeinsamen Schatzamtes",
+      "url": "/de/regierung/rezeptor-des-gemeinsamen-schatzamtes/"
+     },
+     {
+      "title": "Regierungsorgane",
+      "url": "/de/regierung/regierungsorgane/"
+     },
+     {
+      "title": "Fahnen und Wappen",
+      "url": "/de/regierung/fahnen-und-wappen/"
+     },
+     {
+      "title": "Hymne",
+      "url": "/de/regierung/hymne-des-souveraenen-malteserordens-ave-crux-alba/"
+     }
+    ]
+   },
+   {
+    "title": "Humanitäre & medizinische hilfe",
+    "url": null,
+    "children": [
+     {
+      "title": "Hospitaler-mission",
+      "url": "/de/humanitaere-medizinische-hilfe/hospitaler-mission/"
+     },
+     {
+      "title": "Flüchtlingshilfe",
+      "url": "/de/humanitaere-medizinische-hilfe/fluechtlingshilfe/"
+     },
+     {
+      "title": "Katastrophenhilfe & Prävention",
+      "url": "/de/humanitaere-medizinische-hilfe/katastrophenhilfe-praevention/"
+     },
+     {
+      "title": "Krankheiten & Epidemien",
+      "url": "/de/humanitaere-medizinische-hilfe/krankheiten-epidemien/"
+     },
+     {
+      "title": "Medizinische Einrichtungen",
+      "url": "/de/humanitaere-medizinische-hilfe/medizinische-einrichtungen/"
+     },
+     {
+      "title": "Sozialhilfe",
+      "url": "/de/humanitaere-medizinische-hilfe/soziale-interventionen/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/de/humanitaere-medizinische-hilfe/malteser-international/"
+     },
+     {
+      "title": "Freiwillige",
+      "url": "/de/humanitaere-medizinische-hilfe/freiwillige/"
+     },
+     {
+      "title": "Das Krankenhaus in Bethlehem",
+      "url": "/de/humanitaere-medizinische-hilfe/das-krankenhaus-in-bethlehem/"
+     },
+     {
+      "title": "Jugendliche für Libanon",
+      "url": "/de/humanitaere-medizinische-hilfe/jugendliche-fuer-libanon/"
+     }
+    ]
+   },
+   {
+    "title": "Diplomatische aktivitäten",
+    "url": null,
+    "children": [
+     {
+      "title": "Humanitäre diplomatie",
+      "url": "/de/diplomatische-aktivitaeten/humanitaere-diplomatie/"
+     },
+     {
+      "title": "Bilaterale beziehungen",
+      "url": "/de/diplomatische-aktivitaeten/bilaterale-beziehungen/"
+     },
+     {
+      "title": "Multilaterale Beziehungen",
+      "url": "/de/diplomatische-aktivitaeten/multilaterale-beziehungen/"
+     },
+     {
+      "title": "Besondere Botschafter",
+      "url": "/de/diplomatische-aktivitaeten/besondere-botschafter/"
+     }
+    ]
+   },
+   {
+    "title": "Nachrichten",
+    "url": null,
+    "children": [
+     {
+      "title": "Nachrichten 2026",
+      "url": "/news/2026/"
+     },
+     {
+      "title": "Aktuelle Einsätze",
+      "url": "/de/nachrichten-kategorien/aktuelle-einsatze/"
+     },
+     {
+      "title": "Diplomatischen Aktivitäten",
+      "url": "/de/nachrichten-kategorien/diplomatischen-aktivitaten/"
+     },
+     {
+      "title": "Grossmeister Nachrichten",
+      "url": "/de/nachrichten-kategorien/nachrichten/grosmeister-news/"
+     },
+     {
+      "title": "Foto- und Videogalerien",
+      "url": "/de/foto-und-videogalerien/"
+     }
+    ]
+   },
+   {
+    "title": "Presse & Veröffentlichungen",
+    "url": null,
+    "children": [
+     {
+      "title": "Publikationen",
+      "url": "/de/presse-und-veroeffentlichungen/publikationen/"
+     },
+     {
+      "title": "Pressespiegel",
+      "url": "/de/presse-und-veroeffentlichungen/pressespiegel/"
+     },
+     {
+      "title": "Pressemitteilugen",
+      "url": "/de/pressemitteilungen/"
+     },
+     {
+      "title": "Nachahmerorganisationen",
+      "url": "/de/presse-und-veroeffentlichungen/nachahmerorganisationen/"
+     }
+    ]
+   },
+   {
+    "title": "Geschichte",
+    "url": null,
+    "children": [
+     {
+      "title": "Zweite Hälfte des 11. Jahrhunderts",
+      "url": "/de/geschichte/seit-mitte-des-11-jahrhunderts-bis-heute/"
+     },
+     {
+      "title": "Die Großmeister",
+      "url": "/de/geschichte/die-grossmeister/"
+     },
+     {
+      "title": "Die alten Zungen der Ritter",
+      "url": "/de/geschichte/die-alten-zungen-der-ritter/"
+     },
+     {
+      "title": "Die Namen des Ordens",
+      "url": "/de/geschichte/die-namen-des-ordens/"
+     },
+     {
+      "title": "Das achtspitzige kreuz",
+      "url": "/de/geschichte/das-achtspitzige-kreuz/"
+     },
+     {
+      "title": "Im Jahr 1113 Anerkennung durch Papst",
+      "url": "/de/geschichte/im-jahr-1113-paepstliche-anerkennung/"
+     },
+     {
+      "title": "Die Orden des Hl. Johannes",
+      "url": "/de/geschichte/die-orden-vom-hl-johannes/"
+     }
+    ]
+   },
+   {
+    "title": "Kontakte",
+    "url": null,
+    "children": [
+     {
+      "title": "Datenschutzerklärung",
+      "url": "/de/datenschutzerklaerung/"
+     },
+     {
+      "title": "Cookie richtlinien",
+      "url": "/de/cookie-richtlinien/"
+     }
+    ]
+   }
+  ],
+  "social": [
+   {
+    "label": "Facebook",
+    "url": "https://www.facebook.com/DerMalteserorden"
+   },
+   {
+    "label": "X",
+    "url": "https://twitter.com/malteserorden"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/c/orderofmaltaofficialchannel"
+   },
+   {
+    "label": "Instagram",
+    "url": "https://www.instagram.com/orderofmalta_official/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://it.linkedin.com/company/order-of-malta"
+   }
+  ],
+  "legal": [],
+  "footerCredits": {
+   "name": "Souveräner Ritter- und Hospitalorden vom Hl. Johannes zu Jerusalem von Rhodos und von Malta",
+   "address": "Magistralpalast, Via Condotti, 68 – Rom - Italien",
+   "phone": "Tel. +39.06.67581.1",
+   "email": "info@orderofmalta.int"
+  }
+ },
+ "es": {
+  "main": [
+   {
+    "title": "La Orden de Malta",
+    "url": "/es/la-orden-de-malta/",
+    "feature": {
+     "title": "Misión",
+     "url": "/es/la-orden-de-malta/mision/",
+     "image": "/media/2022/02/sovereign_mission.webp",
+     "text": "La Soberana Orden de Malta es una de las más antiguas instituciones de la civilización occidental y cristiana."
+    },
+    "children": [
+     {
+      "title": "Miembros y estructura",
+      "url": null,
+      "children": [
+       {
+        "title": "Caballeros de Malta",
+        "url": "/es/la-orden-de-malta/los-caballeros-de-malta/"
+       },
+       {
+        "title": "Instituciones Nacionales",
+        "url": "/es/la-orden-de-malta/instituciones-nacionales/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/es/la-orden-de-malta/faq/"
+     },
+     {
+      "title": "Fuentes del derecho",
+      "url": null,
+      "children": [
+       {
+        "title": "Carta Constitucional y Código en italiano",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Espiritualidad",
+      "url": null,
+      "children": [
+       {
+        "title": "Compromiso espiritual",
+        "url": "/es/la-orden-de-malta/compromiso-espiritual/"
+       },
+       {
+        "title": "Prelado",
+        "url": "/es/la-orden-de-malta/prelado/"
+       },
+       {
+        "title": "Peregrinaciones",
+        "url": "/es/la-orden-de-malta/peregrinaciones/"
+       },
+       {
+        "title": "Nuestra Señora de Filermo",
+        "url": "/es/la-orden-de-malta/el-icono-de-nuestra-senora-de-filermo/"
+       },
+       {
+        "title": "Las monjas de la Orden",
+        "url": "/es/la-orden-de-malta/las-monjas-de-la-orden/"
+       },
+       {
+        "title": "Santos y Beatos",
+        "url": "/es/la-orden-de-malta/santos-y-beatos/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Gobierno",
+    "url": "/es/gobierno/",
+    "feature": {
+     "title": "Gran Maestre",
+     "url": "/es/gobierno/gran-maestre/",
+     "image": "/media/2023/05/gran-master-order-of-malta-fra-john-dunlap.webp",
+     "text": "De acuerdo con la Constitución, como Soberano y Superior religioso, debe dedicarse plenamente al desarrollo de las obras de la Orden de Malta y a dar a todos los miembros ejemplo de respeto a los principios cristianos.",
+     "subtitle": "Frey John T. Dunlap"
+    },
+    "children": [
+     {
+      "title": "Gobernanza",
+      "url": "/es/gobierno/gobernanza/"
+     },
+     {
+      "title": "Soberano Consejo",
+      "url": "/es/gobierno/soberano-consejo/"
+     },
+     {
+      "title": "Órganos de Gobierno",
+      "url": "/es/gobierno/organos-de-gobierno/"
+     },
+     {
+      "title": "Banderas y emblemas",
+      "url": "/es/gobierno/banderas-y-escudos/"
+     },
+     {
+      "title": "Himno",
+      "url": "/es/gobierno/himno-de-la-soberana-orden-de-malta-ave-crux-alba/"
+     },
+     {
+      "title": "Orden Pro Merito Melitensi",
+      "url": "/es/gobierno/orden-pro-merito-melitensi/"
+     },
+     {
+      "title": "Pasaportes",
+      "url": "/es/gobierno/pasaportes/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Sedes de la Orden de Malta",
+      "url": null,
+      "children": [
+       {
+        "title": "Palacio Magistral",
+        "url": "/es/gobierno/palacio-magistral/"
+       },
+       {
+        "title": "Villa Magistral",
+        "url": "/es/gobierno/villa-magistral/"
+       },
+       {
+        "title": "El ojo de la cerradura",
+        "url": "/es/gobierno/basilica-de-san-pedro-ojo-de-la-cerradura/"
+       }
+      ]
+     },
+     {
+      "title": "",
+      "url": "/es/gobierno/basilica-de-san-pedro-ojo-de-la-cerradura/"
+     },
+     {
+      "title": "Archivos y Biblioteca Magistrales",
+      "url": "/es/gobierno/archivos-y-biblioteca-magistrales/"
+     },
+     {
+      "title": "Filatelia & Numismática",
+      "url": "/es/gobierno/filatelia-y-numismatica/"
+     }
+    ]
+   },
+   {
+    "title": "Actividades médicas y humanitarias",
+    "url": "/es/actividades-medicas-y-humanitarias/",
+    "feature": {
+     "title": "Misión hospitalaria",
+     "url": "/es/actividades-medicas-y-humanitarias/mision-hospitalaria/",
+     "image": "/media/2022/02/humanitarian_humanitarian.webp",
+     "text": "La Orden de Malta está presente en la mayoría de países del mundo con proyectos médicos, sociales y humanitarios."
+    },
+    "children": [
+     {
+      "title": "Ayuda a los refugiados",
+      "url": "/es/actividades-medicas-y-humanitarias/ayuda-a-los-refugiados/"
+     },
+     {
+      "title": "Prevención y asistencia en catástrofes",
+      "url": "/es/actividades-medicas-y-humanitarias/prevencion-y-asistencia-en-catastrofes/"
+     },
+     {
+      "title": "Enfermedades y epidemias",
+      "url": "/es/actividades-medicas-y-humanitarias/enfermedades-y-epidemias/"
+     },
+     {
+      "title": "Infraestructura médica",
+      "url": "/es/actividades-medicas-y-humanitarias/infraestructura-medica/"
+     },
+     {
+      "title": "Asistencia social",
+      "url": "/es/actividades-medicas-y-humanitarias/asistencia-social/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/es/actividades-medicas-y-humanitarias/malteser-international/"
+     },
+     {
+      "title": "Voluntarios",
+      "url": "/es/actividades-medicas-y-humanitarias/voluntarios/"
+     },
+     {
+      "title": "El Hospital de Belén",
+      "url": "/es/actividades-medicas-y-humanitarias/el-hospital-de-belen/"
+     },
+     {
+      "title": "Jóvenes por el Líbano",
+      "url": "/es/actividades-medicas-y-humanitarias/jovenes-por-el-libano/"
+     }
+    ]
+   },
+   {
+    "title": "Actividades diplomáticas",
+    "url": "/es/actividades-diplomaticas/",
+    "feature": {
+     "title": "Diplomacia humanitaria",
+     "url": "/es/actividades-diplomaticas/diplomacia-humanitaria/",
+     "image": "/media/2022/02/diplomatic_humanitarian.webp",
+     "text": "Las relaciones diplomáticas de la Soberana Orden de Malta contribuyen a facilitar sus actividades médicas y humanitarias."
+    },
+    "children": [
+     {
+      "title": "Relaciones bilaterales",
+      "url": "/es/actividades-diplomaticas/relaciones-bilaterales/"
+     },
+     {
+      "title": "Relaciones multilaterales",
+      "url": "/es/actividades-diplomaticas/relaciones-multilaterales/"
+     },
+     {
+      "title": "Embajadores especiales",
+      "url": "/es/actividades-diplomaticas/embajadores-especiales/"
+     }
+    ]
+   },
+   {
+    "title": "Noticias",
+    "url": "/es/noticias/",
+    "children": [
+     {
+      "title": "Últimas intervenciones",
+      "url": "/es/categorias-de-noticias/ultimas-intervenciones/"
+     },
+     {
+      "title": "Actividades diplomáticas",
+      "url": "/es/categorias-de-noticias/actividades-diplomaticas/"
+     },
+     {
+      "title": "Noticias Gran Maestre",
+      "url": "/es/categorias-de-noticias/noticias/noticias-gran-maestro/"
+     },
+     {
+      "title": "Archivo de noticias",
+      "url": "/es/noticias/2021/"
+     },
+     {
+      "title": "Galerías de fotos y vídeos",
+      "url": "/es/galerias-de-fotos-y-videos/"
+     }
+    ]
+   },
+   {
+    "title": "Prensa y publicaciones",
+    "url": "/es/prensa-y-publicaciones/",
+    "feature": {
+     "title": "Descarga la app",
+     "url": "/app/",
+     "image": "/media/2025/10/0_graphics.webp",
+     "text": "",
+     "subtitle": "La aplicación oficial de la Orden de Malta"
+    },
+    "children": [
+     {
+      "title": "Publicaciones de la Orden de Malta",
+      "url": "/es/prensa-y-publicaciones/publicaciones/"
+     },
+     {
+      "title": "En la prensa",
+      "url": "/es/prensa-y-publicaciones/en-la-prensa/"
+     },
+     {
+      "title": "Comunicado de prensa",
+      "url": "/es/prensa-y-publicaciones/comunicados-de-prensa/"
+     },
+     {
+      "title": "Supuestas Ordenes",
+      "url": "/es/prensa-y-publicaciones/supuestas-ordenes-de-malta/"
+     }
+    ]
+   },
+   {
+    "title": "Historia",
+    "url": "/es/historia/",
+    "feature": {
+     "title": "Del siglo XI a nuestros días",
+     "url": "/es/historia/de-siglo-xi-a-nuestros-dias/",
+     "image": "/media/2022/02/smom-history.webp",
+     "text": "El nacimiento de la Orden se remonta aproximadamente a la segunda mitad del siglo XI. Bajo la dirección del Beato Gerardo, fundador y primer Gran Maestre, la comunidad religiosa se transforma en una orden religiosa laica."
+    },
+    "children": [
+     {
+      "title": "Los Grandes Maestres",
+      "url": "/es/historia/los-grandes-maestres/"
+     },
+     {
+      "title": "Las antiguas Lenguas de los Caballeros",
+      "url": "/es/historia/las-antiguas-langues-de-los-caballeros/"
+     },
+     {
+      "title": "Los nombres de la Orden",
+      "url": "/es/historia/los-nombres-de-la-orden/"
+     },
+     {
+      "title": "La cruz blanca a ocho puntas",
+      "url": "/es/historia/la-cruz-a-ocho-puntas/"
+     },
+     {
+      "title": "1113 Reconocimiento Papal",
+      "url": "/es/historia/1113-reconocimiento-papal/"
+     },
+     {
+      "title": "1113 La Bula \"Pie Postulatio Voluntatis\"",
+      "url": "/es/historia/1113-la-bula-pie-postulatio-voluntatis/"
+     },
+     {
+      "title": "Las Órdenes de San Juan",
+      "url": "/es/historia/las-ordenes-de-san-juan/"
+     }
+    ]
+   },
+   {
+    "title": "Contactos",
+    "url": "/es/contactos/"
+   }
+  ],
+  "footer": [
+   {
+    "title": "La Orden de Malta",
+    "url": null,
+    "children": [
+     {
+      "title": "Misión",
+      "url": "/es/la-orden-de-malta/mision/"
+     },
+     {
+      "title": "Miembros y Estructura",
+      "url": null,
+      "children": [
+       {
+        "title": "Los Caballeros de Malta",
+        "url": "/es/la-orden-de-malta/los-caballeros-de-malta/"
+       },
+       {
+        "title": "Instituciones Nacionales",
+        "url": "/es/la-orden-de-malta/instituciones-nacionales/"
+       }
+      ]
+     },
+     {
+      "title": "FAQ",
+      "url": "/es/la-orden-de-malta/faq/"
+     },
+     {
+      "title": "Fuentes del derecho",
+      "url": null,
+      "children": [
+       {
+        "title": "Constitución y Codigo",
+        "url": "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf"
+       }
+      ]
+     },
+     {
+      "title": "Espiritualidad",
+      "url": null,
+      "children": [
+       {
+        "title": "Compromiso espiritual",
+        "url": "/es/la-orden-de-malta/compromiso-espiritual/"
+       },
+       {
+        "title": "Prelado",
+        "url": "/es/la-orden-de-malta/prelado/"
+       },
+       {
+        "title": "Peregrinaciones",
+        "url": "/es/la-orden-de-malta/peregrinaciones/"
+       },
+       {
+        "title": "Nuestra Señora de Filermo",
+        "url": "/es/la-orden-de-malta/el-icono-de-nuestra-senora-de-filermo/"
+       },
+       {
+        "title": "Monjas de la Orden",
+        "url": "/es/la-orden-de-malta/las-monjas-de-la-orden/"
+       },
+       {
+        "title": "Santos y Beatos",
+        "url": "/es/la-orden-de-malta/santos-y-beatos/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "title": "Gobierno",
+    "url": null,
+    "children": [
+     {
+      "title": "Gobernanza",
+      "url": "/es/gobierno/gobernanza/"
+     },
+     {
+      "title": "Soberano Consejo",
+      "url": "/es/gobierno/soberano-consejo/"
+     },
+     {
+      "title": "Gran Maestre",
+      "url": "/es/gobierno/gran-maestre/"
+     },
+     {
+      "title": "Gran Comendador",
+      "url": "/es/gobierno/gran-comendador/"
+     },
+     {
+      "title": "Gran Canciller",
+      "url": "/es/gobierno/gran-canciller/"
+     },
+     {
+      "title": "Gran Hospitalario",
+      "url": "/es/gobierno/gran-hospitalario/"
+     },
+     {
+      "title": "Recibidor del Común Tesoro",
+      "url": "/es/gobierno/recibidor-del-comun-tesoro/"
+     },
+     {
+      "title": "Government bodies",
+      "url": "/es/gobierno/organos-de-gobierno/"
+     },
+     {
+      "title": "Flags & Emblems",
+      "url": "/es/gobierno/banderas-y-escudos/"
+     },
+     {
+      "title": "Anthem",
+      "url": "/es/gobierno/himno-de-la-soberana-orden-de-malta-ave-crux-alba/"
+     },
+     {
+      "title": "Order Pro Merito Melitensi",
+      "url": "/es/gobierno/orden-pro-merito-melitensi/"
+     },
+     {
+      "title": "Passports",
+      "url": "/es/gobierno/pasaportes/"
+     },
+     {
+      "title": "Signing Certification Authority - csca",
+      "url": "/csca/"
+     },
+     {
+      "title": "Órganos de Gobierno",
+      "url": "/es/gobierno/organos-de-gobierno/"
+     },
+     {
+      "title": "Banderas y Escudos",
+      "url": "/es/gobierno/banderas-y-escudos/"
+     }
+    ]
+   },
+   {
+    "title": "Actividades médicas y humanitarias",
+    "url": null,
+    "children": [
+     {
+      "title": "Misión hospitalaria",
+      "url": "/es/actividades-medicas-y-humanitarias/mision-hospitalaria/"
+     },
+     {
+      "title": "Ayuda a los refugiados",
+      "url": "/es/actividades-medicas-y-humanitarias/ayuda-a-los-refugiados/"
+     },
+     {
+      "title": "Prevención y asistencia en catástrofes",
+      "url": "/es/actividades-medicas-y-humanitarias/prevencion-y-asistencia-en-catastrofes/"
+     },
+     {
+      "title": "Enfermedades y epidemias",
+      "url": "/es/actividades-medicas-y-humanitarias/enfermedades-y-epidemias/"
+     },
+     {
+      "title": "Infraestructura médica",
+      "url": "/es/actividades-medicas-y-humanitarias/infraestructura-medica/"
+     },
+     {
+      "title": "Asistencia social",
+      "url": "/es/actividades-medicas-y-humanitarias/asistencia-social/"
+     },
+     {
+      "title": "Malteser International",
+      "url": "/es/actividades-medicas-y-humanitarias/malteser-international/"
+     },
+     {
+      "title": "Voluntarios",
+      "url": "/es/actividades-medicas-y-humanitarias/voluntarios/"
+     },
+     {
+      "title": "El Hospital de Belén",
+      "url": "/es/actividades-medicas-y-humanitarias/el-hospital-de-belen/"
+     },
+     {
+      "title": "Jóvenes por el Líbano",
+      "url": "/es/actividades-medicas-y-humanitarias/jovenes-por-el-libano/"
+     }
+    ]
+   },
+   {
+    "title": "Actividades diplomáticas",
+    "url": null,
+    "children": [
+     {
+      "title": "Diplomacia humanitaria",
+      "url": "/es/actividades-diplomaticas/diplomacia-humanitaria/"
+     },
+     {
+      "title": "Relaciones bilaterales",
+      "url": "/es/actividades-diplomaticas/relaciones-bilaterales/"
+     },
+     {
+      "title": "Relaciones multilaterales",
+      "url": "/es/actividades-diplomaticas/relaciones-multilaterales/"
+     },
+     {
+      "title": "Embajadores especiales",
+      "url": "/es/actividades-diplomaticas/embajadores-especiales/"
+     }
+    ]
+   },
+   {
+    "title": "Noticias",
+    "url": null,
+    "children": [
+     {
+      "title": "Noticias 2026",
+      "url": "/news/2026/"
+     },
+     {
+      "title": "Archivo de Noticias",
+      "url": null,
+      "children": [
+       {
+        "title": "Últimas intervenciones",
+        "url": "/es/categorias-de-noticias/ultimas-intervenciones/"
+       },
+       {
+        "title": "Noticias Gran Maestre",
+        "url": "/es/categorias-de-noticias/noticias/noticias-gran-maestro/"
+       },
+       {
+        "title": "Actividades diplomáticas",
+        "url": "/es/categorias-de-noticias/noticias/actividades-diplomaticas/"
+       }
+      ]
+     },
+     {
+      "title": "Galerías de fotos y vídeos",
+      "url": "/es/galerias-de-fotos-y-videos/"
+     }
+    ]
+   },
+   {
+    "title": "Prensa y Publicaciones",
+    "url": null,
+    "children": [
+     {
+      "title": "Publicaciones",
+      "url": "/es/prensa-y-publicaciones/publicaciones/"
+     },
+     {
+      "title": "En la prensa",
+      "url": "/es/prensa-y-publicaciones/en-la-prensa/"
+     },
+     {
+      "title": "Comunicados de prensa",
+      "url": "/es/prensa-y-publicaciones/comunicados-de-prensa/"
+     },
+     {
+      "title": "Supuestas Ordenes de Malta",
+      "url": "/es/prensa-y-publicaciones/supuestas-ordenes-de-malta/"
+     }
+    ]
+   },
+   {
+    "title": "Historia",
+    "url": null,
+    "children": [
+     {
+      "title": "Del siglo XI a nuestros días",
+      "url": "/es/historia/de-siglo-xi-a-nuestros-dias/"
+     },
+     {
+      "title": "Los Grandes Maestres",
+      "url": "/es/historia/los-grandes-maestres/"
+     },
+     {
+      "title": "Las antiguas Langues de los Caballeros",
+      "url": "/es/historia/las-antiguas-langues-de-los-caballeros/"
+     },
+     {
+      "title": "Los nombres de la Orden",
+      "url": "/es/historia/los-nombres-de-la-orden/"
+     },
+     {
+      "title": "La cruz blanca a ocho puntas",
+      "url": "/es/historia/la-cruz-a-ocho-puntas/"
+     },
+     {
+      "title": "1113 Reconocimiento Papal",
+      "url": "/es/historia/1113-reconocimiento-papal/"
+     },
+     {
+      "title": "Las Órdenes de San Juan",
+      "url": "/es/historia/las-ordenes-de-san-juan/"
+     }
+    ]
+   }
+  ],
+  "social": [
+   {
+    "label": "Facebook",
+    "url": "https://www.facebook.com/OrdenDeMalta"
+   },
+   {
+    "label": "X",
+    "url": "https://twitter.com/ordendemalta"
+   },
+   {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/c/orderofmaltaofficialchannel"
+   },
+   {
+    "label": "Instagram",
+    "url": "https://www.instagram.com/orderofmalta_official/"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://it.linkedin.com/company/order-of-malta"
+   }
+  ],
+  "legal": [
+   {
+    "title": "Política de privacidad y protección de datos",
+    "url": "/es/politica-de-privacidad-y-proteccion-de-datos/"
+   },
+   {
+    "title": "Política sobre cookies",
+    "url": "/es/politica-sobre-cookies/"
+   }
+  ],
+  "footerCredits": {
+   "name": "Soberana y Militar Orden Hospitalaria de San Juan de Jerusalén de Rodas y de Malta",
+   "address": "Palacio Magistral, Via Condotti, 68 – Roma – Italia",
+   "phone": "Tel. +39.06.67581.1",
+   "email": "info@orderofmalta.int"
+  }
+ }
+}

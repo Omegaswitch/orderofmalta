@@ -6,7 +6,7 @@
     { "source": "document",
       "where": { "and": [
         { "href_matches": "/*" },
-        { "not": { "href_matches": ["/media/*", "/files/*", "/feed.xml"] } },
+        { "not": { "href_matches": ["/media/*", "/files/*", "/editor/*", "/search/*", "/*/search/*", "/feed.xml", "/*/feed.xml", "/api/*"] } },
         { "not": { "selector_matches": ".lang a" } }
       ] },
       "eagerness": "moderate" }

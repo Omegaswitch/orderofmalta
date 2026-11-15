@@ -2,6 +2,7 @@
   "private": true,
   "description": "Serverless functions in api/ (the site itself is built by build.py)",
   "scripts": {
+    "test": "node tests/news.test.js && node tests/gdpr.test.js",
     "auth:migrate": "npx @better-auth/cli migrate --config api/_auth.mjs",
     "auth:user": "node scripts/add-user.mjs"
   },

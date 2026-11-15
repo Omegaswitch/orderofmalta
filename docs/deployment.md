@@ -1,79 +1,90 @@
 # Deployment
 
-**Production deployment and any change to the live maltezskyrad.cz require explicit authorisation from the Grand Priory.** Nothing in this repository deploys automatically to production.
+**Nothing deploys to production, and the live site at www.orderofmalta.int is not changed, until the launch gate and the launch checklist below are complete and the Grand Magistry has approved the launch.** The repository does not deploy by itself.
 
 ## Build
 
 ```sh
-python3 build.py                 # preview: noindex everywhere, content-status labels shown
-python3 build.py --production    # production: indexable, no labels
-python3 build.py --offline       # either mode, without fetching the Grand Magistry news feed
-python3 check.py                 # must print "0 problems" before anything is published
+python3 build.py                 # preview: noindex everywhere, status labels shown
+python3 build.py --production    # production: indexable, no status labels
+python3 build.py --offline       # build without network access (what Vercel runs)
+python3 check.py                 # must report 0 problems before anything is published
 ```
 
-The only requirement is Python 3.10 or newer, with no packages. The output is `dist/`, a plain static folder: HTML, CSS, JS, fonts, media, `sitemap.xml`, `feed.xml`, `robots.txt`, `_headers` and `_redirects`.
+The build needs Python 3 with Pillow. The output is `dist/`, a static folder with HTML, CSS, JS, fonts, media, the sitemap, the feeds, `robots.txt`, `_headers` and `_redirects`.
 
-The Grand Magistry news list on the homepage is fetched at build time from `orderofmalta.int`. If the fetch fails, the build still succeeds and the block is left out. Rebuild at least daily, for example with a scheduled CI job, to keep it current.
+Node is needed only for `api/`, `scripts/` and `tests/`. Install the Node packages with `npm ci`.
 
-## Hosting
+## Hosting on Vercel
 
-Any static host works. Security headers and legacy redirects are defined once, in `vercel.json` (`headers`, `redirects`); the build also writes them as `dist/_headers` and `dist/_redirects` (Netlify / Cloudflare Pages format) for other hosts and the local preview server.
+`vercel.json` holds the Vercel settings:
 
-| Host | `_headers` (CSP, HSTS…) | `_redirects` (legacy URLs) | Notes |
-|---|---|---|---|
-| Netlify | ✅ native | ✅ native | Build `python3 build.py --production`, publish `dist`. |
-| Cloudflare Pages | ✅ native | ✅ native | Same. |
-| Vercel (`vercel.json`) | ✅ from `vercel.json` | ✅ from `vercel.json` | The build command is `python3 build.py --production --offline`: indexable pages, `Allow: /` robots.txt with the sitemap, canonical URLs on `https://www.maltezskyrad.cz`. `--offline` keeps the Grand Magistry headlines off. |
-| nginx / Apache (own server) | translate | translate | See below. |
+| Setting | Value |
+|---|---|
+| Install command | `npm ci` |
+| Build command | `python3 build.py --production --offline` |
+| Output directory | `dist` |
+| Cron job | `/api/rebuild` at `0 3 * * *` (03:00 UTC every day) |
 
-### nginx translation
+The same file holds the security headers (Content Security Policy, HSTS, nosniff, Referrer-Policy, Permissions-Policy, COOP and X-Frame-Options) and the redirects. Vercel reads these from `vercel.json`. The build also writes `dist/_headers` and `dist/_redirects` for other hosts and for the local preview server.
 
-```nginx
-server {
-  server_name www.maltezskyrad.cz;
-  root /var/www/maltezskyrad/dist;
-  error_page 404 /404.html;
+Other hosts (Netlify, Cloudflare Pages, or the own server) can use `dist/_headers` and `dist/_redirects` as the template does. Apply the same headers.
 
-  add_header Content-Security-Policy "<value from dist/_headers>" always;
-  add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-  add_header X-Content-Type-Options nosniff always;
-  add_header Referrer-Policy strict-origin-when-cross-origin always;
-  add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" always;
-  add_header Cross-Origin-Opener-Policy same-origin always;
-  add_header X-Frame-Options DENY always;
+## Environment variables
 
-  location ~ ^/(fonts|css|js)/ { add_header Cache-Control "public, max-age=31536000, immutable"; }
+Set these in the Vercel project, then redeploy. The full list and what each one does is in `docs/publishing.md`.
 
-  # one line per entry in dist/_redirects, e.g.
-  location = /sekce-pro-cleny/ { return 301 /kontakt/; }
-  location ^~ /wp-content/uploads/ { rewrite ^/wp-content/uploads/(.*)$ /media/$1 permanent; }
-  location ^~ /category/ { return 301 /aktuality/; }
-}
-server {  # canonical host
-  server_name maltezskyrad.cz cvp.maltezskyrad.cz;
-  return 301 https://www.maltezskyrad.cz$request_uri;
-}
-```
+- `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`: staff sign-in.
+- `GITHUB_TOKEN`: the editor's commits.
+- `DEPLOY_HOOK_URL`, `CRON_SECRET`: the daily rebuild.
+- `RESEND_API_KEY`, `MAIL_FROM`, `GDPR_TO`: the data-protection request form. `GDPR_TO` and `MAIL_FROM` have no default. Without them the form answers with a configuration error.
+- `NEWS_NOTIFY`: optional notice e-mail.
 
-Repeat the `add_header` lines in any `location` block that also sets its own `add_header`; nginx does not inherit them.
+## Canonical host
 
-## Canonical host and the current certificate fault
+The canonical address is `https://www.orderofmalta.int` (`baseUrl` in `content/site.json`). Canonical links, the sitemap and the Open Graph tags use it.
 
-The new site's canonical URL is `https://www.maltezskyrad.cz` (`baseUrl` in `content/site.json`).
+Decide before launch how the apex host (`orderofmalta.int`) and any other host reach it. Make sure the certificate covers every name that is served.
 
-Today the apex and `www` hosts redirect to `cvp.maltezskyrad.cz`, which has no valid certificate (`docs/security-audit.md`, L1). At launch:
+## Better Auth migration
 
-1. Serve the site on `www`.
-2. Redirect the apex and `cvp.` hosts to it.
-3. Make sure the certificate covers every one of those names.
+Staff sign-in needs its tables in Postgres:
+
+1. Set `DATABASE_URL` and `BETTER_AUTH_SECRET`.
+2. Run `npm run auth:migrate` once.
+3. Create the first owner: `npm run auth:user -- "Name" person@example.org 'a password of at least 12 characters' owner`.
+4. Check that `/editor/` signs in and that the account can save a draft.
+
+There is no self sign-up. Users are created with `npm run auth:user`.
+
+## Launch gate
+
+The archive is not complete yet. Items before 1 Jan 2025 are not imported (`docs/content-inventory.md`). Before the DNS moves to this site, one of these must be true:
+
+1. **Full archive import:** run `python3 tools/import_oom.py --since 2015-01-01`, check the report, and build again. Every old news, press and gallery address then answers with its item.
+2. **Legacy host:** keep the old WordPress site on a legacy host. Add after-filesystem `rewrites` to `vercel.json` for the `news`, `press` and `galleries` bases of each language, so that old addresses that are not in the import go to that host.
+
+`check.py` reports internal links into those three bases that do not resolve. It reports them as a count, as warnings, not as failures. Use the count to judge how much is missing.
+
+## Content redirects
+
+`content/redirects.json` holds the redirects found while importing. The build writes a stub page for each one and adds them to `dist/_redirects`. If the file is small (fewer than 500 entries), fold it into `vercel.json` as ordinary redirects, so that every host gets them from one place. If it is larger, keep it as the build's file.
 
 ## Launch checklist
 
-1. Resolve the open approvals in `docs/brand-compliance.md`, and approve every page labelled "new" and the privacy notice.
-2. Get written authorisation to replace the live site.
-3. Run `python3 build.py --production && python3 check.py`.
-4. Deploy `dist/` with the headers and redirects active on the host. Verify:
-   - `curl -I https://www.maltezskyrad.cz/` shows the CSP and HSTS headers;
-   - `curl -I https://www.maltezskyrad.cz/sekce-pro-cleny/` returns 301.
-5. Submit `https://www.maltezskyrad.cz/sitemap.xml` in Google Search Console.
-6. Retire WordPress. Keep a full backup (database and `wp-content`) offline, and remove the public `/wp-json/` API.
+1. Resolve the open items in `docs/brand-compliance.md` and `docs/asset-manifest.md`. In particular, the outlined lockups need the licensed font and the Grand Magistry's approval.
+2. Confirm the open legal items in `docs/legal-compliance.md`, including the address that receives data-protection requests and the approval of the privacy and cookie pages.
+3. Pass the launch gate above.
+4. Run `python3 tools/import_oom.py --since 2025-01-01` if the content is not yet current, then `python3 build.py --production` and `python3 check.py`. The check must report 0 problems.
+5. Run `node tests/news.test.js` and `node tests/gdpr.test.js`.
+6. Complete the Better Auth migration and sign in as the owner.
+7. Set the environment variables on Vercel and redeploy.
+8. Verify on the deployed site:
+   - the security headers are sent on `/` (`curl -I`);
+   - the old paths from the content inventory answer 200 or a redirect;
+   - `/editor/` is not in the sitemap and sends `noindex`;
+   - the daily rebuild runs after 03:00 UTC (check the deployment list on Vercel the next day).
+9. Submit `https://www.orderofmalta.int/sitemap.xml` to the search engines.
+10. Before the WordPress site is switched off, keep a full backup of its database and `wp-content`. When and how the old site is retired is open. The Grand Magistry decides it.
+
+Items 1 to 3 and the launch decision are open. Nothing in this repository has been run against the production site.

@@ -1,88 +1,92 @@
-# maltezskyrad.cz
+# orderofmalta.int
 
-Website of the Czech Grand Priory of the Sovereign Military Hospitaller Order of St. John of Jerusalem of Rhodes and of Malta (České velkopřevorství Suverénního vojenského špitálního řádu svatého Jana Jeruzalémského, z Rhodu a z Malty).
+A rebuild of www.orderofmalta.int, the website of the Sovereign Military Hospitaller Order of St John of Jerusalem of Rhodes and of Malta (Sovereign Order of Malta), Grand Magistry. The site is in five languages: English (default), Italian, French, German and Spanish.
 
-The site is static. A Python script (standard library only) turns the files in `content/` into plain HTML in `dist/`. It has no CMS, no database and no packages to install.
+The rebuild uses the design system, security model and functions of the Czech Grand Priory site (maltezskyrad.cz). That site is the template for this one.
+
+The site is static. A Python script (standard library and Pillow) turns the files in `content/` into HTML in `dist/`. Node is used only for the staff editor and the other serverless functions in `api/`. Hosting is Vercel.
+
+Status: not launched. The live site is still WordPress. Do not move DNS or deploy to production until the launch gate in `docs/deployment.md` is met.
 
 ## Commands
 
 ```sh
-python3 build.py serve 8000      # preview build, then serve it at http://localhost:8000 (headers and redirects applied)
 python3 build.py                 # preview build into dist/ (noindex, status labels shown)
-python3 build.py --production    # production build (see docs/deployment.md)
-python3 check.py                 # checks dist/: links, headings, descriptions, brand assets, acronyms
+python3 build.py --production    # production build (indexable, no labels)
+python3 build.py --offline       # build without any network access (also used by Vercel)
+python3 build.py serve 8000      # preview build, then serve it at http://localhost:8000 (headers and redirects applied)
+python3 check.py                 # checks dist/: broken links, brand assets, the forbidden acronym, javascript: links
+python3 tools/import_oom.py --since 2025-01-01   # import content from the live site (items since the date)
+node tests/news.test.js          # editor API tests (GitHub stubbed)
+node tests/gdpr.test.js          # GDPR form tests
+npm run auth:migrate             # create the Better Auth tables in Postgres (needs DATABASE_URL)
+npm run auth:user                # add a staff account: node scripts/add-user.mjs "Name" email password [editor|admin|owner]
 ```
 
-Add `--offline` to skip fetching the Grand Magistry news feed. CI (`.github/workflows/ci.yml`) runs the build and `check.py` on every push.
+Use `--since 2015-01-01` to import the full archive with the same code. See `docs/content-inventory.md` for the import scope.
 
 ## Where things are
 
 | Path | What |
 |---|---|
-| `content/pages/<url>/index.html` | Pages. Each file has JSON front matter between `---` lines, then HTML. |
-| `content/news/YYYY/MM/DD/slug.html` | News posts. The URL matches the old WordPress URL. |
-| `vercel.json` | Hosting settings, security headers (CSP, HSTS…) and legacy-URL redirects; the build copies them to `dist/_headers` and `dist/_redirects`. |
-| `content/site.json` | Names, contact details, service times, menu, 2027 calendar files, AddCal calendar. |
-| `content/i18n.json` | Interface strings in cs, en, fr, it and de. |
-| `content/translations/<lang>.json` | Translated pages (en, fr, it, de), keyed by the Czech page URL: `url`, `title`, `description`, `body`. A page without an entry is simply not in that language's menu. |
-| `content/calendar.json` | 2027 events, Order feasts, concert dates and Lent services in all five languages. |
-| `static/` | CSS, JS, fonts, official brand files (`img/`), calendar PDFs (`files/`) and migrated media (`media/`). |
-| `tools/import_wp.py` | One-off importer from the old WordPress site. Re-running it never overwrites a file marked `"imported": false`. |
-| `tools/make_og.py` | Builds `static/img/og-<lang>.jpg`, the 1200×630 link-preview cards (Discord, iMessage, Facebook): the Order's flag under a dark veil, the lockup in that language, a red strip. Same recipe as the school sites. |
+| `content/pages/<lang>/<path>/index.html` | Pages. Each file has JSON front matter between `---` lines, then HTML. The URL is the original live path. |
+| `content/news/<lang>/<YYYY>/<file>.html` | News items. |
+| `content/press/<lang>/<YYYY>/<file>.html` | Press releases. |
+| `content/galleries/<lang>/<YYYY>/<file>.html` | Photo and video galleries. |
+| `content/collections/<lang>/` | `publications.json` and `in-the-news.json`, rendered on their pages. |
+| `content/menus.json` | Main menu, footer menu, social links and legal links, per language. |
+| `content/translations/categories.json` | News categories, with the term in each language. |
+| `content/redirects.json` | Redirects found while importing (exact paths). |
+| `content/media-map.json` | Import state: source URL to local media file. |
+| `content/site.json` | Site identity, languages, time zone, section URLs, contact details. |
+| `content/i18n.json` | Interface strings in en, it, fr, de and es. |
+| `static/` | CSS, JS, fonts, official brand files (`img/`) and migrated media (`media/`). |
+| `static/media/` | Photos and documents imported from the live site. |
+| `api/` | Serverless functions: staff sign-in, editor API, GDPR request form, daily rebuild. |
+| `templates/editor.html` | The staff editor page (`/editor/`). |
+| `scripts/` | `add-user.mjs` (add a staff account), `auth-schema.sql`, `user-sql.mjs`. |
+| `tests/` | `news.test.js`, `gdpr.test.js`, and `news.local.js` (a local stand-in for the hosting). |
+| `tools/` | `import_oom.py` (importer), `make_lockup.py` (lockups), `make_og.py` (link-preview cards). |
+| `vercel.json` | Hosting settings, security headers, cron job and pattern redirects. |
+| `build.py`, `check.py` | The build and the checks. |
+| `DESIGN.md` | The design system (tokens, type, components). |
+| `docs/` | Documentation (see below). |
 
 ## Editorial workflow
 
-**Monthly church notice or concert**
-1. Copy last month's file in `content/news/`. Give it a new date folder and slug.
-2. Edit the front matter (`title`, `url`, `date`, `categories`, `excerpt`) and the HTML below it.
-3. Put the PDF in `static/media/YYYY/MM/` and link it as `<p class="file"><a href="/media/…pdf">Stáhnout</a> (PDF)</p>`.
+Staff publish at `/editor/`. The page is in English only. It is not linked from the site, it is marked `noindex` and it is not in the sitemap.
 
-**Changing a page**
-- Edit its file. Set `"imported": false` in the front matter so a re-import never overwrites it.
-- Set `"status"` to show the review state in preview builds:
-  - `existing`: carried over, not yet reviewed;
-  - `new`: new text awaiting approval;
-  - `approval`: needs sign-off;
-  - remove the field once the page is approved.
+- **Content types:** news, press releases and photo or video galleries. Each item can be written in any of the five languages.
+- **Accounts:** there is no self sign-up. An owner, an admin or an editor account is created with `npm run auth:user`. Sign-in uses Better Auth with e-mail and password, and the users are stored in Postgres. Sessions last 12 hours.
+- **Roles:** `owner`, `admin` and `editor`.
+- **Drafts and scheduling:** a post can be saved as a draft. A post with a future date goes live on that day, because the daily rebuild runs at 03:00 UTC. Dates and times are in the Europe/Rome time zone.
+- **Pinned notices:** a pinned item shows on the home page and on the news listing of its own language.
+- **Translations:** a post in one language can be linked to its translation in another language. The links are stored in the `translations` map of every post in the group.
+- **Imported files:** a file that is edited by hand or in the editor is saved with `"imported": false`. The importer never overwrites such a file.
 
-**News from co-workers (no GitHub needed)**
-- Staff publish at `/pridat-aktualitu/` (not linked from the site, not indexed, behind a password). The page has a text editor limited to what the site styles: heading and subheading, bold, italic, underline, strikethrough, lists, quotes, links and photos in the text; plus date, categories, an optional summary, a main photo and downloadable attachments.
-- Photos are shrunk in the browser (1600 px, WebP or JPEG, which also removes camera location data). Several photos can be inserted into the text at once; two or more in a row appear as a photo grid. Every file is sent in its own request (Vercel accepts at most 4.5 MB per request): PDF and photos up to 3 MB each, checked on the server by their content, not just the name, and saved under a new random name. PDFs over 1 MB are shrunk in the browser by Ghostscript compiled to WebAssembly (`static/js/pdf-worker.js`, `static/js/vendor/ghostscript-1.1.0/`, AGPL: licence and source links in that folder, offered on the staff page), loaded only when such a PDF is attached.
-- The tab **Upravit nebo smazat** lists every post (searchable). Editing keeps the post's address and earlier fields, and records who edited it (`editedBy`). Older imported posts with captioned photos, dividers or tables keep their text unchanged; their title, date, categories, summary, photo and attachments can still be edited. Deleting removes the post in one commit (the media files stay).
-- `api/news.js` cleans the text (an allowlist of tags; scripts, styles and foreign attributes are removed) and commits the article to `main` as `content/news/YYYY/MM/DD/slug.html` with its files in `static/media/YYYY/MM/`. Vercel rebuilds; the post is live in about a minute. Every post is a normal commit, so it can be edited or deleted like any other news file. The front matter records the author.
-- Settings in Vercel (Project → Settings → Environment Variables), then redeploy:
+The full description is in `docs/publishing.md`.
 
-| Variable | Value |
-|---|---|
-| `NEWS_USERS` | one `Name:password` per line (`Name:password:admin` for an administrator, who can edit or delete anyone's posts and pin notices), one per co-worker (removing a line signs that person out) |
-| `NEWS_SECRET` | a long random string, e.g. the output of `openssl rand -base64 32` |
-| `DEPLOY_HOOK_URL`, `CRON_SECRET` | daily rebuild so scheduled posts go out on their day (`docs/publishing.md`) |
-| `GITHUB_TOKEN` | fine-grained token (github.com → Settings → Developer settings → Fine-grained tokens): repository `Omegaswitch/maltezskyrad` only, permission Contents: Read and write |
-| `NEWS_NOTIFY`, `RESEND_API_KEY`, `MAIL_FROM` | optional: e-mail about every new post (Resend, as on lurdy.eu) |
+## Rules
 
-- Drafts, scheduled posts, pinned notices, roles, the daily rebuild and the local stand-in (`node tests/news.local.js`) are described in `docs/publishing.md`.
-- Test: `node tests/news.test.js` (GitHub stubbed). The editor is Quill 2.0.3 (BSD licence), in `static/js/vendor/quill-2.0.3/`.
-
-**Service times, contacts, menu**
-- Edit `content/site.json`.
-- Calendar events live in AddCal (calendar `calendarGPB`) and appear on the site immediately, with no rebuild.
-
-**Rules (from the Grand Magistry communications policy and coat-of-arms guidelines)**
-- Use the full name of the Order at first mention, then "Suverénní maltézský řád" or "Maltézský řád".
-- Never write "SMOM" or "Malta" on its own.
-- Never add, redraw or recolour an emblem. Only the files listed in `docs/asset-manifest.md` may be used; `check.py` enforces this.
-- Do not invent facts or figures. Link to orderofmalta.int for the Order's official texts.
-
-**Publishing:** see `docs/deployment.md`. Production deployment needs the Grand Priory's authorisation.
+- Never write the four-letter acronym of the Order's name. Use the full name, or the short name given in `content/site.json`.
+- Use only the official brand files listed in `docs/asset-manifest.md`. `check.py` checks the image paths.
+- Never add, redraw or recolour an emblem.
+- Never invent facts, figures, names or approvals. If something is not known, say so in the text or in the docs.
+- Keep the security model: a strict Content Security Policy, no inline scripts or event handlers, sanitised editor input, and authentication on every write endpoint.
+- Read `docs/build-spec.md` before any change. It is the contract between the parts of the project.
 
 ## Documentation
 
-- `PRODUCT.md`: purpose, audience, constraints.
+- `PRODUCT.md`: purpose, audiences, languages and constraints.
 - `DESIGN.md`: design system (tokens, type, components).
-- `docs/content-inventory.md`: every page, its status, URL preservation and redirects.
-- `docs/brand-compliance.md`: checklist against the official guidelines, deviations, open approvals.
-- `docs/asset-manifest.md`: brand assets and what replaces each one.
-- `docs/security-audit.md`: findings on the live site and the new implementation.
-- `docs/qa-report.md`: what was tested and the results.
-- `docs/qa-functional-audit-2026-10-18.md`: functional audit before the client presentation (routes, links, interactions, runtime), fixes and open items.
-- `docs/deployment.md`: build, hosting, canonical host, launch checklist.
+- `docs/build-spec.md`: the build contract (URLs, content formats, interfaces).
+- `docs/content-inventory.md`: content types, URL scheme, import scope, what is dropped and why, redirects.
+- `docs/publishing.md`: the editor, roles, languages, environment variables, daily rebuild, security and tests.
+- `docs/deployment.md`: build, hosting, canonical host, launch gate and launch checklist.
+- `docs/asset-manifest.md`: brand assets and the open items on them.
+- `docs/brand-compliance.md`: brand rules and open approvals.
+- `docs/security-audit.md`: the security design and the audit status.
+- `docs/legal-compliance.md`: privacy, cookies and legal points, and open items.
+- `docs/qa-report.md`, `docs/qa-functional-audit-2026-10-18.md`: QA status (not yet run for this site).
+
+The site was built from the template at `maltezskyrad.cz`. That project's documents describe the Czech site and are not valid for this one.

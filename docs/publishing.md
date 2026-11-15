@@ -1,76 +1,99 @@
-# Publishing (news, events, notices, galleries)
+# Publishing
 
-The site is static: everything the public sees is built by `build.py` from the files in `content/`. Staff do not touch
-those files. They publish at **`/pridat-aktualitu/`** (not linked from the site, not indexed, behind a password) and the
-page's API, `api/news.js`, writes the files into the repository `Omegaswitch/maltezskyrad` as ordinary commits. Vercel rebuilds
-the site in about a minute. The same code runs on maltezskyrad.cz and on the three school sites, so one fix fixes all.
+The site is static. Everything the public sees is built by `build.py` from the files in `content/`. Staff publish through the editor at `/editor/`. The editor's API, `api/news.js`, writes the files into the repository `Omegaswitch/orderofmalta` as commits. Vercel then rebuilds the site.
 
-## Who can do what
+The editor is English only. It is marked `noindex`, it is not linked from the site and it is not in the sitemap.
 
-`NEWS_USERS` (a Vercel environment variable) holds one line per person: `Name:password`, or `Name:password:admin`.
-The password may contain `:`. Removing a line signs that person out everywhere within a day.
+## Content types
 
-| | editor | admin |
+| Type | Written to | Public address |
 |---|---|---|
-| write, save a draft, schedule, publish | ✅ | ✅ |
-| edit or delete a post | own only (author or last editor) | any |
-| pin a notice to the home page | – | ✅ |
+| News | `content/news/<lang>/<YYYY>/<file>.html` | `<news base><slug>/` |
+| Press release | `content/press/<lang>/<YYYY>/<file>.html` | `<press base><slug>/` |
+| Gallery (photo, album or video) | `content/galleries/<lang>/<YYYY>/<file>.html` | `<galleries base><slug>/` |
 
-The editor shows a person only the buttons their role allows; the API checks the role again on every request.
+Each type can be written in any of the five languages: English (`en`, no prefix), Italian (`it`), French (`fr`), German (`de`) and Spanish (`es`). The section addresses for each language are in `docs/content-inventory.md`.
 
-## What can be published
+The editor writes only these paths and `static/media/<YYYY>/<MM>/`. Front matter follows `docs/build-spec.md`, section 3.2, and every file it writes has `"imported": false`.
 
-| Type | How | Where it appears |
-|---|---|---|
-| **News post** | tab *Nová aktualita*: title, date, categories, summary, text (Quill, limited to the site's own styles), main photo, attachments | `/aktuality/`, category and year archives, RSS, the home page |
-| **Draft** | tick *Koncept* | nowhere on the site; listed with the flag *koncept* in *Upravit nebo smazat*; publish it by editing and unticking |
-| **Scheduled post** | choose a future date | on the site from that day (see *Daily rebuild*); listed with *naplánováno na …* until then |
-| **Pinned notice** (admin) | tick *Připnout na úvodní stránku* | a red notice band on the home page and the news listing, with a link to the post; unpin by editing |
+## Translations
 
-| **Photo gallery** | insert two or more photos in a row in the text (the photo button accepts several files) | the post shows a photo grid and is listed in *Fotogalerie* |
+A post can be linked to its translation in another language. When a post is saved with `translationOf` set to the path of a post in another language, the two posts form one group. The `translations` map of every member of the group is updated in the same commit. The map always includes the post itself. Only languages with a real translation appear in it.
 
-Editing keeps a post's address and records `editedBy`. Deleting removes the post in one commit (the media files stay in
-`static/media/`, so links in old e-mails keep working).
+## Roles and sign-in
 
-## Daily rebuild (scheduled posts)
+Sign-in uses Better Auth with e-mail and password. The users are stored in Postgres.
 
-A static site only changes when it is built. Publishing triggers a build, but a scheduled post must go out on its day
-and date-based lists must move on by themselves. `vercel.json` therefore asks Vercel to call
-`/api/rebuild` every day at 03:00 UTC (`crons`). That function asks a **deploy hook** to rebuild. Set up once in Vercel
-(project `maltezskyrad`):
+| Role | Access |
+|---|---|
+| `owner` | Same as `admin`, and can manage users through Better Auth (`api/_auth.mjs`). |
+| `admin` | Writes and edits any post, and can pin notices. |
+| `editor` | Writes posts. Edits only the posts it wrote or last edited, and posts with no author. The default role. |
 
-1. Settings → Git → Deploy Hooks → create one for `main`, copy its URL into the environment variable `DEPLOY_HOOK_URL`.
-2. Settings → Environment Variables → `CRON_SECRET` = a long random string (Vercel sends it with every cron call; without it the function answers anyone).
-3. Redeploy. Without `DEPLOY_HOOK_URL` the function answers `rebuilt: false` and nothing happens.
+- There is no self sign-up. Accounts are created by a command:
 
-A post dated today goes out at the next build, whatever the hour on it. Times are Europe/Prague.
+  ```sh
+  npm run auth:user -- "Name" person@example.org 'a password of at least 12 characters' editor
+  ```
+
+  The role is `editor`, `admin` or `owner`. Run `npm run auth:migrate` once first to create the tables.
+- Sessions last 12 hours.
+- Sign-in requests are rate limited.
+- Every write endpoint requires a signed-in user with a role that allows the action.
+
+The legacy path (the `NEWS_USERS` list, where `Name:password:admin` makes an admin) is used only when `DATABASE_URL` is not set. It exists so that the tests and the local stand-in run without a database.
+
+## Drafts, scheduling and pinned notices
+
+- **Draft:** the post is saved and is not published. Drafts are listed in the editor and are not built.
+- **Scheduled post:** a post with a future date is built on that day. The daily rebuild makes this happen (below).
+- **Pinned notice:** the post shows on the home page and on the news listing of its own language, using the template's `pinned` flag. Only an admin or owner can pin a notice.
+- **Editing:** editing keeps the post's address. The file records who edited it (`editedBy`).
+
+## Daily rebuild
+
+`vercel.json` defines a cron job that calls `/api/rebuild` every day at 03:00 UTC. That function asks a deploy hook to rebuild the site. Without `DEPLOY_HOOK_URL` the function does nothing.
+
+The site's time zone is Europe/Rome.
+
+## Environment variables
+
+Set these in Vercel (Project, Settings, Environment Variables), then redeploy.
+
+| Variable | Purpose |
+|---|---|
+| `DATABASE_URL` | Postgres connection string for Better Auth. |
+| `BETTER_AUTH_SECRET` | Long random secret for Better Auth. Never put it in code. |
+| `BETTER_AUTH_URL` | Public address of the site, used by Better Auth. |
+| `GITHUB_TOKEN` | Fine-grained token for this repository only, with Contents: read and write. The editor commits posts with it. |
+| `DEPLOY_HOOK_URL` | Deploy hook for the daily rebuild. |
+| `CRON_SECRET` | Secret that Vercel sends with the cron call. When it is set, `/api/rebuild` refuses calls without it. |
+| `NEWS_USERS`, `NEWS_SECRET` | Legacy sign-in, used only when `DATABASE_URL` is not set (tests and local use). |
+| `RESEND_API_KEY` | Sends e-mail through Resend. Used by the GDPR form and by the optional new-post notice. |
+| `NEWS_NOTIFY` | Optional. Addresses that get an e-mail about every change. No mail is sent without `RESEND_API_KEY` and `MAIL_FROM`. |
+| `MAIL_FROM` | Sender address for e-mail. Required for any mail. |
+| `GDPR_TO` | Recipient(s) of data-protection requests. No default: when it is unset the form answers with a configuration error. |
+
+`GDPR_TO` and `MAIL_FROM` have no default in the code. The recipient address for data-protection requests is an open item (see `docs/legal-compliance.md`).
 
 ## Security
 
-- **Sign-in:** password compared in constant time; a signed, `HttpOnly`, `Secure`, `SameSite=Strict` cookie (`NEWS_SECRET`) for 12 hours; sign-in throttled per address.
-- **Cross-site:** every writing request must come from the site itself (`Origin` check) with the cookie; the API refuses everything else.
-- **Text:** server-side allowlist sanitiser (headings, emphasis, lists, quotes, links with safe schemes, images from `/media/` only); scripts, styles, event handlers, foreign attributes and inline data are dropped. The CSP (`vercel.json`) blocks inline scripts anyway.
-- **Files:** photos and PDFs only, checked by their first bytes, 3 MB each, saved under a new random name under `static/media/YYYY/MM/`; photos are shrunk and stripped of camera data in the browser.
-- **Paths:** the API only ever writes under `content/news/`, `content/events.json` and `static/media/`; any other path is refused (tested).
-- **Changes:** every publish, edit or delete is one commit by a fine-grained token limited to this one repository (Contents: read and write), with the person's name in the commit message and front matter, so the history shows who changed what and anything can be reverted.
-- **Secrets** live only in Vercel environment variables. Nothing in `static/` or the built pages contains a token, and the API never echoes one.
+- **Sign-in:** Better Auth, with the sessions described above. The Better Auth tables are created by `npm run auth:migrate`.
+- **Write endpoints:** every endpoint that writes content, or that sends e-mail, requires a signed-in user.
+- **Text:** editor input is cleaned by a server-side allowlist. Scripts, styles, event handlers and other attributes are removed. Only the tags of the site's vocabulary (`docs/build-spec.md`, section 3.5) are kept. Embeds are kept only for YouTube and Vimeo addresses.
+- **Files:** only the file types the site uses are accepted. Photos are saved under `static/media/<YYYY>/<MM>/`.
+- **Paths:** the editor writes only under the paths in the table above and under `static/media/`.
+- **Changes:** each save is a commit by the token in `GITHUB_TOKEN`, so the history shows every change and every change can be reverted.
+- **Secrets:** they live only in environment variables. The site never echoes them.
+- **Content Security Policy:** the headers in `vercel.json` allow scripts only from the site itself, and frames only from `www.youtube-nocookie.com` and `player.vimeo.com`.
 
-| Variable | Value |
-|---|---|
-| `NEWS_USERS` | `Name:password` or `Name:password:admin`, one per line |
-| `NEWS_SECRET` | long random string (`openssl rand -base64 32`) |
-| `GITHUB_TOKEN` | fine-grained token for `Omegaswitch/maltezskyrad` only, Contents: Read and write |
-| `DEPLOY_HOOK_URL`, `CRON_SECRET` | daily rebuild (above) |
-| `NEWS_NOTIFY`, `RESEND_API_KEY`, `MAIL_FROM` | optional e-mail about every new post |
+See `docs/security-audit.md` for the status of the audit.
 
 ## Testing
 
-- `node tests/news.test.js` — the API with GitHub stubbed: sign-in, roles, drafts, scheduling, pinning, file checks, sanitiser, origin check, edit, delete.
-- `node tests/news.local.js` — a local stand-in of the hosting: serves `dist/` and the API with GitHub replaced by this
-  checkout, so the whole flow can be tried in a browser at `http://127.0.0.1:8090/pridat-aktualitu/` (editor/editor,
-  admin/admin; build first with `python3 build.py`). Posts land in `content/`, where `git status` shows them; discard
-  them with `git checkout -- content static/media` when done.
+- `node tests/news.test.js`: the editor API with GitHub stubbed. Covers sign-in, roles, drafts, scheduling, pinning, file checks, the sanitiser, the origin check, editing and deleting.
+- `node tests/gdpr.test.js`: the data-protection request form.
+- `node tests/news.local.js`: a local stand-in for the hosting. It serves `dist/` and the API, with GitHub replaced by this checkout, so the full flow can be tried in a browser. Build first with `python3 build.py`. Posts written this way land in `content/`. Discard them with `git checkout -- content static/media` when done.
+- `python3 check.py`: the checks on `dist/`.
 
-Verified on 21 October 2026 in Chromium against the stand-in: draft with photo → listed as *koncept* → edited into a
-scheduled post → not built → pinned notice by an admin shown on the home page → event added, edited and deleted →
-post deleted → path traversal refused. 0 page errors.
+These tests have not yet been run against the production site. See `docs/qa-report.md`.

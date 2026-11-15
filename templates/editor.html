@@ -1,0 +1,109 @@
+<div class="wrap page page--simple ne" id="news-app">
+ <header class="page-head"><h1 class="display">Staff editor</h1>
+  <p class="lead-s">Write, edit and delete news, press releases and photo and video galleries in all five languages. A change is on the site about a minute after you save it.</p></header>
+ <noscript><p class="ne-msg ne-msg--error">The editor needs JavaScript.</p></noscript>
+ <form id="ne-login" class="ne-card" hidden>
+  <h2 class="display-s">Sign in</h2>
+  <label class="ne-field"><span>Name</span><input name="name" autocomplete="username" required></label>
+  <label class="ne-field"><span>Password</span><input name="password" type="password" autocomplete="current-password" required></label>
+  <p class="ne-msg" id="ne-login-msg" role="alert" hidden></p>
+  <p><button class="btn" type="submit">Sign in</button></p>
+ </form>
+ <div id="ne-app" hidden>
+ <p class="ne-who">Signed in as <b id="ne-user"></b> · <button type="button" class="link-btn" id="ne-logout">Sign out</button></p>
+ <div class="ne-tabs" role="tablist" aria-label="What do you want to do?">
+  <button type="button" role="tab" id="ne-tab-new" aria-selected="true" aria-controls="ne-editor">New post</button>
+  <button type="button" role="tab" id="ne-tab-list" aria-selected="false" aria-controls="ne-manage">Edit or delete</button>
+  <button type="button" role="tab" id="ne-tab-users" aria-selected="false" aria-controls="ne-users" hidden>Account and users</button>
+ </div>
+ <section id="ne-manage" role="tabpanel" aria-labelledby="ne-tab-list" hidden>
+  <div class="ne-row">
+   <label class="ne-field"><span>Search posts</span><input id="ne-search" type="search" placeholder="Part of a title, a date or an author…"></label>
+   <label class="ne-field"><span>Type</span><select id="ne-list-type"><option value="">All types</option><option value="news">News</option><option value="press">Press releases</option><option value="gallery">Galleries</option></select></label>
+   <label class="ne-field"><span>Language</span><select id="ne-list-lang"><option value="">All languages</option></select></label>
+  </div>
+  <ul id="ne-list" class="ne-list"></ul>
+  <p class="ne-hint">New and edited posts appear in this list about a minute later, when the site has been rebuilt. Drafts and scheduled posts are marked. You can delete your own posts; an administrator can delete any.</p>
+  <p class="ne-msg" id="ne-list-msg" role="alert" hidden></p>
+ </section>
+ <section id="ne-users" role="tabpanel" aria-labelledby="ne-tab-users" hidden>
+  <form id="ne-pw-form" class="ne-card">
+   <h2 class="display-s">Change my password</h2>
+   <label class="ne-field"><span>Current password</span><input name="current" type="password" autocomplete="current-password" required></label>
+   <label class="ne-field"><span>New password <small>(at least 12 characters)</small></span><input name="next" type="password" autocomplete="new-password" minlength="12" required></label>
+   <p class="ne-msg" id="ne-pw-msg" role="alert" hidden></p>
+   <p><button class="btn" type="submit">Change password</button></p>
+  </form>
+  <div id="ne-admin-users" hidden>
+   <form id="ne-user-form" class="ne-card">
+    <h2 class="display-s">Add a user</h2>
+    <label class="ne-field"><span>Full name</span><input name="name" maxlength="100" required></label>
+    <label class="ne-field"><span>E-mail</span><input name="email" type="email" autocomplete="off" required></label>
+    <label class="ne-field"><span>Password <small>(at least 12 characters; hand it over in person, the user then changes it)</small></span><input name="password" type="text" autocomplete="off" minlength="12" required></label>
+    <label class="ne-field"><span>Role</span><select name="role"><option value="editor">Editor: writes and edits their own posts</option><option value="admin">Administrator: edits all posts and can pin a notice</option><option value="owner">Owner: also adds and removes users</option></select></label>
+    <p class="ne-msg" id="ne-user-msg" role="alert" hidden></p>
+    <p><button class="btn" type="submit">Add</button></p>
+   </form>
+   <h2 class="display-s">Users</h2>
+   <ul id="ne-user-list" class="ne-list"></ul>
+  </div>
+ </section>
+ <form id="ne-editor" role="tabpanel" aria-labelledby="ne-tab-new">
+  <div class="ne-editing" id="ne-editing" hidden><p>Editing: <a id="ne-editing-link"></a></p><button type="button" class="link-btn" id="ne-cancel">Cancel editing</button></div>
+  <p class="ne-msg ne-msg--error" id="ne-readonly" hidden>Someone else wrote this post; only its author or an administrator can edit or delete it.</p>
+  <p class="ne-msg" id="ne-draft" hidden></p>
+  <div class="ne-row">
+   <label class="ne-field"><span>Type</span><select id="ne-type"><option value="news">News</option><option value="press">Press release</option><option value="gallery">Photo and video gallery</option></select></label>
+   <label class="ne-field"><span>Language</span><select id="ne-lang"></select></label>
+  </div>
+  <div class="ne-field" id="ne-tr">
+   <span id="ne-tr-label">Translation of <small>(optional: search for the same post in another language; the two are then linked and the language switcher shows the link)</small></span>
+   <input id="ne-tr-search" type="search" autocomplete="off" placeholder="Search by title…" aria-labelledby="ne-tr-label">
+   <ul id="ne-tr-results" class="ne-list" hidden></ul>
+   <p class="ne-hint" id="ne-tr-chosen" hidden><span id="ne-tr-chosen-text"></span> <button type="button" class="link-btn" id="ne-tr-clear">Remove link</button></p>
+   <p class="ne-hint" id="ne-tr-current" hidden></p>
+  </div>
+  <label class="ne-field"><span>Title <i aria-hidden="true">*</i></span><input id="ne-title" maxlength="200" required></label>
+  <label class="ne-field" id="ne-subtitle-field"><span>Subtitle <small>(optional)</small></span><input id="ne-subtitle" maxlength="300"></label>
+  <label class="ne-field" id="ne-org-field" hidden><span>Organisation <small>(shown with the date, for example SOVEREIGN ORDER OF MALTA)</small></span><input id="ne-org" maxlength="200"></label>
+  <label class="ne-field" id="ne-kind-field" hidden><span>Kind of gallery</span><select id="ne-kind"><option value="">Choose automatically</option><option value="photo">Single photo</option><option value="album">Photo album</option><option value="video">Video</option></select></label>
+  <div class="ne-row">
+   <label class="ne-field"><span>Date and time of publication</span><input id="ne-date" type="datetime-local" required><small id="ne-date-hint"></small></label>
+   <fieldset class="ne-field" id="ne-cats-field"><legend>Categories</legend><div id="ne-cats" class="ne-cats"></div></fieldset>
+  </div>
+  <div class="ne-row ne-flags">
+   <label class="ne-check"><input id="ne-draft-flag" type="checkbox"> Draft <small>(save, but do not publish yet)</small></label>
+   <label class="ne-check" id="ne-pin-field" hidden><input id="ne-pin" type="checkbox"> Pin to the home page <small>(important notice)</small></label>
+  </div>
+  <div class="ne-field"><span id="ne-text-label">Text <i aria-hidden="true">*</i></span>
+   <div id="ne-text" class="ne-blocks" role="group" aria-labelledby="ne-text-label"></div>
+   <div id="ne-locked" class="ne-locked" hidden><p class="ne-msg ne-msg--error">The text of this older post contains elements the editor cannot handle (for example a photo with a caption or a table). The text stays as it is; you can change the title, date, categories, summary, photo, gallery and attachments.</p><div class="prose" id="ne-locked-text"></div></div>
+   <p class="ne-hint" id="ne-text-hint">Build the text from sections (text, photos, video); change their order with the arrows or by dragging. In the text: headings, bold, italic, lists, quotes and links. Two or more photos in a row form a grid. Fonts and colours are set by the site's design.</p>
+   <p class="ne-msg" id="ne-inline-msg" hidden></p></div>
+  <label class="ne-field"><span>Summary <small>(optional: a short text for lists and search results; otherwise the start of the text is used)</small></span><textarea id="ne-excerpt" rows="2" maxlength="300"></textarea></label>
+  <label class="ne-field"><span>Video <small>(optional: a YouTube or Vimeo link; it loads only when a visitor presses play)</small></span><input id="ne-video" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=…" maxlength="200"></label>
+  <div class="ne-field"><span>Main photo <small>(optional: shown above the text and in lists; shrunk before upload)</small></span>
+   <label class="btn btn--ghost ne-pick">Choose a photo<input id="ne-photo" type="file" accept="image/jpeg,image/png,image/webp" class="visually-hidden"></label>
+   <ul id="ne-photo-box" class="ne-files ne-photo"></ul>
+   <div class="ne-row">
+    <label class="ne-field"><span>Describe the photo <small>(alternative text for people who cannot see it)</small></span><input id="ne-image-alt" maxlength="200"></label>
+    <label class="ne-field"><span>Photo credit <small>(optional)</small></span><input id="ne-image-credit" maxlength="200"></label>
+   </div></div>
+  <div class="ne-field"><span>Gallery photos <small>(optional: shown as a strip of thumbnails that open in a viewer; up to 100 photos, each shrunk to 1280 px before upload)</small></span>
+   <label class="btn btn--ghost ne-pick">Add photos<input id="ne-gallery" type="file" multiple accept="image/jpeg,image/png,image/webp" class="visually-hidden"></label>
+   <ul id="ne-gallery-box" class="ne-files"></ul></div>
+  <div class="ne-field"><span>Attachments to download <small>(PDF or photos, at most 3 MB per file; photos and larger PDFs are shrunk in your browser before upload)</small></span>
+   <div class="ne-drop" id="ne-drop"><p>Drag files here, or</p>
+    <label class="btn btn--ghost ne-pick">choose files<input id="ne-files" type="file" multiple accept="application/pdf,image/jpeg,image/png,image/webp" class="visually-hidden"></label></div>
+   <ul id="ne-file-list" class="ne-files"></ul>
+   <p class="ne-hint">PDFs are shrunk by Ghostscript (AGPL licence) running in this browser; the file goes nowhere else. <a href="/js/vendor/ghostscript-1.1.0/SOURCE.txt">Source and licence</a>.</p></div>
+  <div class="ne-submit"><button class="btn" type="submit" id="ne-publish">Publish</button>
+   <p class="ne-msg" id="ne-msg" role="alert" hidden></p></div>
+ </form>
+ </div>
+ <div id="ne-done" class="ne-card" hidden role="status">
+  <h2 class="display-s" id="ne-done-title">Published</h2>
+  <p id="ne-done-text">The change will be on the site in about a minute: <a id="ne-done-link"></a></p>
+  <p><button class="btn" type="button" id="ne-again">Write another post</button></p>
+ </div>
+</div>

@@ -1,24 +1,39 @@
-# Czech legal compliance of the website
+# Legal and privacy compliance
 
-Checked 15 October 2026 against Czech and EU law. This is not legal advice; the open items need confirmation by the Grand Priory.
+**Status: not reviewed for this site. Not legal advice.** The Order's own legal advisers must review this document. The legal review of the template site is not valid for this site and has been removed.
 
-Facts from ARES (15 Oct 2026):
-- Registered name: Suverénní řád Maltézských rytířů – České velkopřevorství.
-- IČO 00569623. Legal form 722, a church legal person registered with the Ministry of Culture.
-- One active trade licence, which makes it a *podnikatel* for § 435 of the Civil Code.
-- VAT payer.
-- Employee category 10–19 (RES).
+## Operator details
 
-| Law | Requirement | Status |
+The live footer gives the following (`docs/build-spec.md`, section 4):
+
+- Magistral Palace, Via Condotti, 68, 00187 Rome, Italy
+- Telephone: +39.06.67581.1
+- E-mail: `info@orderofmalta.int`; history and bibliography: `info.biblio@orderofmalta.int`
+
+No company number, registration number or named person is shown. None is in the sources. **Open:** the legal name and status of the entity that operates the site, and whether any registration details must be shown.
+
+## Points by topic
+
+| Topic | What the site does | Status |
 |---|---|---|
-| Civil Code (89/2012 Sb.) § 435 | Name and seat in information published online. On business documents also the registration entry and identifying number. | ✅ The footer shows the registered name, IČO and seat on every page. ❌ The Ministry of Culture registration entry (evidence number of the church legal person) is not shown, because the number is not public online. Add it to the footer once the Grand Priory supplies it. |
-| GDPR + 110/2019 Sb. | Art. 13 information for visitors | ✅ Privacy notice in five languages. Awaiting sign-off. |
-| GDPR Art. 9 | Names of members of a religious order reveal religious belief. Publishing them is disclosure outside the body (Art. 9(2)(d)), so it needs the person's consent, unless the person made it public themselves. | ✅ The Grand Priory confirmed on 15 Oct 2026 that it has consent from everyone named (officers, chapter, contact person). |
-| Civil Code §§ 84–90 (likeness), GDPR | Photos of identifiable people, especially children (school visits in news) | ✅ The Grand Priory confirmed on 15 Oct 2026 that it has consent for the photos of identifiable people, including the pupils in the school-visit news. |
-| 127/2005 Sb. § 89(3) (cookies) | Consent before storing information on the device, unless strictly necessary | ✅ No cookies. AddCal keeps a time-zone cache in localStorage, which is functional and disclosed. No banner needed. |
-| 121/2000 Sb. (copyright) | Rights to every photo and text | ⚠️ Confirm rights to the imported WordPress photos and third-party images. Fonts are under the SIL Open Font License. |
-| 171/2023 Sb. (whistleblowing) | From 50 employees: publish the internal reporting channel online | ✅ Not applicable at 10–19 employees. Re-check if headcount reaches 50. |
-| 99/2019 Sb. (accessibility, public sector) | WCAG 2.1 AA and an accessibility statement | ➖ The Grand Priory is not a public-sector body. The site meets WCAG 2.1 AA anyway (axe checks). A statement is optional. |
-| 424/2023 Sb. (European Accessibility Act) | Applies to e-commerce, banking, transport and similar services | ➖ Not applicable: nothing is sold. |
-| 117/2001 Sb. (public collections) | Rules for public appeals for money | ➖ The site makes no public appeal for donations. |
-| Digital Services Act | Intermediary services | ➖ Not applicable: no user content. |
+| Privacy notice | Imported from the live site. The text describes the old site. | **Open.** Marked `"status": "approval"`. It needs rewriting for this site and approval by the Order. |
+| Cookie policy | Imported from the live site. The text describes the old site. | **Open.** Marked `"status": "approval"`. The site sets no cookies, so the text needs review. |
+| Cookies and tracking | No cookies are set by the site. No analytics. Google Tag Manager is dropped. | No cookie banner is built. Confirm with counsel that none is needed. |
+| Video consent | After "Always load videos", the choice is stored in `localStorage` (`oom-embed-consent`). It is not a cookie and is not sent anywhere. | **Open.** Confirm that this needs no disclosure. |
+| Third-party videos | YouTube (`youtube-nocookie.com`) and Vimeo load only after a click. | Complies with the design. The privacy notice must say so. |
+| Data-protection request form (`/gdpr/`) | Sends the request by e-mail through Resend to the address in `GDPR_TO`. The site stores nothing. | **Open.** The recipient address is not set in the code and must be provided. Confirm Resend's role as a processor, and where the e-mail is kept. |
+| Staff accounts | E-mail and password of each editor, in Postgres through Better Auth. | **Open.** Set how long these records are kept, and say so in the notice to staff. |
+| Hosting logs | Hosted on Vercel, which keeps server logs. | **Open.** Describe in the privacy notice. |
+| Photographs of people | Imported from the live site. | **Open.** Confirm consent for each identifiable person, especially children. |
+| Copyright of imported text and images | Inherited from the live site. | **Open.** Confirm the Order's rights to each image and text. |
+| Fonts | Asap and EB Garamond under the SIL Open Font License. | Complies. |
+| Accessibility | Target WCAG 2.2 AA, as in the template. | Not yet tested. An accessibility statement is optional. Confirm the target. |
+
+## Open items
+
+1. Operator's legal name, status and any required registration details.
+2. Rewrite and approval of the privacy notice and the cookie policy for this site.
+3. The address that receives data-protection requests (`GDPR_TO`).
+4. Whether the video consent in `localStorage` needs disclosure.
+5. Retention of staff account data and of e-mail sent through the form.
+6. Rights to imported photographs and text, and consent for identifiable people.
