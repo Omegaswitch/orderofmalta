@@ -118,16 +118,22 @@ def equal_earth(lon, lat):
 
 
 def decode_arcs(topo):
+    """Arcs as (x, y, lon, lat) with the longitude unwrapped along the arc (no jump over the antimeridian)."""
     sx, sy = topo["transform"]["scale"]
     tx, ty = topo["transform"]["translate"]
     out = []
     for arc in topo["arcs"]:
         x = y = 0
         pts = []
+        prev = None
         for dx, dy in arc:
             x += dx
             y += dy
-            pts.append(equal_earth(x * sx + tx, y * sy + ty))
+            lon, lat = x * sx + tx, y * sy + ty
+            if prev is not None:
+                lon += 360 * round((prev - lon) / 360)
+            prev = lon
+            pts.append(equal_earth(lon, lat) + (lon, lat))
         out.append(pts)
     return out
 
@@ -141,12 +147,12 @@ def dp(pts, tol):
     stack = [(0, len(pts) - 1)]
     while stack:
         a, b = stack.pop()
-        (ax, ay), (bx, by) = pts[a], pts[b]
+        ax, ay, bx, by = pts[a][0], pts[a][1], pts[b][0], pts[b][1]
         dx, dy = bx - ax, by - ay
         L = math.hypot(dx, dy)
         best, idx = -1.0, a
         for i in range(a + 1, b):
-            px, py = pts[i]
+            px, py = pts[i][0], pts[i][1]
             d = abs(dy * (px - ax) - dx * (py - ay)) / L if L else math.hypot(px - ax, py - ay)
             if d > best:
                 best, idx = d, i
@@ -157,11 +163,39 @@ def dp(pts, tol):
 
 
 def ring_points(arcs, ring):
+    """(lon, lat) of a ring, continuous (longitudes may run past +-180)."""
     pts = []
     for i in ring:
         a = arcs[i] if i >= 0 else arcs[~i][::-1]
-        pts += a if not pts else a[1:]
+        shift = 360 * round((pts[-1][0] - a[0][2]) / 360) if pts else 0
+        pts += [(p[2] + shift, p[3]) for p in (a if not pts else a[1:])]
     return pts
+
+
+def clip_lon(pts, lo, hi):
+    """Sutherland-Hodgman clip of a ring to lo <= lon <= hi."""
+    for edge, keep in ((lo, lambda v: v >= lo), (hi, lambda v: v <= hi)):
+        out = []
+        for i, p in enumerate(pts):
+            q = pts[i - 1]
+            if keep(p[0]) != keep(q[0]):
+                t = (edge - q[0]) / (p[0] - q[0])
+                out.append((edge, q[1] + t * (p[1] - q[1])))
+            if keep(p[0]):
+                out.append(p)
+        pts = out
+        if len(pts) < 3:
+            return []
+    return pts
+
+
+def antimeridian_pieces(pts):
+    """A ring that crosses the date line is cut there: the part beyond +-180 comes back in on the other side."""
+    m = sum(p[0] for p in pts) / len(pts)
+    pts = [(lo - 360 * round(m / 360), la) for lo, la in pts]
+    if all(-180 <= p[0] <= 180 for p in pts):
+        return [pts]
+    return [piece for shift in (-360, 0, 360) for piece in [clip_lon([(lo + shift, la) for lo, la in pts], -180, 180)] if piece]
 
 
 def fmt(n):
@@ -206,7 +240,8 @@ def build_geometry(topo, present):
         polys = g["arcs"] if g["type"] == "MultiPolygon" else [g["arcs"]] if g["type"] == "Polygon" else []
         for poly in polys:
             for ring in poly:
-                feats.setdefault(iso, []).append(ring_points(arcs, ring))
+                for piece in antimeridian_pieces(ring_points(arcs, ring)):
+                    feats.setdefault(iso, []).append([equal_earth(lo, la) for lo, la in piece])
     xs = [p[0] for rs in feats.values() for r in rs for p in r]
     ys = [p[1] for rs in feats.values() for r in rs for p in r]
     x0, y0, x1, y1 = min(xs), min(ys), max(xs), max(ys)
