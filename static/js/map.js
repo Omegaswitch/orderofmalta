@@ -40,15 +40,24 @@
   root.appendChild(skeleton);
 
   function getText(u) { return fetch(u, { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw new Error(u); return r.text(); }); }
-  Promise.all([getText(root.getAttribute("data-svg")), getText(root.getAttribute("data-presence"))])
-    .then(function (r) { build(r[0], JSON.parse(r[1])); })
-    .catch(function () {
-      skeleton.remove();
-      root.setAttribute("data-state", "failed");
-      var p = el("p", "wm-error", T.mapFailed);
-      p.setAttribute("role", "status");
-      root.appendChild(p);
-    });
+  function load() {
+    Promise.all([getText(root.getAttribute("data-svg")), getText(root.getAttribute("data-presence"))])
+      .then(function (r) { build(r[0], JSON.parse(r[1])); })
+      .catch(function () {
+        skeleton.remove();
+        root.setAttribute("data-state", "failed");
+        var p = el("p", "wm-error", T.mapFailed);
+        p.setAttribute("role", "status");
+        root.appendChild(p);
+      });
+  }
+  // fetch the map data only when the map is near the viewport
+  if (window.IntersectionObserver) {
+    var near = new IntersectionObserver(function (es) {
+      if (es.some(function (x) { return x.isIntersecting; })) { near.disconnect(); load(); }
+    }, { rootMargin: "600px 0px" });
+    near.observe(root);
+  } else load();
 
   function build(svgText, pres) {
     var doc = new DOMParser().parseFromString(svgText, "image/svg+xml");
@@ -96,7 +105,7 @@
     byName.forEach(function (iso) {
       var target = circles[iso] || paths[iso];
       if (paths[iso]) hot.appendChild(paths[iso]);
-      target.setAttribute("tabindex", "0");
+      target.setAttribute("tabindex", "-1");   // roving tabindex: one Tab stop for all countries (set below)
       target.setAttribute("role", "button");
       target.setAttribute("aria-label", nameOf(iso));
     });
@@ -104,6 +113,15 @@
     if (markersG) {
       byName.forEach(function (iso) { if (circles[iso]) markersG.appendChild(circles[iso]); });
       markersG.parentNode.appendChild(markersG);   // markers on top
+    }
+    var ring = byName.map(function (iso) { return circles[iso] || paths[iso]; });
+    var stop = ring[0];
+    if (stop) stop.setAttribute("tabindex", "0");
+    function setStop(n) {
+      if (n === stop) return;
+      if (stop) stop.setAttribute("tabindex", "-1");
+      stop = n;
+      n.setAttribute("tabindex", "0");
     }
     var markerList = Object.keys(circles).map(function (k) { return circles[k]; });
     var selEl = null, selR = 0;   // outline copy of the selected country, drawn on top
@@ -170,7 +188,9 @@
     ui.appendChild(bar);
     ui.appendChild(stage);
     ui.appendChild(keys);
-    if (T.mapIntro) ui.appendChild(el("p", "wm-hint", T.mapIntro));
+    var touch = window.matchMedia && matchMedia("(pointer:coarse)").matches;
+    var hintText = (touch && T.mapIntroTouch) || T.mapIntro;
+    if (hintText) ui.appendChild(el("p", "wm-hint", hintText));
 
     root.textContent = "";
     root.appendChild(ui);
@@ -193,6 +213,7 @@
         if (kind) n++;
       });
       count.textContent = fmt(n === 1 ? T.mapCountOne : T.mapCount, n);
+      count.hidden = CHIPS.every(function (c) { return active[c]; });   // all filters on: nothing to report
     }
     paint();
 
@@ -324,6 +345,15 @@
       if (key === "Escape") { if (!panel.hidden) { closePanel(true); e.preventDefault(); } return; }
       if (t.closest && t.closest(".wm-panel")) return;
       if ((key === "Enter" || key === " ") && iso && kindsOf[iso]) { e.preventDefault(); openPanel(iso, t); return; }
+      var at = iso ? ring.indexOf(t) : -1;
+      if (at > -1 && /^(Arrow(Left|Right|Up|Down)|Home|End)$/.test(key)) {   // arrow keys move between countries (A to Z)
+        var to = key === "Home" ? 0 : key === "End" ? ring.length - 1 : at + (key === "ArrowLeft" || key === "ArrowUp" ? -1 : 1);
+        to = Math.min(Math.max(to, 0), ring.length - 1);
+        setStop(ring[to]);
+        ring[to].focus();
+        e.preventDefault();
+        return;
+      }
       if (t.closest && t.closest(".wm-bar")) return;
       var step = 0.15;
       if (key === "ArrowLeft") panBy(-step, 0);
@@ -354,6 +384,7 @@
     vp.addEventListener("focusin", function (e) {
       var n = e.target.closest && e.target.closest("[data-iso]");
       if (!n) return;
+      if (ring.indexOf(n) > -1) setStop(n);
       var b = n.getBoundingClientRect(), v = vp.getBoundingClientRect();
       if (b.right < v.left || b.left > v.right || b.top < v.top || b.bottom > v.bottom) {   // keyboard focus off screen: bring it in
         var u = unitAt(b.left + b.width / 2 - v.left, b.top + b.height / 2 - v.top);
@@ -466,6 +497,10 @@
       if (selEl.tagName.toLowerCase() === "circle") selEl.setAttribute("r", (selR * 1.35).toFixed(3));
       svg.appendChild(selEl);
     }
+    // the phone bottom sheet is fixed to the screen: close it once the map has scrolled out of view
+    if (window.IntersectionObserver) new IntersectionObserver(function (es) {
+      if (!es[es.length - 1].isIntersecting && !panel.hidden) closePanel(false);
+    }).observe(stage);
     function closePanel(restore) {
       panel.hidden = true;
       root.classList.remove("has-panel");

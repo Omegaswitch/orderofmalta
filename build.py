@@ -635,7 +635,9 @@ def menu_label(lang, url, fallback):
                     if x.get("url"):
                         labels.setdefault(resolve_link(x["url"]), x["title"])
                         order.setdefault(resolve_link(x["url"]), len(order))
-                walk(n.get("children") or [])
+                kids = n.get("children") or []
+                # same order as the dropdown (sub_html): plain links first, then the labelled groups
+                walk([c for c in kids if not c.get("children")] + [c for c in kids if c.get("children")])
         walk(main_menu(lang))
         _MENU_CACHE[(lang, "map")] = labels
         _MENU_CACHE[(lang, "order")] = order
@@ -763,8 +765,9 @@ def footer_cols(lang):
         head = f'<a {href_attr(u)}>{esc(n["title"])}</a>' if u else esc(n["title"])
         if items:
             # phones: a collapsed group per column (site.js opens them all on wide screens; without it they stay open)
-            cols.append(f'<details class="f-col" open><summary><h2>{esc(n["title"])}</h2></summary>'
-                        f'{"<p class=" + chr(34) + "f-all" + chr(34) + ">" + head + "</p>" if u else ""}<ul>{"".join(items)}</ul></details>')
+            # the heading stays a real <h2> outside the <summary> (a summary flattens its children); the summary is the toggle laid over it
+            cols.append(f'<div class="f-col"><h2>{esc(n["title"])}</h2><details open><summary aria-label="{esc(n["title"])}"></summary>'
+                        f'{"<p class=" + chr(34) + "f-all" + chr(34) + ">" + head + "</p>" if u else ""}<ul>{"".join(items)}</ul></details></div>')
         else:
             cols.append(f'<div class="f-col"><h2>{head}</h2></div>')
     return "".join(cols)

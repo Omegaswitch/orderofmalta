@@ -30,15 +30,29 @@
   }
 
   // ---- footer column groups: all open on wide screens, collapsed on phones (they stay open without this script)
-  var fcols = document.querySelectorAll(".f-col");
+  var fcols = document.querySelectorAll(".f-col>details");
   if (fcols.length && window.matchMedia) {
     var narrow = window.matchMedia("(max-width: 640px)");
-    var syncFooter = function () { fcols.forEach(function (d) { if (d.tagName === "DETAILS") d.open = !narrow.matches; }); };
+    var syncFooter = function () { fcols.forEach(function (d) { d.open = !narrow.matches; }); };
     syncFooter();
     if (narrow.addEventListener) narrow.addEventListener("change", syncFooter);
     fcols.forEach(function (d) {
       d.addEventListener("toggle", function () { if (!narrow.matches && !d.open) d.open = true; });
     });
+  }
+
+  // ---- news strip: show only the headlines that fit completely (a hidden one also leaves the tab order)
+  var tick = document.querySelector(".ticker ul");
+  if (tick) {
+    var fitTicker = function () {
+      var lis = Array.prototype.slice.call(tick.children);
+      lis.forEach(function (li) { li.hidden = false; });
+      var edge = tick.getBoundingClientRect().right + 1;
+      lis.forEach(function (li) { if (li.getBoundingClientRect().right > edge) li.hidden = true; });
+    };
+    fitTicker();
+    window.addEventListener("resize", fitTicker);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTicker);
   }
 
   // ---- main menu (mobile) and submenus

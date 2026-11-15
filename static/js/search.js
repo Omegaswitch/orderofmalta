@@ -68,7 +68,7 @@
   function dateText(d) {
     var dt = new Date(d + "T12:00:00");
     if (isNaN(dt)) return d;
-    try { return new Intl.DateTimeFormat(LANG, { day: "numeric", month: "long", year: "numeric" }).format(dt); } catch (e) { return d; }
+    try { return new Intl.DateTimeFormat(LANG === "en" ? "en-GB" : LANG, { day: "numeric", month: "long", year: "numeric" }).format(dt); } catch (e) { return d; }
   }
   function item(row, words) {
     var li = document.createElement("li"), body = document.createElement("div"), meta = document.createElement("p");
