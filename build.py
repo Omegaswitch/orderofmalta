@@ -592,20 +592,23 @@ def link_li(n, current):
 
 
 def sub_html(node, lang, current):
-    parts = []
+    """Template-style dropdown: plain links first (the section's lead page first), then labelled groups."""
+    plain, groups = [], []
     f = node.get("feature")
     if f and f.get("url"):
-        im = img(f["image"], "", sizes="(max-width: 700px) 100vw, 320px") if f.get("image") else ""
-        parts.append(f'<li class="sub-feature"><a {href_attr(resolve_link(f["url"]))}>{im}<b>{esc(f["title"])}</b>'
-                     f'{f"<span>{esc(f["text"])}</span>" if f.get("text") else ""}</a></li>')
+        plain.append(link_li(f, current))
     for c in node.get("children") or []:
         kids = c.get("children") or []
         if kids:
             head = (f'<a {href_attr(resolve_link(c["url"]))}>{esc(c["title"])}</a>' if c.get("url") else esc(c["title"]))
-            parts.append(f'<li class="sub-group"><span class="sub-heading">{head}</span><ul>{"".join(link_li(k, current) for k in kids)}</ul></li>')
-        elif c.get("url"):
-            parts.append(link_li(c, current))
-    return "".join(parts)
+            groups.append(f'<li class="sub-group"><span class="sub-heading">{head}</span><ul>{"".join(link_li(k, current) for k in kids)}</ul></li>')
+        elif c.get("url") and not (f and resolve_link(c["url"]) == resolve_link(f.get("url"))):
+            plain.append(link_li(c, current))
+    return "".join(plain + groups)
+
+
+def sub_count(node):
+    return sum(1 + len(c.get("children") or []) for c in node.get("children") or []) + (1 if node.get("feature") else 0)
 
 
 def nav_html(lang, current):
@@ -621,7 +624,7 @@ def nav_html(lang, current):
         sub = ""
         if kids:
             sub = (f'<button class="sub-toggle" type="button" aria-expanded="false" aria-label="{esc(n["title"])}: {esc(t["morePages"])}">'
-                   f'<span aria-hidden="true"></span></button><ul class="sub">{sub_html(n, lang, current)}</ul>')
+                   f'<span aria-hidden="true"></span></button><ul class="sub{" sub--cols" if sub_count(n) > 9 else ""}">{sub_html(n, lang, current)}</ul>')
         lis.append(f'<li{" class=" + chr(34) + "has-sub" + chr(34) if kids else ""}>{label}{sub}</li>')
     return f'<ul class="nav-list">{"".join(lis)}</ul>'
 
