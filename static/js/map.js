@@ -175,6 +175,13 @@
     root.textContent = "";
     root.appendChild(ui);
     root.setAttribute("data-state", "ready");
+    // a marker that sits on another country (Vatican City on Italy, Monaco on France …) lets clicks through until the map is zoomed in
+    Object.keys(circles).forEach(function (iso) {
+      var c = circles[iso], pt = svg.createSVGPoint();
+      pt.x = +c.getAttribute("cx");
+      pt.y = +c.getAttribute("cy");
+      Object.keys(paths).forEach(function (o) { if (o !== iso && paths[o].isPointInFill(pt)) c.setAttribute("data-over", "1"); });
+    });
 
     // ---- colouring
     function paint() {
@@ -198,11 +205,12 @@
       cx = w >= W ? W / 2 : Math.min(Math.max(cx, w / 2), W - w / 2);
       cy = h >= H ? H / 2 : Math.min(Math.max(cy, h / 2), H - h / 2);
       svg.setAttribute("viewBox", (cx - w / 2).toFixed(2) + " " + (cy - h / 2).toFixed(2) + " " + w.toFixed(2) + " " + h.toFixed(2));
-      var r = (cw < 500 ? 4.5 : 4) / s;
+      var r = Math.min(cw < 500 ? 4.5 : 4, 1.8 + (k - 1) * 1.1) / s;   // markers start small and grow as the map is zoomed in
       selR = r;
       markerList.forEach(function (c) { c.setAttribute("r", r.toFixed(3)); });
       if (selEl && selEl.tagName.toLowerCase() === "circle") selEl.setAttribute("r", (r * 1.35).toFixed(3));
       vp.setAttribute("data-zoomed", k > 1.001 ? "1" : "0");
+      vp.setAttribute("data-lo", k < 3 ? "1" : "0");
     }
     function measure() {
       var b = vp.getBoundingClientRect();

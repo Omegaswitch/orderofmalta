@@ -52,6 +52,19 @@ Use `--since 2015-01-01` to import the full archive with the same code. See `doc
 | `DESIGN.md` | The design system (tokens, type, components). |
 | `docs/` | Documentation (see below). |
 
+## World map
+
+The home page ("activities in 130 countries") and the Contacts pages show an interactive map (`static/js/map.js`, styles at the end of `static/css/site.css`, strings `map*` in `content/i18n.json`). Its data is generated, not hand-edited:
+
+```sh
+mkdir /tmp/atlas && curl -L https://registry.npmjs.org/world-atlas/-/world-atlas-2.0.2.tgz | tar xz -C /tmp/atlas
+python3 -I tools/make_map.py /tmp/atlas/package/countries-50m.json     # add -v to list how the headings were matched
+```
+
+This writes `static/map/world.svg` (Equal Earth projection, Antarctica dropped, markers for microstates) and `static/map/presence.<lang>.json` (entities per country, parsed from the imported Contacts pages; nothing is added that is not on those pages). Re-run it after the Contacts pages are re-imported. Country names are matched across languages through the e-mail addresses and web hosts the entries share (the headings are sorted differently in each language); mismatches are logged.
+
+Geometry: Natural Earth (public domain) via the npm package `world-atlas` 2.0.2, `countries-50m.json` (ISC licence). The package is not kept in the repository.
+
 ## Editorial workflow
 
 Staff publish at `/editor/`. The page is in English only. It is not linked from the site, it is marked `noindex` and it is not in the sitemap.
