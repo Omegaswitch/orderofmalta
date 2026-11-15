@@ -427,6 +427,10 @@
       panel.hidden = false;
       root.classList.add("has-panel");
       hideTip();
+      if (getComputedStyle(panel).position === "fixed") {   // bottom sheet: bring the map to the top of the screen, above the sheet
+        var r = stage.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > innerHeight * 0.48) stage.scrollIntoView({ block: "start" });
+      }
       showInFreeArea(iso);
       h.focus({ preventScroll: true });
     }

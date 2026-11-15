@@ -959,7 +959,13 @@ html:not(.js) .worldmap--bare{display:none}
 @keyframes wm-in{from{opacity:0;transform:translateX(14px)}}
 @media (max-width:720px){
   .wm-viewport{aspect-ratio:1.55/1}
-  .wm-panel{position:fixed;top:auto;left:0;right:0;bottom:0;width:auto;max-height:58vh;border-left:0;border-top:3px solid var(--red);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .wm-stage{scroll-margin-top:60px}
+  .wm-chip{padding:0 10px;font-size:.88rem}
+  .wm-controls{top:auto;bottom:var(--s2);left:var(--s2);flex-direction:row}
+  .wm-btn+.wm-btn{margin-top:0;margin-left:-1px}
+  .wm-btn:first-child{border-radius:2px 0 0 2px}
+  .wm-btn:last-child{border-radius:0 2px 2px 0}
+  .wm-panel{position:fixed;top:auto;left:0;right:0;bottom:0;width:auto;max-height:50vh;border-left:0;border-top:3px solid var(--red);padding-bottom:env(safe-area-inset-bottom,0px)}
   .wm-panel-foot{padding-block:var(--s4)}
   .wm-count{flex-basis:100%}
 }
