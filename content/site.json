@@ -1,463 +1,186 @@
 {
- "baseUrl": "https://www.maltezskyrad.cz",
- "addcal": {
-  "calendarUid": "7wuz1bykzd15",
-  "publicUrl": "https://addcal.co/c/calendarGPB",
-  "script": "https://cdn.addcal.co/embed/v3/calendar.min.js"
- },
+ "baseUrl": "https://www.orderofmalta.int",
+ "languages": [
+  "en",
+  "it",
+  "fr",
+  "de",
+  "es"
+ ],
+ "timezone": "Europe/Rome",
+ "repo": "Omegaswitch/orderofmalta",
  "names": {
-  "cs": {
-   "order": "Suverénní vojenský špitální řád svatého Jana Jeruzalémského, z Rhodu a z Malty",
-   "orderShort": "Suverénní maltézský řád",
-   "orderActivities": "Maltézský řád",
-   "entity": "České velkopřevorství",
-   "site": "Maltézský řád – České velkopřevorství",
-   "lockup": "Maltézský řád – Česká republika"
-  },
   "en": {
-   "order": "Sovereign Military Hospitaller Order of St. John of Jerusalem of Rhodes and of Malta",
+   "order": "Sovereign Military Hospitaller Order of St John of Jerusalem of Rhodes and of Malta",
    "orderShort": "Sovereign Order of Malta",
    "orderActivities": "Order of Malta",
-   "entity": "Grand Priory of Bohemia",
-   "site": "Order of Malta – Grand Priory of Bohemia",
-   "lockup": "Order of Malta – Czech Republic"
-  },
-  "fr": {
-   "order": "Ordre Souverain Militaire et Hospitalier de Saint-Jean de Jérusalem de Rhodes et de Malte",
-   "orderShort": "Ordre souverain de Malte",
-   "orderActivities": "Ordre de Malte",
-   "entity": "Grand Prieuré de Bohême",
-   "site": "Ordre de Malte – Grand Prieuré de Bohême",
-   "lockup": "Ordre de Malte – République tchèque"
+   "site": "Sovereign Order of Malta",
+   "lockup": "Sovereign Order of Malta"
   },
   "it": {
    "order": "Sovrano Militare Ordine Ospedaliero di San Giovanni di Gerusalemme di Rodi e di Malta",
    "orderShort": "Sovrano Ordine di Malta",
    "orderActivities": "Ordine di Malta",
-   "entity": "Gran Priorato di Boemia",
-   "site": "Ordine di Malta – Gran Priorato di Boemia",
-   "lockup": "Ordine di Malta – Repubblica Ceca"
+   "site": "Sovrano Ordine di Malta",
+   "lockup": "Sovrano Ordine di Malta"
+  },
+  "fr": {
+   "order": "Ordre Souverain Militaire et Hospitalier de Saint-Jean de Jérusalem de Rhodes et de Malte",
+   "orderShort": "Ordre souverain de Malte",
+   "orderActivities": "Ordre de Malte",
+   "site": "Ordre souverain de Malte",
+   "lockup": "Ordre souverain de Malte"
   },
   "de": {
-   "order": "Souveräner Ritter- und Hospitalorden vom Heiligen Johannes von Jerusalem von Rhodos und von Malta",
+   "order": "Souveräner Ritter- und Hospitalorden vom Hl. Johannes zu Jerusalem von Rhodos und von Malta",
    "orderShort": "Souveräner Malteserorden",
    "orderActivities": "Malteserorden",
-   "entity": "Großpriorat Böhmen",
-   "site": "Malteserorden – Großpriorat Böhmen",
-   "lockup": "Der Malteserorden – Tschechische Republik"
+   "site": "Souveräner Malteserorden",
+   "lockup": "Souveräner Malteserorden"
+  },
+  "es": {
+   "order": "Soberana y Militar Orden Hospitalaria de San Juan de Jerusalén de Rodas y de Malta",
+   "orderShort": "Soberana Orden de Malta",
+   "orderActivities": "Orden de Malta",
+   "site": "Soberana Orden de Malta",
+   "lockup": "Soberana Orden de Malta"
   }
  },
- "languages": [
-  "cs",
-  "en",
-  "fr",
-  "it",
-  "de"
- ],
  "contact": {
-  "address": "Velkopřevorské náměstí 4 (vchod z Lázeňské 2), 118 00 Praha 1 – Malá Strana",
-  "addressIntl": "Velkopřevorské náměstí 4 (entrance Lázeňská 2), 118 00 Prague 1 – Malá Strana, Czech Republic",
-  "phones": [
-   "+420 257 530 824",
-   "+420 257 530 876"
-  ],
-  "email": "gpb@smom.cz",
-  "mapUrl": "https://www.openstreetmap.org/search?query=Velkop%C5%99evorsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%204%2C%20Praha",
-  "ico": "00569623",
-  "legalName": "Suverénní řád Maltézských rytířů – České velkopřevorství",
-  "person": "Lenka Hellerová"
+  "address": "Magistral Palace, Via Condotti, 68 – 00187 Rome – Italy",
+  "phone": "+39.06.67581.1",
+  "email": "info@orderofmalta.int",
+  "emailBiblio": "info.biblio@orderofmalta.int"
  },
  "social": [
   {
    "label": "Facebook",
-   "url": "https://www.facebook.com/maltezsky.rad/",
-   "owner": "České velkopřevorství"
+   "url": "https://www.facebook.com/OrderOfMalta"
+  },
+  {
+   "label": "X",
+   "url": "https://twitter.com/orderofmalta"
   },
   {
    "label": "YouTube",
-   "url": "https://www.youtube.com/user/OrderofMaltaGM",
-   "owner": "Velké magisterium"
+   "url": "https://www.youtube.com/c/orderofmaltaofficialchannel"
+  },
+  {
+   "label": "Instagram",
+   "url": "https://www.instagram.com/orderofmalta_official/"
   },
   {
    "label": "LinkedIn",
-   "url": "https://www.linkedin.com/company/order-of-malta",
-   "owner": "Velké magisterium"
+   "url": "https://it.linkedin.com/company/order-of-malta"
   }
  ],
- "services": [
-  {
-   "time": "9:30",
-   "day": {
-    "cs": "Neděle",
-    "en": "Sunday",
-    "fr": "Dimanche",
-    "it": "Domenica",
-    "de": "Sonntag"
-   },
-   "what": {
-    "cs": "Modlitba svatého růžence",
-    "en": "Holy Rosary",
-    "fr": "Saint Rosaire",
-    "it": "Santo Rosario",
-    "de": "Rosenkranzgebet"
-   }
+ "sections": {
+  "home": {
+   "en": "/",
+   "it": "/it/",
+   "fr": "/fr/",
+   "de": "/de/",
+   "es": "/es/"
   },
-  {
-   "time": "10:00",
-   "day": {
-    "cs": "Neděle",
-    "en": "Sunday",
-    "fr": "Dimanche",
-    "it": "Domenica",
-    "de": "Sonntag"
-   },
-   "what": {
-    "cs": "Nedělní mše svatá",
-    "en": "Sunday Holy Mass",
-    "fr": "Messe dominicale",
-    "it": "Santa Messa domenicale",
-    "de": "Sonntagsmesse"
-   }
+  "news": {
+   "en": "/news/",
+   "it": "/it/notizie/",
+   "fr": "/fr/actualites/",
+   "de": "/de/nachrichten/",
+   "es": "/es/noticias/"
   },
-  {
-   "time": "17:30",
-   "day": {
-    "cs": "Úterý",
-    "en": "Tuesday",
-    "fr": "Mardi",
-    "it": "Martedì",
-    "de": "Dienstag"
-   },
-   "what": {
-    "cs": "Mše svatá",
-    "en": "Holy Mass",
-    "fr": "Messe",
-    "it": "Santa Messa",
-    "de": "Heilige Messe"
-   }
+  "press": {
+   "en": "/press-releases/",
+   "it": "/it/comunicati-stampa/",
+   "fr": "/fr/communiques-de-presse/",
+   "de": "/de/pressemitteilungen/",
+   "es": "/es/comunicados-de-prensa/"
   },
-  {
-   "time": "17:00",
-   "day": {
-    "cs": "3. neděle v měsíci",
-    "en": "3rd Sunday of the month",
-    "fr": "3e dimanche du mois",
-    "it": "3ª domenica del mese",
-    "de": "3. Sonntag im Monat"
-   },
-   "what": {
-    "cs": "Nedělní latinská mše",
-    "en": "Sunday Latin Mass",
-    "fr": "Messe latine dominicale",
-    "it": "Messa domenicale in latino",
-    "de": "Sonntagsmesse auf Latein"
-   }
+  "pressList": {
+   "en": "/press-publications/press-releases/",
+   "it": "/it/media-e-pubblicazioni/comunicati-stampa/",
+   "fr": "/fr/press-et-publications/communiques-de-presse/",
+   "de": "/de/presse-und-veroeffentlichungen/pressemitteilungen/",
+   "es": "/es/prensa-y-publicaciones/comunicados-de-prensa/"
   },
-  {
-   "time": "17:30",
-   "day": {
-    "cs": "První pátek v měsíci",
-    "en": "First Friday of the month",
-    "fr": "Premier vendredi du mois",
-    "it": "Primo venerdì del mese",
-    "de": "Erster Freitag im Monat"
-   },
-   "what": {
-    "cs": "Mše s prvopáteční adorací",
-    "en": "First Friday Mass with Adoration",
-    "fr": "Messe du premier vendredi avec adoration",
-    "it": "Messa del primo venerdì con adorazione",
-    "de": "Herz-Jesu-Freitagsmesse mit Anbetung"
-   }
-  }
- ],
- "officers": [
-  {
-   "role": "Kníže-velkopřevor",
-   "name": "Fra’ Pierre de Bizemont"
-  }
- ],
- "gm": {
-  "cs": {
-   "home": "https://www.orderofmalta.int/",
-   "news": "https://www.orderofmalta.int/news/",
-   "feed": "https://www.orderofmalta.int/news/feed/?lang=en"
+  "galleries": {
+   "en": "/photo-and-video-galleries/",
+   "it": "/it/gallerie-foto-e-video/",
+   "fr": "/fr/galeries-photo-et-video/",
+   "de": "/de/foto-und-videogalerien/",
+   "es": "/es/galerias-de-fotos-y-videos/"
   },
-  "en": {
-   "home": "https://www.orderofmalta.int/",
-   "mission": "https://www.orderofmalta.int/about-the-order-of-malta/mission/",
-   "spirituality": "https://www.orderofmalta.int/about-the-order-of-malta/spiritual-commitment/",
-   "history": "https://www.orderofmalta.int/history/",
-   "grandMaster": "https://www.orderofmalta.int/government/grand-master/",
-   "faq": "https://www.orderofmalta.int/about-the-order-of-malta/faq/",
-   "news": "https://www.orderofmalta.int/news/",
-   "contacts": "https://www.orderofmalta.int/contacts/",
-   "feed": "https://www.orderofmalta.int/news/feed/?lang=en"
+  "newsCategories": {
+   "en": "/news-categories/",
+   "it": "/it/categorie-notizia/",
+   "fr": "/fr/categories-de-actualites/",
+   "de": "/de/nachrichten-kategorien/",
+   "es": "/es/categorias-de-noticias/"
   },
-  "fr": {
-   "home": "https://www.orderofmalta.int/fr/",
-   "mission": "https://www.orderofmalta.int/fr/l-ordre-de-malte/mission/",
-   "spirituality": "https://www.orderofmalta.int/fr/l-ordre-de-malte/engagement-spirituel/",
-   "history": "https://www.orderofmalta.int/fr/histoire/",
-   "grandMaster": "https://www.orderofmalta.int/fr/gouvernement/grand-maitre/",
-   "faq": "https://www.orderofmalta.int/fr/l-ordre-de-malte/faq/",
-   "news": "https://www.orderofmalta.int/fr/actualites/",
-   "contacts": "https://www.orderofmalta.int/fr/contacts/",
-   "feed": "https://www.orderofmalta.int/fr/actualites/feed/?lang=fr"
+  "newsTags": {
+   "en": "/news-tags/",
+   "it": "/it/tag-notizia/",
+   "fr": "/fr/etiquettes-de-actualite/",
+   "de": "/de/nachrichten-tag/",
+   "es": "/es/etiquetas-de-las-noticias/"
   },
-  "it": {
-   "home": "https://www.orderofmalta.int/it/",
-   "mission": "https://www.orderofmalta.int/it/l-ordine-di-malta/missione/",
-   "spirituality": "https://www.orderofmalta.int/it/l-ordine-di-malta/impegno-spirituale/",
-   "history": "https://www.orderofmalta.int/it/storia/",
-   "grandMaster": "https://www.orderofmalta.int/it/governo/gran-maestro/",
-   "faq": "https://www.orderofmalta.int/it/l-ordine-di-malta/faq/",
-   "news": "https://www.orderofmalta.int/it/notizie/",
-   "contacts": "https://www.orderofmalta.int/it/contatti/",
-   "feed": "https://www.orderofmalta.int/it/notizie/feed/?lang=it"
+  "galleryTypes": {
+   "en": "/gallery-type/",
+   "it": "/it/tipi-di-galleria/",
+   "fr": "/fr/types-de-galeries/",
+   "de": "/de/galerie-typen/",
+   "es": "/es/tipos-de-galerias/"
   },
-  "de": {
-   "home": "https://www.orderofmalta.int/de/",
-   "mission": "https://www.orderofmalta.int/de/der-malteserorden/mission/",
-   "spirituality": "https://www.orderofmalta.int/de/der-malteserorden/spirituelles-engagement/",
-   "history": "https://www.orderofmalta.int/de/geschichte/",
-   "grandMaster": "https://www.orderofmalta.int/de/regierung/grossmeister/",
-   "faq": "https://www.orderofmalta.int/de/der-malteserorden/faq/",
-   "news": "https://www.orderofmalta.int/de/nachrichten/",
-   "contacts": "https://www.orderofmalta.int/de/kontakte/",
-   "feed": "https://www.orderofmalta.int/de/nachrichten/feed/?lang=de"
+  "search": {
+   "en": "/search/",
+   "it": "/it/search/",
+   "fr": "/fr/search/",
+   "de": "/de/search/",
+   "es": "/es/search/"
+  },
+  "gdpr": {
+   "en": "/gdpr/",
+   "it": "/it/gdpr/",
+   "fr": "/fr/gdpr/",
+   "de": "/de/gdpr/",
+   "es": "/es/gdpr/"
+  },
+  "feed": {
+   "en": "/feed.xml",
+   "it": "/it/feed.xml",
+   "fr": "/fr/feed.xml",
+   "de": "/de/feed.xml",
+   "es": "/es/feed.xml"
   }
  },
- "calendarFiles": [
-  {
-   "title": "Celoroční přehled 2027 na jedné stránce",
-   "note": "A4 nebo A3 na zeď",
-   "files": [
-    [
-     "A4 česky",
-     "/files/kalendar-2027/kalendar_2027_prehled_A4_cs.pdf"
-    ],
-    [
-     "A3 česky",
-     "/files/kalendar-2027/kalendar_2027_prehled_A3_cs.pdf"
-    ],
-    [
-     "A4 English",
-     "/files/kalendar-2027/kalendar_2027_prehled_A4_en.pdf"
-    ],
-    [
-     "A3 English",
-     "/files/kalendar-2027/kalendar_2027_prehled_A3_en.pdf"
-    ]
-   ],
-   "key": "calYear"
+ "galleryTypes": {
+  "photo": {
+   "en": "single-picture",
+   "it": "singola-foto",
+   "fr": "image-unique",
+   "de": "einzelnes-bild",
+   "es": "imagen-unica"
+  },
+  "album": {
+   "en": "gallery",
+   "it": "gallery-it",
+   "fr": "gallery-fr",
+   "de": "gallery-de",
+   "es": "gallery-es"
+  },
+  "video": {
+   "en": "video",
+   "it": "video-it",
+   "fr": "video-fr",
+   "de": "video-de",
+   "es": "video-es"
   }
- ],
- "nav": [
-  {
-   "title": "Maltézský řád",
-   "url": "/rad-a-jeho-instituce/",
-   "children": [
-    {
-     "url": "/rad-a-jeho-instituce/o-radu/"
-    },
-    {
-     "url": "/rad-a-jeho-instituce/radova-spiritualita/"
-    },
-    {
-     "url": "/rad-a-jeho-instituce/historie-radu-ve-svete/",
-     "children": [
-      {
-       "url": "/rad-a-jeho-instituce/historie-radu-ve-svete/1113-papezske-uznani/"
-      },
-      {
-       "url": "/rad-a-jeho-instituce/historie-radu-ve-svete/pet-radu-sv-jana/"
-      },
-      {
-       "url": "/rad-a-jeho-instituce/stare-jazyky-radu/"
-      },
-      {
-       "url": "/rad-a-jeho-instituce/jmena-radu/"
-      }
-     ]
-    },
-    {
-     "url": "/rad-a-jeho-instituce/velmistr/",
-     "children": [
-      {
-       "url": "/rad-a-jeho-instituce/velmistri/"
-      }
-     ]
-    },
-    {
-     "url": "/rad-a-jeho-instituce/radova-vlada/"
-    },
-    {
-     "url": "/diplomaticke-vztahy/",
-     "children": [
-      {
-       "url": "/diplomaticke-vztahy/velvyslanectvi-radu-v-ceske-republice/"
-      },
-      {
-       "url": "/diplomaticke-vztahy/bilateralni-vztahy/"
-      },
-      {
-       "url": "/diplomaticke-vztahy/multilaterarni-vztahy/"
-      }
-     ]
-    },
-    {
-     "url": "/zdravotnicke-a-humanitarni-cinnosti-radu-ve-svete/",
-     "children": [
-      {
-       "url": "/zdravotnicke-a-humanitarni-cinnosti-radu-ve-svete/zdravotnicke-aktivity-radu/"
-      },
-      {
-       "url": "/zdravotnicke-a-humanitarni-cinnosti-radu-ve-svete/humanitarni-aktivity-radu-pomoc-v-krizich/"
-      }
-     ]
-    },
-    {
-     "url": "/rad-a-jeho-instituce/odkazy/"
-    }
-   ]
-  },
-  {
-   "title": "České velkopřevorství",
-   "url": "/ceske-velkoprevorstvi/",
-   "children": [
-    {
-     "url": "/rad-a-jeho-instituce/historie-ceskeho-velkoprevorstvi/",
-     "children": [
-      {
-       "url": "/rad-a-jeho-instituce/historie-ceskeho-velkoprevorstvi/predstaveni-ceskeho-velkoprevorstvi/"
-      }
-     ]
-    },
-    {
-     "url": "/rad-a-jeho-instituce/predstavitele-ceskeho-velkoprevorstvi/"
-    },
-    {
-     "url": "/velkoprevorsky-palac/"
-    },
-    {
-     "url": "/ostatni/zasady-prijimani-daru/"
-    },
-    {
-     "url": "/ostatni/zasady-boje-proti-prani-spinavych-penez/"
-    },
-    {
-     "url": "/ostatni/odkazy/",
-     "title": "Subjekty"
-    }
-   ]
-  },
-  {
-   "title": "Činnosti",
-   "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/",
-   "children": [
-    {
-     "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/pomoc-seniorum/"
-    },
-    {
-     "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/pomoc-potrebnym/"
-    },
-    {
-     "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/skolstvi/"
-    },
-    {
-     "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/pout-do-lurd/"
-    },
-    {
-     "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/puda-lesy/"
-    },
-    {
-     "url": "/cinnosti-maltezskeho-radu-v-ceske-republice/dalsi-aktivity/"
-    }
-   ]
-  },
-  {
-   "title": "Řádový kostel",
-   "url": "/radovy-kostel-panny-marie-pod-retezem/",
-   "children": [
-    {
-     "url": "/radovy-kostel-panny-marie-pod-retezem/o-kostele/"
-    },
-    {
-     "url": "/radovy-kostel-panny-marie-pod-retezem/bohosluzby/"
-    },
-    {
-     "url": "/radovy-kostel-panny-marie-pod-retezem/kulturni-akce/"
-    },
-    {
-     "url": "/koncerty/",
-     "children": [
-      {
-       "url": "/koncerty/archiv-koncertu/",
-       "children": [
-        {
-         "url": "/koncerty/archiv-koncertu/vanocni-zpevy-v-kostele-panny-marie-pod-retezem-29-12-2020/"
-        },
-        {
-         "url": "/koncerty/archiv-koncertu/koncert-21-prosince-2020-z-chramu-panny-marie-pod-retezem/"
-        },
-        {
-         "url": "/koncerty/archiv-koncertu/koncert-7-prosince-2020-z-chramu-panny-marie-pod-retezem/"
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "title": "Kalendář",
-   "url": "/kalendar/"
-  },
-  {
-   "title": "Aktuality",
-   "url": "/aktuality/"
-  },
-  {
-   "title": "Kontakt",
-   "url": "/kontakt/"
-  }
- ],
- "newsCategories": {
-  "ceske-velkoprevorstvi": "České velkopřevorství",
-  "kultura": "Kultura a koncerty",
-  "obcasnik": "Provoz kostela",
-  "ostatni": "Ostatní",
-  "news_malteser_international": "Malteser International",
-  "galerie": "Galerie",
-  "nezarazene": "Nezařazené"
  },
- "hiddenNav": [
-  {
-   "url": "/gdpr/",
-   "children": [
-    {
-     "url": "/gdpr/zasady-pro-zpracovani-osobnich-udaju/"
-    },
-    {
-     "url": "/gdpr/clenove/"
-    },
-    {
-     "url": "/gdpr/pani-nemocni/"
-    },
-    {
-     "url": "/gdpr/dobrovolnici/"
-    },
-    {
-     "url": "/gdpr/ostatni/"
-    },
-    {
-     "url": "/gdpr/maltezska-mladez/"
-    },
-    {
-     "url": "/gdpr/zmena-osobnich-udaju/"
-    }
-   ]
-  }
- ]
+ "newsFilters": [
+  "latest-interventions",
+  "grand-master-news",
+  "diplomatic-activities"
+ ],
+ "perPage": 12,
+ "editorUrl": "/editor/"
 }
