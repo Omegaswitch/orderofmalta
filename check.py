@@ -145,7 +145,8 @@ def check_page(rel, name, text, page, sources, fails, warns):
     for problem in page.problems:
         fails.append(f"{rel}: {problem}")
     for word in FORBIDDEN_TEXT:
-        if word in text.lower():
+        scan = re.sub(r"https?://[a-z0-9.-]+/[^\s\"'<>)]*wp-content/uploads/[^\s\"'<>)]*", "", text.lower()) if word == "wp-content" else text.lower()
+        if word in scan:
             fails.append(f"{rel}: reference to {word}")
 
     for ref, role in page.refs:
@@ -167,7 +168,9 @@ def check_page(rel, name, text, page, sources, fails, warns):
         if not path.startswith("/"):
             path = posixpath.normpath(posixpath.join(posixpath.dirname(rel), path)) + ("/" if path.endswith("/") else "")
         if not resolves(path, sources):
-            if role == "hreflang":
+            if path.startswith("/wp-content/uploads/") and role != "hreflang":
+                warns.append(f"{rel}: legacy upload on the live site {ref} (import with --since 2015-01-01 before launch)")
+            elif role == "hreflang":
                 fails.append(f"{rel}: hreflang target {ref} does not resolve")
             elif unquote(path).startswith(ARCHIVE_BASES):
                 warns.append(f"{rel}: broken link {ref} (archive not yet imported)")

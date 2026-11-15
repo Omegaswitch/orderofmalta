@@ -611,7 +611,7 @@ def sub_html(node, lang, current):
 def nav_html(lang, current):
     t = I18N[lang]
     home = home_url(lang)
-    lis = [f'<li><a href="{home}"{" aria-current=" + chr(34) + "page" + chr(34) if current == home else ""}>{esc(t["home"])}</a></li>']
+    lis = [f'<li class="nav-home"><a href="{home}"{" aria-current=" + chr(34) + "page" + chr(34) if current == home else ""}>{esc(t["home"])}</a></li>']
     for n in main_menu(lang):
         u = resolve_link(n.get("url"))
         active = node_active({**n, "url": u}, current) if u or n.get("children") else False
@@ -1343,9 +1343,10 @@ def home_feature(lang, items):
         keys = [k for k in n.get("categories") or [] if (CATS.get(k) or {}).get("parent")] or (n.get("categories") or [])
         return cat_name(keys[0], lang) if keys and cat_term(keys[0], lang) else ""
     slides = "".join(
-        f'<li class="hf-slide" id="hf-{i}" aria-label="{i + 1} / {len(items)}">'
-        f'<p class="hf-meta"><time datetime="{n["date"][:10]}">{esc(fmt_date(n["date"], lang))}</time>{f"<span>{esc(cat(n))}</span>" if cat(n) else ""}</p>'
-        f'<h3><a href="{n["url"]}">{esc(n["title"])}</a></h3><p class="hf-sum">{esc(summary(n))}</p></li>' for i, n in enumerate(items))
+        f'<li class="hf-slide{" has-img" if n.get("image") else ""}" id="hf-{i}" aria-label="{i + 1} / {len(items)}">'
+        f'{"<a class=" + chr(34) + "hf-media" + chr(34) + " href=" + chr(34) + n["url"] + chr(34) + " tabindex=" + chr(34) + "-1" + chr(34) + " aria-hidden=" + chr(34) + "true" + chr(34) + ">" + img(n["image"], "", sizes="(max-width: 700px) 0px, 480px", eager=i == 0) + "</a>" if n.get("image") else ""}'
+        f'<div class="hf-text"><p class="hf-meta"><time datetime="{n["date"][:10]}">{esc(fmt_date(n["date"], lang))}</time>{f"<span>{esc(cat(n))}</span>" if cat(n) else ""}</p>'
+        f'<h3><a href="{n["url"]}">{esc(n["title"])}</a></h3><p class="hf-sum">{esc(summary(n))}</p></div></li>' for i, n in enumerate(items))
     dots = "".join(f'<li><button type="button" aria-controls="hf-{i}" aria-label="{esc(n["title"])}"{" aria-current=" + chr(34) + "true" + chr(34) if i == 0 else ""}><span></span></button></li>'
                    for i, n in enumerate(items))
     return f"""<section class="home-feature" aria-labelledby="hf-tab-news"><div class="hf-tabs" role="tablist"><button type="button" role="tab" id="hf-tab-news" aria-controls="hf-news" aria-selected="true">{esc(t["news"])}</button></div>

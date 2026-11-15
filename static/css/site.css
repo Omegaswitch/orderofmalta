@@ -181,9 +181,14 @@ html:active-view-transition-type(slide)::view-transition-new(page-main){animatio
   .sub-feature span{font-size:.88rem;line-height:1.45;color:var(--muted)}
   .sub-feature a:hover b{color:var(--red-text)}
 }
+/* desktop: eight items on one line, as on orderofmalta.int; the shield and the top bar lead home, so the Home item is mobile-only */
+@media (min-width:961px){
+  .nav-home{display:none}
+  .nav-list>li>a,.nav-heading{white-space:nowrap;padding:13px 8px;letter-spacing:.05em}
+}
 /* tablet landscape: seven or eight menu items need a smaller setting to fit on one line */
 @media (min-width:961px) and (max-width:1180px){
-  .nav-list>li>a,.nav-heading{padding:13px 6px;font-size:.74rem;letter-spacing:.04em}
+  .nav-list>li>a,.nav-heading{padding:13px 4px;font-size:.7rem;letter-spacing:.02em}
 }
 
 @media (max-width:960px){
@@ -248,15 +253,24 @@ html:active-view-transition-type(slide)::view-transition-new(page-main){animatio
 
 /* first screen: the news carousel in a grey band with the Order's red rule above */
 .home-feature{position:relative;display:grid;grid-template-rows:auto 1fr;padding-block:var(--s5) var(--s6);border-top:3px solid var(--red)}
-.hf-tabs{display:flex;gap:var(--s5);border-bottom:1px solid var(--rule);margin-bottom:var(--s5);max-width:64rem}
+.hf-tabs{display:flex;gap:var(--s5);border-bottom:1px solid var(--rule);margin-bottom:var(--s5)}
 .hf-tabs button{min-height:44px;padding:0;background:none;border:0;font:600 .82rem var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-strong);cursor:default;box-shadow:inset 0 -2px 0 var(--red)}
 .hf-nav button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-.hf-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto;gap:var(--s4) var(--s5);max-width:64rem}
+.hf-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto;gap:var(--s4) var(--s5)}
 .hf-panel[hidden]{display:none}
 .hf-viewport{height:clamp(230px,27vh,260px);overflow:hidden}
 .hf-track{list-style:none;margin:0;padding:0;height:100%;transition:transform 650ms var(--ease)}
 .hf-slide{height:100%;display:grid;align-content:start;gap:var(--s3);transition:opacity 650ms var(--ease)}
 .hf-slide:not(.is-current){opacity:.25}
+.hf-text{display:grid;align-content:start;gap:var(--s3);min-width:0}
+.hf-media{display:none}
+/* with a photo: the news picture at the Order's 800×470 ratio on the left, the text beside it (the photo is dropped on phones) */
+@media (min-width:701px){
+  .hf-viewport{height:clamp(260px,30vw,300px)}
+  .hf-slide.has-img{grid-template-columns:minmax(0,46%) minmax(0,1fr);gap:var(--s5);align-content:stretch}
+  .hf-slide.has-img .hf-media{display:block;height:100%;background:var(--rule);overflow:hidden}
+  .hf-media img{width:100%;height:100%;object-fit:cover}
+}
 .hf-meta{margin:0;display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .hf-meta span{color:var(--red-text);font-weight:600}
 .hf-slide h3{margin:0;font:500 clamp(1.5rem,2.3vw,2rem)/1.15 var(--display);color:var(--ink-strong);text-wrap:balance;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}

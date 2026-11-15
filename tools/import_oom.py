@@ -359,6 +359,7 @@ def media_name(rel):
     if not dot:
         stem, ext = name, ""
     stem = re.sub(r"[^a-z0-9._-]", "-", stem.lower())
+    stem = stem.replace("smom", "om")  # the four-letter acronym is never written by us, not even in file names
     stem = re.sub(r"-{2,}", "-", stem).strip("-.") or "file"
     ext = re.sub(r"[^a-z0-9]", "", ext.lower())
     return (folder + "/" if folder else "") + stem + (("." + ext) if ext else "")
@@ -785,6 +786,9 @@ class Body:
         href = (href or "").strip()
         if href.startswith("(") and href.endswith(")"):
             href = href[1:-1].strip()
+        mal = re.search(r"/\((https?):/+([^)\s]+)\)?/?$", href)  # editor typo: site URL glued in front of "(https://other/...)"
+        if mal:
+            href = f"{mal.group(1)}://{mal.group(2)}"
         if not href or href == "#" or href.lower().startswith(("javascript:", "data:", "vbscript:")):
             return None
         if href.startswith("mailto:") or href.startswith("tel:"):
@@ -1243,7 +1247,7 @@ class Body:
             return
         title = h2t or h3t
         if href.startswith("/") and r:
-            self.teaser_img.setdefault(href.split("#")[0], (r["path"], attr_text(img.get("alt")) if img else ""))
+            self.teaser_img.setdefault(href.split("#")[0], set()).add((r["path"], attr_text(img.get("alt")) if img else ""))
         imgtag = f'<img src="{esc_attr(r["path"])}" alt="" width="{r["w"]}" height="{r["h"]}">' if r and r.get("w") else (f'<img src="{esc_attr(r["path"])}" alt="">' if r else "")
         text = ptxt or (h3t if h2t else "")
         out.append(f'<ul class="cards"><li><a href="{esc_attr(href)}">{imgtag}<b>{esc(title)}</b>' + (f"<span>{esc(text)}</span>" if text else "") + "</a></li></ul>")
@@ -1290,7 +1294,7 @@ class Body:
                     if h and h.startswith("/"):
                         r = self.fig_image(im.get("src"))
                         if r:
-                            self.teaser_img.setdefault(h.split("#")[0], (r["path"], attr_text(im.get("alt"))))
+                            self.teaser_img.setdefault(h.split("#")[0], set()).add((r["path"], attr_text(im.get("alt"))))
             for p in pages:
                 if p not in self.related and p != self.self_url:
                     self.related.append(p)
@@ -1622,7 +1626,7 @@ def parse_footer(doc, body, main_menu):
         # the section that only holds contacts + policies becomes the legal list
         first_h3 = panel.find("h3", cls="first-heading")
         fa = first_h3.find("a") if first_h3 else None
-        if fa is not None and section["children"] and all(c.get("url") for c in section["children"]) and re.search(r"/(contacts|contatti|contact|kontakt|contactos)/$", body.link(fa.get("href")) or ""):
+        if fa is not None and section["children"] and all(c.get("url") for c in section["children"]) and re.search(r"/(contacts|contatti|contact|kontakte?|contactos)/$", body.link(fa.get("href")) or ""):
             legal = section["children"]
             continue
         if section["children"]:
@@ -1660,7 +1664,7 @@ def parse_credits(doc, body):
         if lines:
             out["address"] = lines[0]
         if len(lines) > 1:
-            out["phone"] = norm_text(lines[1].split("|")[0]).strip(" |")
+            out["phone"] = norm_text(lines[1].split("|")[0]).strip(" |,;")
     return out
 
 
@@ -2673,7 +2677,7 @@ class Importer:
             for n in m["main"]:
                 f = n.get("feature")
                 if f and f.get("url") and f.get("image") and f["url"].startswith("/"):
-                    self.teaser_img.setdefault(f["url"].split("#")[0], (f["image"], ""))
+                    self.teaser_img.setdefault(f["url"].split("#")[0], set()).add((f["image"], ""))
         for it in self.items["page"]:
             home = it["meta"].get("home")
             if not home:
@@ -2681,13 +2685,13 @@ class Importer:
             for grp in ("works", "organisations"):
                 for x in (home.get(grp) or {}).get("items", []):
                     if x.get("url", "").startswith("/") and x.get("image"):
-                        self.teaser_img.setdefault(x["url"].split("#")[0], (x["image"], ""))
+                        self.teaser_img.setdefault(x["url"].split("#")[0], set()).add((x["image"], ""))
             for x in home.get("features", []):
                 if x.get("url", "").startswith("/") and x.get("image"):
-                    self.teaser_img.setdefault(x["url"].split("#")[0], (x["image"], ""))
+                    self.teaser_img.setdefault(x["url"].split("#")[0], set()).add((x["image"], ""))
             ph = (home.get("boxes") or {}).get("philately")
             if ph and ph.get("url", "").startswith("/") and ph.get("image"):
-                self.teaser_img.setdefault(ph["url"].split("#")[0], (ph["image"], ""))
+                self.teaser_img.setdefault(ph["url"].split("#")[0], set()).add((ph["image"], ""))
 
     def finalize(self):
         self.register_teasers()
@@ -2712,7 +2716,8 @@ class Importer:
         for it in pages:
             m = it["meta"]
             if not m.get("image") and not m.get("redirect"):
-                t = self.teaser_img.get(it["url"])
+                cands = self.teaser_img.get(it["url"])
+                t = min(cands) if cands else None
                 if t:
                     m["image"] = t[0]
                     if t[1]:

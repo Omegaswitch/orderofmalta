@@ -275,7 +275,7 @@
     "feature": {
      "title": "From the 11th century to the present day",
      "url": "/history/11-century-to-the-present-day/",
-     "image": "/media/2022/02/smom-history.webp",
+     "image": "/media/2022/02/om-history.webp",
      "text": "The birth of the Order of St. John dates back to around the second half of the 11th century. It was under the leadership of Blessed Fra’ Gerard, founder and first Master, that the religious community became a lay religious order."
     },
     "children": [
@@ -943,7 +943,7 @@
     "feature": {
      "title": "Dall’XI secolo ai giorni nostri",
      "url": "/it/storia/da-xi-secolo-ai-giorni-nostri/",
-     "image": "/media/2022/02/smom-history.webp",
+     "image": "/media/2022/02/om-history.webp",
      "text": "La nascita dell’Ordine di San Giovanni risale alla seconda metà dell'XI secolo. È sotto la guida del Beato Fra’ Gerardo, fondatore e primo Maestro, che la comunità religiosa viene trasformata in un ordine religioso laicale."
     },
     "children": [
@@ -1309,7 +1309,7 @@
   "footerCredits": {
    "name": "Sovrano Militare Ordine Ospedaliero di San Giovanni di Gerusalemme di Rodi e di Malta",
    "address": "Palazzo Magistrale, Via Condotti, 68 – 00187 Roma – Italia",
-   "phone": "Tel. +39.06.67581.1,",
+   "phone": "Tel. +39.06.67581.1",
    "email": "info@orderofmalta.int"
   }
  },
@@ -1589,7 +1589,7 @@
     "feature": {
      "title": "Du XIᵉ siècle à nos jours",
      "url": "/fr/histoire/du-xi-siecle-a-nos-jours/",
-     "image": "/media/2022/02/smom-history.webp",
+     "image": "/media/2022/02/om-history.webp",
      "text": "La naissance de l’Ordre de Saint-Jean remonte à la seconde moitié du XIᵉ siècle. C’est sous la conduite du bienheureux Gérard, fondateur et premier Maître, que la communauté religieuse devient un ordre religieux laïc."
     },
     "children": [
@@ -2231,7 +2231,7 @@
     "feature": {
      "title": "Zweite Hälfte des 11. Jahrhunderts",
      "url": "/de/geschichte/seit-mitte-des-11-jahrhunderts-bis-heute/",
-     "image": "/media/2022/02/smom-history.webp",
+     "image": "/media/2022/02/om-history.webp",
      "text": "Die Gründung des Ordens geht auf die zweite Hälfte des 11. Jahrhunderts. Unter der Leitung des Seligen Fra’Gerhard, des Gründers und ersten Meisters, wird die Ordensgemeinschaft in einen Laienorden umgewandelt."
     },
     "children": [
@@ -2530,20 +2530,6 @@
       "url": "/de/geschichte/die-orden-vom-hl-johannes/"
      }
     ]
-   },
-   {
-    "title": "Kontakte",
-    "url": null,
-    "children": [
-     {
-      "title": "Datenschutzerklärung",
-      "url": "/de/datenschutzerklaerung/"
-     },
-     {
-      "title": "Cookie richtlinien",
-      "url": "/de/cookie-richtlinien/"
-     }
-    ]
    }
   ],
   "social": [
@@ -2568,7 +2554,16 @@
     "url": "https://it.linkedin.com/company/order-of-malta"
    }
   ],
-  "legal": [],
+  "legal": [
+   {
+    "title": "Datenschutzerklärung",
+    "url": "/de/datenschutzerklaerung/"
+   },
+   {
+    "title": "Cookie richtlinien",
+    "url": "/de/cookie-richtlinien/"
+   }
+  ],
   "footerCredits": {
    "name": "Souveräner Ritter- und Hospitalorden vom Hl. Johannes zu Jerusalem von Rhodos und von Malta",
    "address": "Magistralpalast, Via Condotti, 68 – Rom - Italien",
@@ -2856,7 +2851,7 @@
     "feature": {
      "title": "Del siglo XI a nuestros días",
      "url": "/es/historia/de-siglo-xi-a-nuestros-dias/",
-     "image": "/media/2022/02/smom-history.webp",
+     "image": "/media/2022/02/om-history.webp",
      "text": "El nacimiento de la Orden se remonta aproximadamente a la segunda mitad del siglo XI. Bajo la dirección del Beato Gerardo, fundador y primer Gran Maestre, la comunidad religiosa se transforma en una orden religiosa laica."
     },
     "children": [
