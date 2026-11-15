@@ -15,35 +15,40 @@
    "orderShort": "Sovereign Order of Malta",
    "orderActivities": "Order of Malta",
    "site": "Sovereign Order of Malta",
-   "lockup": "Sovereign Order of Malta"
+   "lockup": "Sovereign Order of Malta",
+   "lockupAlt": "Order of Malta"
   },
   "it": {
    "order": "Sovrano Militare Ordine Ospedaliero di San Giovanni di Gerusalemme di Rodi e di Malta",
    "orderShort": "Sovrano Ordine di Malta",
    "orderActivities": "Ordine di Malta",
    "site": "Sovrano Ordine di Malta",
-   "lockup": "Sovrano Ordine di Malta"
+   "lockup": "Sovrano Ordine di Malta",
+   "lockupAlt": "Ordine di Malta"
   },
   "fr": {
    "order": "Ordre Souverain Militaire et Hospitalier de Saint-Jean de Jérusalem de Rhodes et de Malte",
    "orderShort": "Ordre souverain de Malte",
    "orderActivities": "Ordre de Malte",
    "site": "Ordre souverain de Malte",
-   "lockup": "Ordre souverain de Malte"
+   "lockup": "Ordre souverain de Malte",
+   "lockupAlt": "Ordre de Malte"
   },
   "de": {
    "order": "Souveräner Ritter- und Hospitalorden vom Hl. Johannes zu Jerusalem von Rhodos und von Malta",
    "orderShort": "Souveräner Malteserorden",
    "orderActivities": "Malteserorden",
    "site": "Souveräner Malteserorden",
-   "lockup": "Souveräner Malteserorden"
+   "lockup": "Souveräner Malteserorden",
+   "lockupAlt": "Der Malteserorden"
   },
   "es": {
    "order": "Soberana y Militar Orden Hospitalaria de San Juan de Jerusalén de Rodas y de Malta",
    "orderShort": "Soberana Orden de Malta",
    "orderActivities": "Orden de Malta",
    "site": "Soberana Orden de Malta",
-   "lockup": "Soberana Orden de Malta"
+   "lockup": "Soberana Orden de Malta",
+   "lockupAlt": "Orden de Malta"
   }
  },
  "contact": {
@@ -182,5 +187,66 @@
   "diplomatic-activities"
  ],
  "perPage": 12,
- "editorUrl": "/editor/"
+ "editorUrl": "/editor/",
+ "navLabels": {
+  "_comment": "Short labels for the menu and the side navigation, keyed by language and link; anything not listed uses the imported menu label or the page title.",
+  "en": {
+   "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf": "Constitution and Code",
+   "/csca/": "CSCA",
+   "/history/11-century-to-the-present-day/": "11th century to today",
+   "/history/the-ancient-languages-of-the-order/": "Ancient Languages",
+   "/history/1113-the-bull-pie-postulatio-voluntatis/": "The Bull of 1113",
+   "/press-publications/publications/": "Publications",
+   "/government/magistral-archives-and-library/": "Archives and Library",
+   "/history/1113-papal-recognition/": "Papal Recognition 1113"
+  },
+  "it": {
+   "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf": "Carta e Codice",
+   "/csca/": "CSCA",
+   "/it/l-ordine-di-malta/l-icona-della-madonna-del-fileremo/": "Madonna del Fileremo",
+   "/it/governo/archivi-e-biblioteca-magistrali/": "Archivi e Biblioteca",
+   "/it/opere-mediche-e-umanitarie/prevenzione-ed-interventi-post-catastrofi/": "Catastrofi e prevenzione",
+   "/it/attivita-diplomatiche/ambasciatori-a-carattere-speciale/": "Ambasciatori speciali",
+   "/it/media-e-pubblicazioni/pubblicazioni/": "Pubblicazioni",
+   "/it/storia/da-xi-secolo-ai-giorni-nostri/": "Dall’XI secolo a oggi",
+   "/it/storia/le-antiche-lingue-dei-cavalieri/": "Le antiche Lingue",
+   "/it/storia/1113-riconoscimento-del-papa/": "Riconoscimento 1113",
+   "/it/storia/1113-la-bolla-pie-postulatio-voluntatis/": "La Bolla del 1113"
+  },
+  "fr": {
+   "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf": "Charte et Code",
+   "/csca/": "CSCA",
+   "/fr/gouvernement/archives-bibliotheque-magistrales/": "Archives et Bibliothèque",
+   "/fr/oeuvres-medicales-et-humanitaires/soulager-et-prevenir-les-catastrophes/": "Catastrophes et prévention",
+   "/fr/activites-diplomatiques/ambassadeurs-a-caractere-special/": "Ambassadeurs spéciaux",
+   "/fr/press-et-publications/publications/": "Publications",
+   "/fr/histoire/les-anciennes-langues-des-chevaliers/": "Les anciennes Langues",
+   "/fr/histoire/1113-reconnaissance-du-pape/": "Reconnaissance 1113",
+   "/fr/histoire/1113-la-bulle-pie-postulatio-voluntatis/": "La Bulle de 1113"
+  },
+  "de": {
+   "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf": "Verfassung und Codex",
+   "/csca/": "CSCA",
+   "/de/der-malteserorden/die-ikone-unserer-lieben-frau-von-philermos/": "Philermos-Ikone",
+   "/de/regierung/magistralarchiv-und-bibliotheken/": "Archiv und Bibliothek",
+   "/de/humanitaere-medizinische-hilfe/katastrophenhilfe-praevention/": "Katastrophenhilfe",
+   "/de/humanitaere-medizinische-hilfe/das-krankenhaus-in-bethlehem/": "Krankenhaus Bethlehem",
+   "/de/presse-und-veroeffentlichungen/publikationen/": "Publikationen",
+   "/de/geschichte/seit-mitte-des-11-jahrhunderts-bis-heute/": "Seit dem 11. Jahrhundert",
+   "/de/geschichte/die-alten-zungen-der-ritter/": "Die alten Zungen",
+   "/de/geschichte/im-jahr-1113-paepstliche-anerkennung/": "Anerkennung 1113",
+   "/de/geschichte/die-bulle-pie-postulatio-voluntatis/": "Die Bulle von 1113"
+  },
+  "es": {
+   "/media/2026/06/carta-costituzionale-e-codice-ordine-di-malta-2026.pdf": "Carta y Código",
+   "/csca/": "CSCA",
+   "/es/gobierno/archivos-y-biblioteca-magistrales/": "Archivos y Biblioteca",
+   "/es/actividades-medicas-y-humanitarias/prevencion-y-asistencia-en-catastrofes/": "Catástrofes y prevención",
+   "/es/prensa-y-publicaciones/publicaciones/": "Publicaciones",
+   "/es/historia/de-siglo-xi-a-nuestros-dias/": "Del siglo XI a hoy",
+   "/es/historia/las-antiguas-langues-de-los-caballeros/": "Las antiguas Lenguas",
+   "/es/historia/la-cruz-a-ocho-puntas/": "La cruz de ocho puntas",
+   "/es/historia/1113-la-bula-pie-postulatio-voluntatis/": "La Bula de 1113"
+  }
+ }
 }

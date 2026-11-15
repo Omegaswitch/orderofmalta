@@ -176,6 +176,29 @@ CATS = _load_json("translations/categories.json", {}) or {}
 REDIRECT_FILE = _load_json("redirects.json", []) or []
 REDIR_MAP = {r["from"]: r["to"] for r in REDIRECT_FILE if isinstance(r, dict) and r.get("from") and r.get("to")}
 
+
+def _menu_urls(node):
+    if isinstance(node, dict):
+        if isinstance(node.get("url"), str):
+            yield node["url"]
+        for v in node.values():
+            yield from _menu_urls(v)
+    elif isinstance(node, list):
+        for v in node:
+            yield from _menu_urls(v)
+
+
+# Until the archive is imported, a year-archive link (menus, footer) for a year with no content goes to the newest year that has some.
+for _l in LANGS:
+    _have = sorted({n["date"][:4] for n in by_lang(NEWS, _l)}, reverse=True)
+    _nb = sec("news", _l)
+    for _u in sorted(set(_menu_urls(MENUS.get(_l) or {}))):
+        _m = re.fullmatch(re.escape(_nb) + r"(\d{4})/", _u)
+        if _m and _m.group(1) not in _have and _u not in REDIR_MAP:
+            _to = f"{_nb}{_have[0]}/" if _have else _nb
+            REDIR_MAP[_u] = _to
+            REDIRECT_FILE.append({"from": _u, "to": _to})
+
 # sections the build owns: a page the importer wrote at one of these URLs supplies only the intro text
 for _l in LANGS:
     _wanted = {"pressList": ("press-releases", "pressReleases")}
@@ -574,8 +597,47 @@ def derive_main(lang):
             for p in kids if p.get("src") != "(synthetic)" and not p.get("redirect")]
 
 
+def nav_label(lang, url, fallback):
+    return (SITE.get("navLabels") or {}).get(lang, {}).get(url) or fallback
+
+
+def _short(nodes, lang):
+    out = []
+    for n in nodes or []:
+        n = dict(n)
+        if n.get("url"):
+            n["title"] = nav_label(lang, n["url"], n["title"])
+        if n.get("feature"):
+            n["feature"] = dict(n["feature"], title=nav_label(lang, n["feature"].get("url"), n["feature"].get("title")))
+        n["children"] = _short(n.get("children"), lang)
+        out.append(n)
+    return out
+
+
+_MENU_CACHE = {}
+
+
 def main_menu(lang):
-    return menu(lang, "main") or derive_main(lang)
+    if lang not in _MENU_CACHE:
+        _MENU_CACHE[lang] = _short(menu(lang, "main") or derive_main(lang), lang)
+    return _MENU_CACHE[lang]
+
+
+def menu_label(lang, url, fallback):
+    """The (short) menu label of a page, for the side navigation; falls back to the page title."""
+    if (lang, "map") not in _MENU_CACHE:
+        labels, order = {}, {}
+        def walk(nodes):
+            for n in nodes:
+                for x in (n, n.get("feature") or {}):
+                    if x.get("url"):
+                        labels.setdefault(resolve_link(x["url"]), x["title"])
+                        order.setdefault(resolve_link(x["url"]), len(order))
+                walk(n.get("children") or [])
+        walk(main_menu(lang))
+        _MENU_CACHE[(lang, "map")] = labels
+        _MENU_CACHE[(lang, "order")] = order
+    return nav_label(lang, url, _MENU_CACHE[(lang, "map")].get(url) or fallback)
 
 
 def node_active(node, url):
@@ -676,7 +738,7 @@ def lang_switch(lang, url, alt, section=None):
 
 FONTS_PRELOAD = ["asap-latin-400-normal", "eb-garamond-latin-500-normal"]  # first-screen body and heading; latin-ext loads on demand
 SCRIPT_KEYS = ["news", "pressReleases", "galleries", "galleryPhoto", "galleryAlbum", "galleryVideo", "publications", "inTheNews", "readMore", "page",
-               "search", "searchLabel", "searchPlaceholder", "searchNone", "searchCount", "searchLoading", "searchFailed", "previous", "next",
+               "search", "searchLabel", "searchPlaceholder", "searchNone", "searchCount", "searchCountOf", "searchLoading", "searchFailed", "previous", "next",
                "embedNote", "embedAlways", "embedWatch", "embedPlay", "lightboxClose", "lightboxPrev", "lightboxNext", "lightboxOf", "archiveNote",
                "notFound", "gdprSending", "gdprSent", "gdprFailed", "gdprTooFast", "gdprNotSet", "date", "organisation", "language", "agency"]
 
@@ -697,7 +759,7 @@ def lockup_html(lang, names):
     f = STATIC / "img" / "lockup" / f"{lang}.svg"
     if f.exists():
         vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', f.read_text(encoding="utf-8")).group(1).split()]
-        return (f'<img class="lockup" src="/img/lockup/{lang}.svg" alt="{esc(names["lockup"])}" width="{vb[2]:.0f}" height="{vb[3]:.0f}"'
+        return (f'<img class="lockup" src="/img/lockup/{lang}.svg" alt="{esc(names.get("lockupAlt") or names["lockup"])}" width="{vb[2]:.0f}" height="{vb[3]:.0f}"'
                 f' style="--h:{vb[3] / 126:.4f};--t:{vb[1] / 126:.4f}">')
     s = STATIC / "img" / "lockup" / "shield.svg"
     dims = ""
@@ -787,7 +849,7 @@ def layout(*, lang, url, title, body, description="", image=None, status=None, a
 <a class="skip" href="#main">{esc(t['skip'])}</a>
 <header class="site-header">
  <div class="topbar"><div class="wrap">
-  <a class="topbar-home" href="{home_url(lang)}">{esc(names['orderActivities'])}</a>
+  <a class="topbar-home" href="{home_url(lang)}">{esc(names['site'])}</a>
   <span class="topbar-social">{social_html(lang)}</span>
   <form class="site-search" role="search" action="{sec('search', lang)}" method="get"><label class="visually-hidden" for="site-q">{esc(t['searchLabel'])}</label><input id="site-q" type="search" name="q" autocomplete="off" placeholder="{esc(t['searchPlaceholder'])}"><button type="submit" aria-label="{esc(t['search'])}"></button></form>
   <nav class="lang" aria-label="{esc(t['langLabel'])}">{lang_switch(lang, url, alt, section)}</nav>
@@ -862,28 +924,48 @@ def side_nav(p):
     while top.get("parent") and top["parent"] in PAGES and top["parent"] not in seen:
         top = PAGES[top["parent"]]
         seen.add(top["url"])
-    if top["url"] == p["url"] or not children_of(top["url"], lang):
+    if not children_of(top["url"], lang):
         return ""
     ancestors = {u for _, u in page_trail(p)}
 
     def walk(parent_url):
         out = []
-        for c in children_of(parent_url, lang):
+        menu_label(lang, "", "")  # fills the menu order
+        order = _MENU_CACHE[(lang, "order")]
+        kids = sorted(children_of(parent_url, lang), key=lambda c: order.get(c.get("redirect") or c["url"], order.get(c["url"], 10_000)))
+        for c in kids:
             cur = ' aria-current="page"' if c["url"] == p["url"] else ""
             sub = walk(c["url"]) if (c["url"] == p["url"] or c["url"] in ancestors) and children_of(c["url"], lang) else ""
-            out.append(f'<li><a {href_attr(c.get("redirect") or c["url"])}{cur}>{esc(c["title"])}</a>{sub}</li>')
+            out.append(f'<li><a {href_attr(c.get("redirect") or c["url"])}{cur}>{esc(menu_label(lang, c["url"], c["title"]))}</a>{sub}</li>')
         return f'<ul>{"".join(out)}</ul>'
+    top_cur = ' aria-current="page"' if top["url"] == p["url"] else ""
     return (f'<nav class="side-nav" aria-label="{esc(I18N[lang]["inSection"])}"><p class="label">'
-            f'<a href="{top["url"]}">{esc(top["title"])}</a></p>{walk(top["url"])}</nav>')
+            f'<a href="{top["url"]}"{top_cur}>{esc(menu_label(lang, top["url"], top["title"]))}</a></p>{walk(top["url"])}</nav>')
+
+
+def summary_text(txt, n=150):
+    txt = re.sub(r"\s+", " ", txt or "").strip()
+    if len(txt) <= n:
+        return txt
+    cut = txt[:n]
+    dot = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
+    return cut[:dot + 1] if dot > 60 else cut.rsplit(" ", 1)[0].rstrip(",;:–-") + "…"
+
+
+def shorten_cards(body):
+    """Imported card lists (<ul class="cards">) carry the whole text of the linked page; show a summary that leads to it."""
+    return re.sub(r'(<ul class="cards">.*?</ul>)', lambda m: re.sub(r"<span>(.*?)</span>", lambda s: f"<span>{esc(summary_text(html.unescape(re.sub('<[^>]+>', '', s.group(1)))))}</span>", m.group(1), flags=re.S), body, flags=re.S)
 
 
 def section_children_html(p):
     kids = children_of(p["url"], p["lang"])
-    if not kids or 'class="cards"' in p["body"]:
+    shown = set(re.findall(r'href="([^"]+)"', "".join(re.findall(r'<ul class="cards">.*?</ul>', p["body"], flags=re.S))))
+    kids = [k for k in kids if (k.get("redirect") or k["url"]) not in shown]
+    if not kids:
         return ""
     items = []
     for k in kids:
-        desc = k.get("description") or plain(k.get("body", ""), 150)
+        desc = summary_text(k.get("description") or plain(k.get("body", ""), 300))
         items.append(f'<li><a {href_attr(k.get("redirect") or k["url"])}><b>{esc(k["title"])}</b>{f"<span>{esc(desc)}</span>" if desc else ""}</a></li>')
     return f'<ul class="index-list">{"".join(items)}</ul>'
 
@@ -961,10 +1043,10 @@ def cutting_card(it, lang, h=2):
                      text=it.get("excerpt", ""), h=h, external=True)
 
 
-def grid(cards, lang, text=False, side=False):
+def grid(cards, lang, text=False, side=False, rows=False):
     if not cards:
         return f'<p class="empty">{esc(I18N[lang]["empty"])}</p>'
-    cls = "card-grid" + (" card-grid--text" if text else "") + (" card-grid--side" if side else "")
+    cls = "card-grid" + (" card-grid--text" if text else "") + (" card-grid--side" if side else "") + (" card-grid--rows" if rows is True else " card-grid--m-rows" if rows else "")
     return f'<ol class="{cls}">{"".join(cards)}</ol>'
 
 
@@ -1043,10 +1125,10 @@ def listing_doc(lang, *, base, page_no, n_pages, title, trail, cards_html, intro
 
 
 def write_listing(lang, base, items, make_card, *, title, trail, text=False, intro="", tabs="", years="", alt=None, description="", sitemap=True,
-                  pinned=False, main_class="", section=None):
+                  pinned=False, main_class="", section=None, rows=False):
     n = n_pages_of(items)
     for i in range(1, n + 1):
-        cards = grid([make_card(x, lang) for x in chunk(items, i)], lang, text=text)
+        cards = grid([make_card(x, lang) for x in chunk(items, i)], lang, text=text, rows=rows)
         doc = listing_doc(lang, base=base, page_no=i, n_pages=n, title=title, trail=trail, cards_html=cards, intro=intro if i == 1 else "", tabs=tabs,
                           years=years, alt=alt, description=description, pinned=pinned and i == 1, main_class=main_class, section=section)
         write(page_url(base, i), doc, sitemap=sitemap and i == 1, alt=alt)
@@ -1078,7 +1160,7 @@ def render_news(lang):
             f'<a href="{base}{y}/"{" aria-current=" + chr(34) + "page" + chr(34) if y == active else ""}>{y}</a>' for y in years) + "</nav>")
 
     news_alt = section_alt("news")
-    write_listing(lang, base, items, news_card, title=title, trail=[(title, base)], tabs=tabs(), years=year_nav(), alt=news_alt,
+    write_listing(lang, base, items, news_card, rows=True, title=title, trail=[(title, base)], tabs=tabs(), years=year_nav(), alt=news_alt,
                   description=f"{title} – {SITE['names'][lang]['orderShort']}", pinned=True, main_class="news-index", section="news",
                   intro=f'<div class="prose">{enhance_body(intro_page["body"], lang)}</div>' if intro_page and intro_page.get("body") else "")
     for key, v in CATS.items():  # one archive per category term of this language
@@ -1087,13 +1169,13 @@ def render_news(lang):
             continue
         group = {l: cat_url(key, l) for l in LANGS if cat_url(key, l)}
         name = cat_name(key, lang)
-        write_listing(lang, u, cat_members(key, items), news_card, title=name, trail=[(title, base), (name, u)], tabs=tabs(key), years=year_nav(), alt=group,
+        write_listing(lang, u, cat_members(key, items), news_card, rows=True, title=name, trail=[(title, base), (name, u)], tabs=tabs(key), years=year_nav(), alt=group,
                       description=f"{name} – {title}", section="news")
     for y in years:
         yi = [n for n in items if n["date"].startswith(y)]
         yt = f"{title} {y}"
         group = {l: f"{sec('news', l)}{y}/" for l in LANGS if y in YEARS[l]}
-        write_listing(lang, f"{base}{y}/", yi, news_card, title=yt, trail=[(title, base), (y, f"{base}{y}/")], tabs=tabs(), years=year_nav(y), alt=group,
+        write_listing(lang, f"{base}{y}/", yi, news_card, rows=True, title=yt, trail=[(title, base), (y, f"{base}{y}/")], tabs=tabs(), years=year_nav(y), alt=group,
                       description=f"{yt} – {SITE['names'][lang]['orderShort']}", section="news")
 
 
@@ -1117,7 +1199,7 @@ def render_galleries(lang):
         links += [(t[label], gallery_type_url(k, lang), active == k) for k, label in GALLERY_KINDS if gallery_type_url(k, lang)]
         return tabs_html(links, t["category"])
 
-    write_listing(lang, base, items, gallery_card, title=title, trail=[(title, base)], tabs=tabs(), alt=section_alt("galleries"),
+    write_listing(lang, base, items, gallery_card, rows="m", title=title, trail=[(title, base)], tabs=tabs(), alt=section_alt("galleries"),
                   description=f"{title} – {SITE['names'][lang]['orderShort']}", main_class="galleries-index", section="galleries",
                   intro=f'<div class="prose">{enhance_body(intro_page["body"], lang)}</div>' if intro_page and intro_page.get("body") else "")
     for k, label in GALLERY_KINDS:
@@ -1125,7 +1207,7 @@ def render_galleries(lang):
         if not u:
             continue
         group = {l: gallery_type_url(k, l) for l in LANGS if gallery_type_url(k, l)}
-        write_listing(lang, u, [g for g in items if g.get("kind") == k], gallery_card, title=t[label], trail=[(title, base), (t[label], u)], tabs=tabs(k),
+        write_listing(lang, u, [g for g in items if g.get("kind") == k], gallery_card, rows="m", title=t[label], trail=[(title, base), (t[label], u)], tabs=tabs(k),
                       alt=group, description=f"{t[label]} – {title}", section="galleries")
 
 
@@ -1256,14 +1338,14 @@ def hub_html(p):
         if not items:
             continue
         more = f'<p><a class="link-strong" href="{link}">{esc(t["readMore"])}</a></p>' if link else ""
-        blocks.append(f'<section class="hub-block"><h2>{esc(title)}</h2>{grid([make(i, lang, 3) for i in items], lang, text=text)}{more}</section>')
+        blocks.append(f'<section class="hub-block"><h2>{esc(title)}</h2>{grid([make(i, lang, 3) for i in items], lang, text=text, rows=None if text else "m")}{more}</section>')
     return "".join(blocks)
 
 
 def render_page(p, page_no=1):
     lang, url, t = p["lang"], p["url"], I18N[p["lang"]]
     tpl = p.get("template") or "default"
-    body = enhance_body(p["body"], lang) if p["body"] else ""
+    body = enhance_body(shorten_cards(p["body"]), lang) if p["body"] else ""
     note_media(p["body"], url)
     figure = ""
     if p.get("image") and page_no == 1:
@@ -1271,7 +1353,7 @@ def render_page(p, page_no=1):
         figure = f'<figure class="page-figure">{img(p["image"], p.get("imageAlt", ""), eager=True, sizes="(max-width: 1100px) 100vw, 1100px")}{cap}</figure>'
     extra, n_pages, base = "", 1, url
     if tpl == "contacts":
-        extra = contacts_tabs(p["body"], lang)
+        extra = worldmap_html(lang) + contacts_tabs(p["body"], lang)
     elif tpl == "press-hub":
         extra = hub_html(p)
     elif tpl == "press-releases":
@@ -1281,7 +1363,7 @@ def render_page(p, page_no=1):
     elif tpl == "publications":
         c, items = collection_filter(lang, "publications")
         n_pages = n_pages_of(items)
-        extra = pub_tabs(lang, c) + grid([publication_card(x, lang) for x in chunk(items, page_no)], lang)
+        extra = pub_tabs(lang, c) + grid([publication_card(x, lang) for x in chunk(items, page_no)], lang, rows="m")
     elif tpl == "in-the-news":
         c, items = collection_filter(lang, "in-the-news")
         n_pages = n_pages_of(items)
@@ -1290,12 +1372,13 @@ def render_page(p, page_no=1):
     side = side_nav(p)
     children = section_children_html(p) if tpl == "default" else ""
     related = ""
-    cards = [PAGES[u] for u in p.get("related") or [] if u in PAGES and PAGES[u]["lang"] == lang]
+    kid_urls = {k["url"] for k in children_of(url, lang)}
+    cards = [PAGES[u] for u in p.get("related") or [] if u in PAGES and PAGES[u]["lang"] == lang and u not in kid_urls]
     if cards:
         related = f'<aside class="related"><h2>{esc(t["related"])}</h2>{grid([page_card(c, lang, h=3) for c in cards], lang, side=True)}</aside>'
     pt = page_suffix(p["title"], page_no, lang)
     trail = page_trail(p) + [(p["title"], url)]
-    scripts = []
+    scripts = ["/js/map.js"] if tpl == "contacts" else []
     html_body = f"""
 <div class="wrap">{crumbs_html(trail, lang)}</div>
 <article class="wrap page page--{tpl}{' page--with-side' if side else ''}">
@@ -1304,8 +1387,9 @@ def render_page(p, page_no=1):
  </header>
  <div class="page-main">
   {figure}
+  {extra if tpl == "contacts" else ""}
   {f'<div class="prose">{body}</div>' if body and page_no == 1 else ''}
-  {extra}
+  {"" if tpl == "contacts" else extra}
   {pager}
   {children if page_no == 1 else ''}
   {related if page_no == 1 else ''}
@@ -1365,6 +1449,15 @@ def _section(cls, title, inner, tid):
     return f'<section class="{cls}" aria-labelledby="{tid}"><h2 id="{tid}" class="display-s">{esc(title)}</h2>{inner}</section>' if inner else ""
 
 
+def worldmap_html(lang, fallback=""):
+    """Container of the interactive map (static/js/map.js). `fallback` (the static image) stays until the script has loaded the map."""
+    t = {k: v for k, v in I18N[lang].items() if k.startswith("map")}
+    contacts = next((p["url"] for p in ALL_PAGES if p["lang"] == lang and p.get("template") == "contacts"), "")
+    return (f'<div class="worldmap{"" if fallback else " worldmap--bare"}" data-worldmap data-state="idle" data-svg="/map/world.svg?v={ASSET_VERSION}" '
+            f'data-presence="/map/presence.{lang}.json?v={ASSET_VERSION}" data-contacts="{esc(contacts)}" '
+            f'data-t="{esc(json.dumps(t, ensure_ascii=False, separators=(",", ":")))}">{fallback}</div>')
+
+
 def render_home(lang):
     t, names = I18N[lang], SITE["names"][lang]
     page = PAGES.get(home_url(lang)) or {}
@@ -1379,21 +1472,21 @@ def render_home(lang):
         parts.append(_section("home-works", works.get("title", ""), f'<ul class="works">{lis}</ul>', "hw-title"))
     if news:
         parts.append(f'<section class="home-news" aria-labelledby="hn-title"><div class="section-head"><h2 id="hn-title" class="display-s">{esc(head.get("latestNews") or t["latestNews"])}</h2>'
-                     f'<a class="link-strong" href="{sec("news", lang)}">{esc(t["allNews"])}</a></div>{grid([news_card(n, lang, 3) for n in news[:6]], lang)}</section>')
+                     f'<a class="link-strong" href="{sec("news", lang)}">{esc(t["allNews"])}</a></div>{grid([news_card(n, lang, 3) for n in news[:6]], lang, rows="m")}</section>')
     orgs = h.get("organisations") or {}
     if orgs.get("items"):
         cards = "".join(card_html("page", lang=lang, url=resolve_link(i["url"]), title=i["title"], image=i.get("image"), h=3, external=is_external(i["url"])) for i in orgs["items"][:4])
-        parts.append(_section("home-orgs", orgs.get("title", ""), f'<ol class="card-grid">{cards}</ol>', "ho-title"))
+        parts.append(_section("home-orgs", orgs.get("title", ""), f'<ol class="card-grid card-grid--m-rows">{cards}</ol>', "ho-title"))
     mp = h.get("map") or {}
     if mp.get("image"):
         link = mp.get("link") or {}
         parts.append(f'<section class="home-map" aria-labelledby="hm-title"><h2 id="hm-title" class="display-s">{esc(mp.get("title", ""))}</h2>'
-                     f'<figure>{img(mp["image"], mp.get("title", ""), sizes="(max-width: 1100px) 100vw, 1100px")}</figure>'
+                     f'{worldmap_html(lang, "<figure class=" + chr(34) + "wm-fallback" + chr(34) + ">" + img(mp["image"], mp.get("title", ""), sizes="(max-width: 1100px) 100vw, 1100px") + "</figure>")}'
                      f'{f"<p><a class=" + chr(34) + "btn" + chr(34) + " " + href_attr(resolve_link(link["url"])) + ">" + esc(link["title"]) + "</a></p>" if link.get("url") else ""}</section>')
     gals = by_lang(GALLERIES, lang)[:6]
     if gals:
         parts.append(f'<section class="home-galleries" aria-labelledby="hg-title"><div class="section-head"><h2 id="hg-title" class="display-s">{esc(head.get("galleries") or t["galleries"])}</h2>'
-                     f'<a class="link-strong" href="{sec("galleries", lang)}">{esc(t["allGalleries"])}</a></div>{grid([gallery_card(g, lang, 3) for g in gals], lang)}</section>')
+                     f'<a class="link-strong" href="{sec("galleries", lang)}">{esc(t["allGalleries"])}</a></div>{grid([gallery_card(g, lang, 3) for g in gals], lang, rows="m")}</section>')
     feats = h.get("features") or []
     if feats:
         cards = "".join(card_html("page", lang=lang, url=resolve_link(f["url"]), title=f["title"], image=f.get("image"), kind_label=f.get("heading"), text=f.get("text", ""), h=3,
@@ -1415,7 +1508,7 @@ def render_home(lang):
     if bx:
         parts.append(f'<section class="home-boxes">{"".join(bx)}</section>')
     return layout(lang=lang, url=home_url(lang), title=names["site"], body="\n".join(p for p in parts if p), main_class="home", pinned=True,
-                  description=page.get("description") or t["homeDescription"], image=None, status=page.get("status"), alt=section_alt("home"))
+                  description=page.get("description") or t["homeDescription"], image=None, status=page.get("status"), alt=section_alt("home"), scripts=["/js/map.js"])
 
 
 # ---------------------------------------------------------------- search, GDPR, editor, 404
